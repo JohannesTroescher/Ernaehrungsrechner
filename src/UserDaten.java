@@ -1,14 +1,14 @@
 public class UserDaten {
     private String name= "null";
     private int alter=0;
-    private double koerpergroeße=0.0;
+    private double koerpergroesse=0.0;
     private String geschlecht="null";						//"männlich" oder "weiblich"
     private String trainingsziel="null";					//"Muskelaufbau" oder "Abnehmen"
     private int kalorienverbrauch=0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
 
 
-    public UserDaten(String name,int alter,double groeße,String geschlecht, String training, int kalorien,String nahrung) {
+    public UserDaten(String name,int alter,double groesse,String geschlecht, String training, int kalorien,String nahrung) {
         this.setName(name);
         try {
             this.setAlter(alter);
@@ -16,7 +16,7 @@ public class UserDaten {
             e.printStackTrace();
         }
         try {
-            this.setKoerpergroeße(groeße);
+            this.setKoerpergroesse(groesse);
         }catch(Exception e) {
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class UserDaten {
     public UserDaten() {
         this.name="null";
         this.alter=0;
-        this.koerpergroeße=0.0;
+        this.koerpergroesse=0.0;
         this.geschlecht="null";
         this.trainingsziel="null";
         this.kalorienverbrauch=0;
@@ -65,12 +65,12 @@ public class UserDaten {
         else
             throw new Exception("Bitte wählen Sie ein gültiges Alter!");
     }
-    public double getKoerpergroeße() {
+    public double getKoerpergroesse() {
         return koerpergroeße;
     }
-    public void setKoerpergroeße(double koerpergroeße) throws Exception{
-        if(koerpergroeße>0)
-            this.koerpergroeße = koerpergroeße;
+    public void setKoerpergroesse(double koerpergroesse) throws Exception{
+        if(koerpergroesse>0)
+            this.koerpergroesse = koerpergroesse;
         else
             throw new Exception("Bitte wählen Sie eine gültige Körpergröße!");
     }
