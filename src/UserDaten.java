@@ -66,7 +66,7 @@ public class UserDaten {
             throw new Exception("Bitte wählen Sie ein gültiges Alter!");
     }
     public double getKoerpergroesse() {
-        return koerpergroeße;
+        return koerpergroesse;
     }
     public void setKoerpergroesse(double koerpergroesse) throws Exception{
         if(koerpergroesse>0)
