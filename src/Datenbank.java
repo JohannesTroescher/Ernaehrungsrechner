@@ -8,6 +8,9 @@ public class Datenbank {
     pushtest 12345354345
      */
 
+    /**
+     * @param args is ne fucking main methode was sonst, will nur javadoc testen
+     */
     /*Alles lesbar, mal schauen ob auch das pushen und updaten funktioniert.*/
     public static void main(String[] args) {
         int a = 1;
