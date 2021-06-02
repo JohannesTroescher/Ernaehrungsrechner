@@ -4,7 +4,7 @@ public class UserDaten {
     private double koerpergroesse=0.0;
     private String geschlecht="null";						//"männlich" oder "weiblich"
     private String trainingsziel="null";					//"Muskelaufbau" oder "Abnehmen"
-    private int kalorienverbrauch=0;
+    private int grundbedarf =0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
 
 
@@ -31,7 +31,7 @@ public class UserDaten {
             e.printStackTrace();
         }
         try {
-            this.setKalorienverbrauch(kalorien);
+            this.setGrundbedarf(kalorien);
         }catch(Exception e) {
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class UserDaten {
         this.koerpergroesse=0.0;
         this.geschlecht="null";
         this.trainingsziel="null";
-        this.kalorienverbrauch=0;
+        this.grundbedarf =0;
         this.nahrungspraeferenz="null";
     }
     public String getName() {
@@ -92,12 +92,12 @@ public class UserDaten {
         else
             throw new Exception("Bitte wählen Sie, ob sie Muskeln aufbauen oder abnehmen möchten!");
     }
-    public int getKalorienverbrauch() {
-        return kalorienverbrauch;
+    public int getGrundbedarf() {
+        return grundbedarf;
     }
-    public void setKalorienverbrauch(int kalorienverbrauch) throws Exception {
-        if(kalorienverbrauch>=0)
-            this.kalorienverbrauch = kalorienverbrauch;
+    public void setGrundbedarf(int grundbedarf) throws Exception {
+        if(grundbedarf >=0)
+            this.grundbedarf = grundbedarf;
         else
             throw new Exception("Es dürfen keine negativen Werte angegeben werden!");
     }
