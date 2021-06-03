@@ -26,18 +26,18 @@ public class Datenbank {
     }
 
     public externeDatei UserDaten_dateierstellung(){
-        //erstellt externe UserDatenListe-Datei
-        return externeDatei;
+        //erstellt externe UserDatenListe-Datei aus der ArrayList UserListe
+        return externeUserDatei;
     }
 
     public externeDatei UserDaten_dateiaufruf(){
         //ruft in Speicher abgelegte Datei ab, und gibt die Datei an System zur weiteren Nutzung
-        return irgendeineExterne;
+        return externeUserDatei;
     }
 
-    public externeDatei UserDaten_auslesen(irgendeineExterne Datei){
-        //methode soll externe UserDatenListe-Datei auslesen
-        return externeDatei;
+    public UserDaten_auslesen(irgendeineExterne externeUserDatei){
+        //methode soll externe UserDatenListe-Datei auslesen (wandelt externeUserDatei in UserListe um)
+        UserListe=UserListeausDatei;
     }
 
 
