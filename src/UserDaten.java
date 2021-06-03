@@ -5,10 +5,10 @@ public class UserDaten {
     private String name= "null";
     private int alter=0;
     private double koerpergroesse=0.0;
-    private String geschlecht="null";						//"männlich" oder "weiblich"
-    private String trainingsziel="null";					//"Muskelaufbau" oder "Abnehmen"
+    private String geschlecht="null";
+    private String trainingsziel="null";
     private double grundbedarf =0;
-    private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
+    private String nahrungspraeferenz="null";
     private double gewicht=0;
     private long UserID=0;
     static long counter=0;
