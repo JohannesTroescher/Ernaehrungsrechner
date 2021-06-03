@@ -36,23 +36,23 @@ public class Datenbank {
     }
 
     public externeDatei UserDaten_auslesen(irgendeineExterne Datei){
-        //methode soll externe UserDatenListe Datei auslesen
+        //methode soll externe UserDatenListe-Datei auslesen
         return externeDatei;
     }
 
 
     public externeDatei Rezepte_dateiaufruf_normal(){
-        //ruft in Speicher abgelegte normaleRezepteDatei auf, und gibt die Datei an System zur weiteren Nutzung
+        //ruft in Speicher abgelegte normaleRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         return normaleRezepteDatei;
     }
 
     public externeDatei Rezepte_dateiaufruf_vegetarisch(){
-        //ruft in Speicher abgelegte vegetarischeRezepteDatei auf, und gibt die Datei an System zur weiteren Nutzung
+        //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         return vegetarischeRezepteDatei;
     }
 
     public externeDatei Rezepte_dateiaufruf_vegan(){
-        //ruft in Speicher abgelegte veganeRezepteDatei auf, und gibt die Datei an System zur weiteren Nutzung
+        //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         return veganeRezepteDatei;
     }
 }
