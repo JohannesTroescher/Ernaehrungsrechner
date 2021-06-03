@@ -26,7 +26,7 @@ public class Datenbank {
     }
 
     public externeDatei UserDaten_dateierstellung(){
-        //erstellt externe UserDatenListe Datei
+        //erstellt externe UserDatenListe-Datei
         return externeDatei;
     }
 
