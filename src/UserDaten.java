@@ -10,7 +10,7 @@ public class UserDaten {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
     private double gewicht=0;
-    private long UserID=0;
+    public long UserID=0;
 
     /***                    Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
