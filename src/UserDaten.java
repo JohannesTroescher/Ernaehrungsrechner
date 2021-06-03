@@ -7,7 +7,7 @@ public class UserDaten {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
     private double gewicht=0;
-    private long UserID=0;
+    public long UserID=0;
 
     public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
         this.setName(name);
