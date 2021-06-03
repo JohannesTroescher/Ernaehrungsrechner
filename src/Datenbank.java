@@ -5,8 +5,8 @@ public class Datenbank {
 
     ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
 
-    public void Userdaten_einlesen(long UserID){
-
+    public void Userdaten_einlesen(UserDaten User){
+        UserListe.add(User);
     }
 
     public void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception  {
