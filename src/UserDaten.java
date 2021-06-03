@@ -2,6 +2,7 @@ public class UserDaten {
     /***
      *  Klassenattribute der Klasse UserID
      */
+
     private String name= "null";
     private int alter=0;
     private double koerpergroesse=0.0;
@@ -10,7 +11,7 @@ public class UserDaten {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
     private double gewicht=0;
-    public long UserID=0;
+    static long UserID=0;
 
     /***                    Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
@@ -58,6 +59,7 @@ public class UserDaten {
         }catch(Exception e) {
             e.printStackTrace();
         }
+        UserID=+UserID+1;
     }
 
     /***    Standardkonstruktor:
@@ -72,6 +74,7 @@ public class UserDaten {
         this.grundbedarf =0;
         this.nahrungspraeferenz="null";
         this.gewicht=0;
+        UserID=UserID+1;
     }
 
     /***            Get-Methode für den Namen

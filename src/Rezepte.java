@@ -21,9 +21,7 @@ public class Rezepte {
         } catch(Exception e){
             e.printStackTrace();
         }
-
     }
-
     /***    Standardkonstruktor für die Klasse Rezept
      *      Erzeugt ein Objekt der Klasse Rezept und setzt alle Attribute auf "null" bzw. 0
      */
