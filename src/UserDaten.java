@@ -1,8 +1,7 @@
 public class UserDaten {
     /***
-     *  Klassenattribute der Klasse UserID
+     *  Klassenattribute der Klasse UserDaten
      */
-
     private String name= "null";
     private int alter=0;
     private double koerpergroesse=0.0;
@@ -11,8 +10,8 @@ public class UserDaten {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
     private double gewicht=0;
-    static long UserID=0;
-
+    private long UserID=0;
+    static long counter=0;
     /***                    Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
      * @param name          Name des Nutzers
@@ -59,7 +58,8 @@ public class UserDaten {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        UserID=+UserID+1;
+        counter=counter+1;
+        UserID=counter;
     }
 
     /***    Standardkonstruktor:
@@ -74,7 +74,8 @@ public class UserDaten {
         this.grundbedarf =0;
         this.nahrungspraeferenz="null";
         this.gewicht=0;
-        UserID=UserID+1;
+        counter=counter+1;
+        UserID=counter;
     }
 
     /***            Get-Methode für den Namen
@@ -225,5 +226,11 @@ public class UserDaten {
             throw new Exception("Bitte geben Sie an, ob sie sich \"normal\", \"vegetarisch\" oder \"vegan\" ernähren!");
     }
 
+    /***            Get-Methode für die individuelle UserID
+     * @return      Gibt UserID zurück
+     */
+    public long getUserID(){
+        return UserID;
+    }
 }
 
