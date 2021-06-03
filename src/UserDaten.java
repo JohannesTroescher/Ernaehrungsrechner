@@ -9,7 +9,7 @@ public class UserDaten {
     private double gewicht=0;
     private long UserID=0;
 
-    public UserDaten(String name,int alter,double groesse,String geschlecht, String training, int kalorien,String nahrung,double gewicht) {
+    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
         this.setName(name);
         try {
             this.setAlter(alter);
