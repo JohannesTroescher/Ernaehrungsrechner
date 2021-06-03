@@ -4,11 +4,12 @@ public class UserDaten {
     private double koerpergroesse=0.0;
     private String geschlecht="null";						//"männlich" oder "weiblich"
     private String trainingsziel="null";					//"Muskelaufbau" oder "Abnehmen"
-    private int grundbedarf =0;
+    private double grundbedarf =0;
     private String nahrungspraeferenz="null";				//"normal", "vegetarisch" oder "vegan"
+    private double gewicht=0;
+    private long UserID=0;
 
-
-    public UserDaten(String name,int alter,double groesse,String geschlecht, String training, int kalorien,String nahrung) {
+    public UserDaten(String name,int alter,double groesse,String geschlecht, String training, int kalorien,String nahrung,double gewicht) {
         this.setName(name);
         try {
             this.setAlter(alter);
@@ -30,11 +31,15 @@ public class UserDaten {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        try {
-            this.setGrundbedarf(kalorien);
-        }catch(Exception e) {
+        try{
+            this.setGewicht(gewicht);
+        } catch(Exception e){
             e.printStackTrace();
         }
+        if(geschlecht=="männlich")
+            this.grundbedarf=66.47+13.7*gewicht+5*groesse-6.8*alter;
+        else if(geschlecht=="weiblich")
+            this.grundbedarf=655.1+9.6*gewicht+1.8*groesse-4.7*alter;
         try {
             this.setNahrungspraeferenz(nahrung);
         }catch(Exception e) {
@@ -49,6 +54,7 @@ public class UserDaten {
         this.trainingsziel="null";
         this.grundbedarf =0;
         this.nahrungspraeferenz="null";
+        this.gewicht=0;
     }
     public String getName() {
         return name;
@@ -92,9 +98,18 @@ public class UserDaten {
         else
             throw new Exception("Bitte wählen Sie, ob sie Muskeln aufbauen oder abnehmen möchten!");
     }
-    public int getGrundbedarf() {
+    public double getGrundbedarf() {
         return grundbedarf;
     }
+    public void setGewicht(double gewicht) throws Exception {
+        if (gewicht > 1)
+            this.gewicht = gewicht;
+        else
+            throw new Exception("Bitte geben Sie ein gültiges Gewicht ein!");
+    }
+    public double getGewicht(){
+        return this.gewicht;
+        }
     public void setGrundbedarf(int grundbedarf) throws Exception {
         if(grundbedarf >=0)
             this.grundbedarf = grundbedarf;
