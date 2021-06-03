@@ -1,25 +1,58 @@
 import javax.xml.transform.stream.StreamSource;
+import java.util.ArrayList;
 
 public class Datenbank {
-    /*Hallo Luc kannst du das hier lesen?
-    wenn du das hier offen hast und es siehst dann mach doch bitte mal ne Änderung und versuch das dann zu pushen.
-    wenn ich von Chemie wieder zurück bin schau ich mal ob es funktioniert hat.
-    Erstell auch mal probehalber ne neue Klasse um zu schauen ob auch das funktioniert.
-    pushtest 12345354345
-     */
 
-    /**
-     * @param args is ne fucking main methode was sonst, will nur javadoc testen
-     */
-    /*Alles lesbar, mal schauen ob auch das pushen und updaten funktioniert.*/
-    public static void main(String[] args) {
-        int a = 1;
-        int b = 1;
-        int c;
-        for (int i = 0; i <= 100; i++) {
-            System.out.println("Loading very nice Cock: " + i + "% done");
+    ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
+
+    public void Userdaten_einlesen(UserDaten User){
+        UserListe.add(User);
+    }
+
+    public void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception  {
+        if(UserListe.contains(UserID))  {
+            int index = UserListe.indexOf(UserID);
+                UserListe.set(index, newUser);
         }
-        System.out.println("Nice Cock loaded and ready for usage!");
+        else throw new Exception("User existiert nicht.");
+    }
 
+    public boolean UserID_exists(long UserID) {
+        if(UserListe.contains(UserID)){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public externeDatei UserDaten_dateierstellung(){
+        //erstellt externe UserDatenListe-Datei aus der ArrayList UserListe
+        return externeUserDatei;
+    }
+
+    public externeDatei UserDaten_dateiaufruf(){
+        //ruft in Speicher abgelegte Datei ab, und gibt die Datei an System zur weiteren Nutzung
+        return externeUserDatei;
+    }
+
+    public UserDaten_auslesen(irgendeineExterne externeUserDatei){
+        //methode soll externe UserDatenListe-Datei auslesen (wandelt externeUserDatei in UserListe um)
+        UserListe=UserListeausDatei;
+    }
+
+
+    public externeDatei Rezepte_dateiaufruf_normal(){
+        //ruft in Speicher abgelegte normaleRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
+        return normaleRezepteDatei;
+    }
+
+    public externeDatei Rezepte_dateiaufruf_vegetarisch(){
+        //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
+        return vegetarischeRezepteDatei;
+    }
+
+    public externeDatei Rezepte_dateiaufruf_vegan(){
+        //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
+        return veganeRezepteDatei;
     }
 }
