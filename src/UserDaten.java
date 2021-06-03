@@ -120,7 +120,7 @@ public class UserDaten {
     }
 
     /***                        Set-Methode für die Körpergröße
-     *                          Setzt das Attribut "groesse" auf den gewünschten Wert
+     *                          Setzt das Attribut "groesse" auf den gewünschten Wert, in [cm]
      * @param koerpergroesse    Gewünschter Wert
      * @throws Exception        Wirft Exception, wenn eingegebene Größe "0" oder negativ ist
      */
@@ -170,7 +170,7 @@ public class UserDaten {
     }
 
     /***                    Set-Methode für das Gewicht
-     *                      Setzt das Attribut "gewicht" auf gewünschten Wert
+     *                      Setzt das Attribut "gewicht" auf gewünschten Wert, in [kg]
      * @param gewicht       Gewünschtes Gewicht
      * @throws Exception    Wirft Exception, wenn das Gewicht "0" oder negativ ist
      */
