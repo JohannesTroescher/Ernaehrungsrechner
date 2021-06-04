@@ -38,9 +38,9 @@ public class Interface {
         Kalorien_sollwert = kalorien_sollwert;
     }
 
-    public String User_erstellen(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht,String UserID) {
+    public String User_erstellen(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
 //Erstellt einen neuen User//konstruktor aufrufen
-        UserDaten UserID=new UserDaten();
+        UserDaten UserID=new UserDaten(name,alter, groesse, geschlecht,training,nahrung,gewicht);
         return UserID;
     }
 
