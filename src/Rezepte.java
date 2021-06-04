@@ -43,7 +43,7 @@ public class Rezepte {
      * @throws Exception    Wirft Exception, wenn die gewünschte Art des Rezeptes nicht "normal", "vegetarisch" oder "vegan" ist
      */
     public void setArt(String art)throws Exception {
-        if(art=="normal" ||art=="vegetarisch"||art=="vegan")
+        if(art.equalsIgnoreCase("normal") ||art.equalsIgnoreCase("vegetarisch")||art.equalsIgnoreCase("vegan"))
             this.art = art;
         else
             throw new Exception("Bitte geben Sie einen gültigen Rezepttyp an!");
