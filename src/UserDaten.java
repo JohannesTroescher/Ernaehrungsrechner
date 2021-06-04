@@ -1,5 +1,5 @@
 public class UserDaten {
-    /***
+    /**
      *  Klassenattribute der Klasse UserDaten
      */
     private String name= "null";
@@ -12,7 +12,7 @@ public class UserDaten {
     private double gewicht=0;
     private long UserID=0;
     static long counter=0;
-    /***                    Konstruktor UserDaten
+    /**                     Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
      * @param name          Name des Nutzers
      * @param alter         Alter des Nutzers
@@ -62,7 +62,7 @@ public class UserDaten {
         UserID=counter;
     }
 
-    /***    Standardkonstruktor:
+    /**     Standardkonstruktor:
      *      Setzt alle Werte auf 0 bzw. "null", der Grundbedarf des Patienten wird hierbei nicht berechnet!
      */
     public UserDaten() {
@@ -78,14 +78,14 @@ public class UserDaten {
         UserID=counter;
     }
 
-    /***            Get-Methode für den Namen
+    /**             Get-Methode für den Namen
      * @return      gibt den Namen zurück
      */
     public String getName() {
         return name;
     }
 
-    /***                Set-Methode für den Namen
+    /**                 Set-Methode für den Namen
      *                  Setzt das Attribut "name" auf den eingegebenen Wert
      * @param name      Gewünschter Name
      */
@@ -93,14 +93,14 @@ public class UserDaten {
         this.name = name;
     }
 
-    /***        Get-Methode für das Alter
+    /**         Get-Methode für das Alter
      * @return  Gibt das Alter zurück
      */
     public int getAlter() {
         return alter;
     }
 
-    /***                    Set-Methode für das Alter
+    /**                     Set-Methode für das Alter
      *                      Setzt das Attribut "alter" auf den eingegebenen Wert
      * @param alter         Gewünschter Wert
      * @throws Exception    Wirf Exception, wenn eingabe von "0" oder einem negativen Alter
@@ -112,14 +112,14 @@ public class UserDaten {
             throw new Exception("Bitte wählen Sie ein gültiges Alter!");
     }
 
-    /***            Get-Methode für die Körpergröße
+    /**             Get-Methode für die Körpergröße
      * @return      Gibt die Körpergröße zurück
      */
     public double getKoerpergroesse() {
         return koerpergroesse;
     }
 
-    /***                        Set-Methode für die Körpergröße
+    /**                         Set-Methode für die Körpergröße
      *                          Setzt das Attribut "groesse" auf den gewünschten Wert, in [cm]
      * @param koerpergroesse    Gewünschter Wert
      * @throws Exception        Wirft Exception, wenn eingegebene Größe "0" oder negativ ist
@@ -131,14 +131,14 @@ public class UserDaten {
             throw new Exception("Bitte wählen Sie eine gültige Körpergröße!");
     }
 
-    /***            Get-Methode für das Geschlecht
+    /**             Get-Methode für das Geschlecht
      * @return      Gibt das Geschlecht zurück
      */
     public String getGeschlecht() {
         return geschlecht;
     }
 
-    /***                    Set-Methode für das Geschlecht
+    /**                     Set-Methode für das Geschlecht
      *                      Setzt das Attribut "geschlecht" auf den gewünschten Wert
      * @param geschlecht    Gewünschter Wert
      * @throws Exception    Wirft Exception, wenn das gewünschte Geschlecht nicht "männlich" oder "weiblich" ist
@@ -151,14 +151,14 @@ public class UserDaten {
             throw new Exception("Bitte wählen Sie ein Geschlecht (\"männlich\" oder \"weiblich\")!");
     }
 
-    /***            Get-Methode für das Trainingsziel
+    /**             Get-Methode für das Trainingsziel
      * @return      Gibt Trainingsziel zurück
      */
     public String getTrainingsziel() {
         return trainingsziel;
     }
 
-    /***                        Set-Methode für das Trainingsziel
+    /**                         Set-Methode für das Trainingsziel
      *                          Setzt das Attribut "trainingsziel" auf den gewünschten Wert
      * @param trainingsziel     Das gewünschte Trainingsziel
      * @throws Exception        Wirf Exception, wenn das Trainingsziel nicht "Muskelaufbau" oder "Abnehmen" ist
@@ -170,7 +170,7 @@ public class UserDaten {
             throw new Exception("Bitte wählen Sie, ob sie Muskeln aufbauen oder abnehmen möchten!");
     }
 
-    /***                    Set-Methode für das Gewicht
+    /**                     Set-Methode für das Gewicht
      *                      Setzt das Attribut "gewicht" auf gewünschten Wert, in [kg]
      * @param gewicht       Gewünschtes Gewicht
      * @throws Exception    Wirft Exception, wenn das Gewicht "0" oder negativ ist
@@ -182,20 +182,20 @@ public class UserDaten {
             throw new Exception("Bitte geben Sie ein gültiges Gewicht ein!");
     }
 
-    /***            Get-Methode für das Gewicht
+    /**             Get-Methode für das Gewicht
      * @return      Gibt das Gewicht zurück
      */
     public double getGewicht(){
         return this.gewicht;
         }
-    /***            Get-Methode für Grundbedarf
+    /**             Get-Methode für Grundbedarf
      * @return      Gibt den Grundbedarf zurück
      */
     public double getGrundbedarf() {
         return grundbedarf;
     }
 
-    /***                    Set-Methode für Grundbedarf, damit dieser nachträglich geändert werden kann
+    /**                     Set-Methode für Grundbedarf, damit dieser nachträglich geändert werden kann
      *                      Wird bei der erzeugung eines Objektes mit dem Standardkonstruktor benötigt, um den Grundbedarf festzulegen
      *                      Das Attribut "grundbedarf" wird auf den gewünschten Wert gesetzt
      * @param grundbedarf   Der gewünschte Grundbedarf
@@ -208,14 +208,14 @@ public class UserDaten {
             throw new Exception("Es dürfen keine negativen Werte angegeben werden!");
     }
 
-    /***            Get-Methode für Nahrungspräferenz
+    /**             Get-Methode für Nahrungspräferenz
      * @return      Gibt die Nahrungspräferenz zurück
      */
     public String getNahrungspraeferenz() {
         return nahrungspraeferenz;
     }
 
-    /***                            Set-Methode für die Nahrungspräferenz
+    /**                             Set-Methode für die Nahrungspräferenz
      *                              Setzt das Attribut "nahrungspraeferenz" auf den gewünschten Wert
      * @param nahrungspraeferenz    Die gewünschte Nahrungsart
      * @throws Exception            Wirft Exception, wenn die Nahrungspräferenz nicht "normal", "vegetarisch" oder "vegan" ist.
@@ -227,11 +227,17 @@ public class UserDaten {
             throw new Exception("Bitte geben Sie an, ob sie sich \"normal\", \"vegetarisch\" oder \"vegan\" ernähren!");
     }
 
-    /***            Get-Methode für die individuelle UserID
+    /**             Get-Methode für die individuelle UserID
      * @return      Gibt UserID zurück
      */
     public long getUserID(){
         return UserID;
     }
+
+    /**     Begründung warum keine set-Methode:
+     *      - nicht benötigt, da neue User immer hinten angehängt wird
+     *      - es wäre eine Doppelung der UserID möglich, was adurch Weglassen der set-Methode verhindert wird
+     *
+     */
 }
 
