@@ -6,9 +6,9 @@ public class Interface {
     private String Rezeptvorschläge;
 
     /**
-     * Konstruktor Interface identisch mit UserDaten?
      *
-     * @param
+     * @param Kalorien_sollwert Sollwert der Kalorien
+     * @param Rezeptvorschläge Rezeptvorschläge aus externer Datei
 
      */
     public Interface(int Kalorien_sollwert,String Rezeptvorschläge) {
@@ -38,8 +38,9 @@ public class Interface {
         Kalorien_sollwert = kalorien_sollwert;
     }
 
-    public String User_erstellen(String UserID) {
-//Erstellt einen neuen User
+    public String User_erstellen(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht,String UserID) {
+//Erstellt einen neuen User//konstruktor aufrufen
+        UserDaten UserID=new UserDaten();
         return UserID;
     }
 
@@ -59,6 +60,5 @@ public class Interface {
 //Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
         return UserID;
     }
-
 
 }
