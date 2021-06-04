@@ -144,7 +144,8 @@ public class UserDaten {
      * @throws Exception    Wirft Exception, wenn das gewünschte Geschlecht nicht "männlich" oder "weiblich" ist
      */
     public void setGeschlecht(String geschlecht)throws Exception {
-        if(geschlecht=="männlich"||geschlecht=="weiblich")
+
+        if(geschlecht.equalsIgnoreCase("männlich")||geschlecht.equalsIgnoreCase("weiblich"))
             this.geschlecht = geschlecht;
         else
             throw new Exception("Bitte wählen Sie ein Geschlecht (\"männlich\" oder \"weiblich\")!");
@@ -163,7 +164,7 @@ public class UserDaten {
      * @throws Exception        Wirf Exception, wenn das Trainingsziel nicht "Muskelaufbau" oder "Abnehmen" ist
      */
     public void setTrainingsziel(String trainingsziel) throws Exception {
-        if(trainingsziel=="Muskelaufbau" ||trainingsziel=="Abnehmen")
+        if(trainingsziel.equalsIgnoreCase("Muskelaufbau")||trainingsziel.equalsIgnoreCase("Abnehmen"))
             this.trainingsziel = trainingsziel;
         else
             throw new Exception("Bitte wählen Sie, ob sie Muskeln aufbauen oder abnehmen möchten!");
@@ -220,7 +221,7 @@ public class UserDaten {
      * @throws Exception            Wirft Exception, wenn die Nahrungspräferenz nicht "normal", "vegetarisch" oder "vegan" ist.
      */
     public void setNahrungspraeferenz(String nahrungspraeferenz) throws Exception{
-        if(nahrungspraeferenz=="normal" ||nahrungspraeferenz=="vegetarisch"||nahrungspraeferenz=="vegan")
+        if(nahrungspraeferenz.equalsIgnoreCase("normal")||nahrungspraeferenz.equalsIgnoreCase("vegetarisch")||nahrungspraeferenz.equalsIgnoreCase("vegan"))
             this.nahrungspraeferenz = nahrungspraeferenz;
         else
             throw new Exception("Bitte geben Sie an, ob sie sich \"normal\", \"vegetarisch\" oder \"vegan\" ernähren!");
