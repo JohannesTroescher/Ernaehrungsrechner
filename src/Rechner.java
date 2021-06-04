@@ -13,7 +13,7 @@ public class Rechner
     {
     Kalorienbedarf=0;
     Kalorienverbrauch=0;
-    Rezeptsortierung=;
+    Rezeptsortierung="Null";
     }
     /*Konstruktor
      */
@@ -23,7 +23,8 @@ public class Rechner
         this.Kalorienverbrauch = Kalorienverbrauch;
     }
 
-    // Set und Get Methode
+    /* Set und Get Methode
+     */
     public void setKalorienverbrauch(int neuKalorienverbrauch)
     {
         Kalorienverbrauch = neuKalorienverbrauch;
@@ -43,16 +44,13 @@ public class Rechner
     }
 
     /*Methoden,Operationen
-
      */
 
     /*Extrakalorien, UserID, return:Gesamtumsatz, Funktionsweise: Berechnung von Grundbedarf und Gesamtumsatz
-
      */
     public double Rechneroperation()
     {
      /*Rechnung
-
       */
         //655,1+(9,6xKörpergewicht_in_kg) + (1,8 x Körpergröße_in_cm)–(4,7xAlter_in _Jahren);
         //= Grundbedarf
