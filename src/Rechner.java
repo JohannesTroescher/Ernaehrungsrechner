@@ -1,12 +1,14 @@
 
 public class Rechner
 {
+    /**
     /*Attribute
      */
     private int Kalorienbedarf ;
     private int Kalorienverbrauch;
     private String Rezeptsortierung;                     //List?
 
+    /**
     /*Standartkonsturktor
      */
     public Rechner()
@@ -15,6 +17,7 @@ public class Rechner
     Kalorienverbrauch=0;
     Rezeptsortierung="Null";
     }
+    /**
     /*Konstruktor
      */
     public Rechner(int Kalorienbedarf, int Kalorienverbrauch)
@@ -23,6 +26,7 @@ public class Rechner
         this.Kalorienverbrauch = Kalorienverbrauch;
     }
 
+    /**
     /* Set und Get Methode
      */
     public void setKalorienverbrauch(int neuKalorienverbrauch)
@@ -43,28 +47,32 @@ public class Rechner
         return Kalorienbedarf;
     }
 
+    /**
     /*Methoden,Operationen
      */
 
+    /**
     /*Extrakalorien, UserID, return:Gesamtumsatz, Funktionsweise: Berechnung von Grundbedarf und Gesamtumsatz
      */
     public double Rechneroperation()
     {
-     /*Rechnung
+       /**
+        /*Rechnung
       */
         //655,1+(9,6xKörpergewicht_in_kg) + (1,8 x Körpergröße_in_cm)–(4,7xAlter_in _Jahren);
         //= Grundbedarf
         //return Grundbedarf+Extrakalorien=Gesamtumsatz;
     }
 
+    /**
     /*Gesamtumsatz, Trainingsziel, Nahrungspräferenz, return: Liste, Funktionsweise: Gibt passendes Rezept aus
      */
     public String Rezept_sortieren()                   //Liste mit Rezepten?
     {
-     //
     }
 
-    /*Grundbedarf, return: Nichts, Funktionsweise:berechnung des Grundbedarf
+    /**
+    /*Grundbedarf, return: nichts , Funktionsweise:berechnung des Grundbedarf
     */
 
     public void Grundbedarf()                          //?? siehe Rechneroperation
