@@ -16,11 +16,11 @@ public class UserDaten {
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
      * @param name          Name des Nutzers
      * @param alter         Alter des Nutzers
-     * @param groesse       Groeße des Nutzers
-     * @param geschlecht    Geschlecht Alter des Nutzers
+     * @param groesse       Groeße des Nutzers [cm]
+     * @param geschlecht    Geschlecht Alter des Nutzers ["männlich"/"weiblich"]
      * @param training      Gewünschter Modus: Abnehmen/Muskelaufbau
-     * @param nahrung       Gewünsche Nahrungsart: normal, vegetarisch, vegan
-     * @param gewicht       Gewicht Alter des Nutzers
+     * @param nahrung       Gewünsche Nahrungsart: ["normal", "vegetarisch", "vegan"]
+     * @param gewicht       Gewicht Alter des Nutzers [kg]
      */
     public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
         this.setName(name);
