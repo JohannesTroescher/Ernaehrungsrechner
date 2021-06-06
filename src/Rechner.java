@@ -4,8 +4,8 @@ public class Rechner
     /**
     /*Attribute
      */
-    private int Kalorienbedarf ;
-    private int Kalorienverbrauch;
+    private double Grundbedarf ;
+    private double Kalorienverbrauch;
     private String Rezeptsortierung;                     //List?
 
     /**
@@ -13,38 +13,38 @@ public class Rechner
      */
     public Rechner()
     {
-    Kalorienbedarf=0;
+    Grundbedarf=0;
     Kalorienverbrauch=0;
     Rezeptsortierung="Null";
     }
     /**
     /*Konstruktor
      */
-    public Rechner(int Kalorienbedarf, int Kalorienverbrauch)
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
     {
-        this.Kalorienbedarf = Kalorienbedarf;
+        this.Grundbedarf = Kalorienbedarf;
         this.Kalorienverbrauch = Kalorienverbrauch;
     }
 
     /**
     /* Set und Get Methode
      */
-    public void setKalorienverbrauch(int neuKalorienverbrauch)
+    public void setKalorienverbrauch(double neuKalorienverbrauch)
     {
         Kalorienverbrauch = neuKalorienverbrauch;
     }
-    public int getKalorienverbrauch()
+    public double getKalorienverbrauch()
     {
       return Kalorienverbrauch;
     }
 
-    public void setKalorienbedarf(int neuKalorienbedarf)
+    public void setKalorienbedarf(double neuKalorienbedarf)
     {
-        Kalorienbedarf = neuKalorienbedarf;
+        Grundbedarf = neuKalorienbedarf;
     }
-    public int getKalorienbedarf()
+    public double getKalorienbedarf()
     {
-        return Kalorienbedarf;
+        return Grundbedarf;
     }
 
     /**
