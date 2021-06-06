@@ -22,6 +22,20 @@ class RezepteTest {
     }
 
     @Test
-    void Kalorien() {
+    void Kalorien_positiv() throws Exception{
+        Rezepte test = new Rezepte();
+        test.setKalorien(10000);
+        assertEquals(test.getKalorien(),10000);
     }
+
+    @Test
+    void Kalorien_negativ() throws Exception{
+        assertThrows(Exception.class,()->{
+            Rezepte test = new Rezepte();
+            test.setKalorien(-10);
+        });
+    }
+
+
+
 }

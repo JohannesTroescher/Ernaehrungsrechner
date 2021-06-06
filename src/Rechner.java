@@ -62,6 +62,7 @@ public class Rechner
         //655,1+(9,6xKörpergewicht_in_kg) + (1,8 x Körpergröße_in_cm)–(4,7xAlter_in _Jahren);
         //= Grundbedarf
         //return Grundbedarf+Extrakalorien=Gesamtumsatz;
+        return 0;
     }
 
     /**
@@ -69,6 +70,7 @@ public class Rechner
      */
     public String Rezept_sortieren()                   //Liste mit Rezepten?
     {
+        return "null";
     }
 
     /**
