@@ -34,7 +34,7 @@ public class Interface {
         return Kalorien_sollwert;
     }
 
-    public void setKalorien_sollwert(int kalorien_sollwert) {
+    public void setKalorien_sollwert(double kalorien_sollwert) {
         Kalorien_sollwert = kalorien_sollwert;
     }
 
