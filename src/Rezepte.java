@@ -54,7 +54,7 @@ public class Rezepte {
      * @param Kalorien      Gewünschter Kalorienwert
      * @throws Exception    Wirft Exception, wenn der gewünschte Wert "0" oder negativ ist
      */
-    public void setKalorien(double Kalorien) throws Exception{
+    public void setKalorien(double kalorien) throws Exception{
         if(kalorien>1)
             this.kalorien=kalorien;
         else
