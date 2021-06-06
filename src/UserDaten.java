@@ -233,9 +233,9 @@ public class UserDaten {
     public long getUserID(){
         return UserID;
     }
-    /**     Begründung warum keine set-Methode:
-     *      - nicht benötigt, da neue User immer hinten angehängt wird
-     *      - es wäre eine Doppelung der UserID möglich, was adurch Weglassen der set-Methode verhindert wird
+    /**     Keine set-Methode FÜR die UserID, da:
+     *      - nicht benötigt, UserID wird automatisch generiert
+     *      - eine Doppelung der UserID wäre möglich
      *
      */
 }
