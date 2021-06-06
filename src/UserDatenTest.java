@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -88,14 +89,39 @@ class UserDatenTest {
 
 
     @Test
-    void setGrundbedarf() {
+    void Grundbedarf_positiv() throws Exception{
+        UserDaten test = new UserDaten();
+        test.setGrundbedarf(4000);
+        assertEquals(test.getGrundbedarf(),4000);
     }
 
     @Test
-    void setNahrungspraeferenz() {
+    void Grundbedarf_negativ() throws Exception{
+        assertThrows(Exception.class, () -> {
+            UserDaten test = new UserDaten();
+            test.setGrundbedarf(-4000);
+        });
+    }
+
+
+    @Test
+    void Nahrungspraeferenz_positiv() throws Exception{
+        UserDaten test = new UserDaten();
+        test.setNahrungspraeferenz("NorMAl");
+        assertEquals(test.getNahrungspraeferenz(),"NorMAl");
+    }
+
+    @Test
+    void Nahrungspraeferenz_negativ() throws Exception{
+        assertThrows(Exception.class, () -> {
+            UserDaten test = new UserDaten();
+            test.setNahrungspraeferenz("brot");
+        });
     }
 
     @Test
     void getUserID() {
+        UserDaten test = new UserDaten();
+        assertEquals(test.getUserID(),11);
     }
 }
