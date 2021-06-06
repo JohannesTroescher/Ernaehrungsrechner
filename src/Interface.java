@@ -2,7 +2,7 @@ public class Interface {
     /**
      * Klassenattribute der Klasse Interface
      */
-    private int Kalorien_sollwert;
+    private double Kalorien_sollwert;
     private String Rezeptvorschläge;
 
     /**
@@ -11,7 +11,7 @@ public class Interface {
      * @param Rezeptvorschläge Rezeptvorschläge aus externer Datei
 
      */
-    public Interface(int Kalorien_sollwert,String Rezeptvorschläge) {
+    public Interface(double Kalorien_sollwert,String Rezeptvorschläge) {
         this.Kalorien_sollwert=Kalorien_sollwert;
         this.Rezeptvorschläge= Rezeptvorschläge;
     }
@@ -30,7 +30,7 @@ public class Interface {
         Rezeptvorschläge = rezeptvorschläge;
     }
 
-    public int getKalorien_sollwert() {
+    public double getKalorien_sollwert() {
         return Kalorien_sollwert;
     }
 
