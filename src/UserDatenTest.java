@@ -122,6 +122,20 @@ class UserDatenTest {
     @Test
     void getUserID() {
         UserDaten test = new UserDaten();
-        assertEquals(test.getUserID(),11);
+        assertEquals(test.getUserID(),12);
     }
+
+    @Test
+    void Gesamttest(){
+        UserDaten test = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",85);
+        assertEquals(test.getName(),"Manfred Müller");
+        assertEquals(test.getAlter(),45);
+        assertEquals(test.getKoerpergroesse(),185);
+        assertEquals(test.getGeschlecht(),"männlich");
+        assertEquals(test.getTrainingsziel(),"Muskelaufbau");
+        assertEquals(test.getNahrungspraeferenz(),"Normal");
+        assertEquals(test.getGewicht(),85);
+        assertEquals(test.getUserID(),3);
+    }
+
 }
