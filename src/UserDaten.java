@@ -233,7 +233,7 @@ public String toString(){
     /**             Get-Methode für die individuelle UserID
      * @return      Gibt UserID zurück
      */
-    public long getUserID(){
+    public int getUserID(){
         return UserID;
     }
     /*     Keine set-Methode FÜR die UserID, da:
