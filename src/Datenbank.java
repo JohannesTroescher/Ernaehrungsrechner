@@ -7,14 +7,14 @@ public class Datenbank {
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
      */
-    ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
+    static ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
 
 
     /**
      * fügt ein Objekt vom Typ UserDaten der "UserListe" hinzu
      * @param User  Objekt vom Typ UserDaten
      */
-    public void Userdaten_einlesen(UserDaten User){
+    public static void Userdaten_einlesen(UserDaten User){
         UserListe.add(User);
     }
 
@@ -132,7 +132,7 @@ public class Datenbank {
     //public externeDatei Rezepte_dateiaufruf_vegetarisch(){
         //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
       //  return vegetarischeRezepteDatei;
-    //}
+    }
 
 
     /**
@@ -143,4 +143,4 @@ public class Datenbank {
         //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
     //    return veganeRezepteDatei;
     //}
-}
+//}
