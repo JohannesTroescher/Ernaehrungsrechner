@@ -10,8 +10,8 @@ public class UserDaten {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";
     private double gewicht=0;
-    private long UserID=0;
-    static long counter=0;
+    private int UserID;
+    static int counter=0;
     /**                     Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
      * @param name          Name des Nutzers
@@ -236,10 +236,10 @@ public String toString(){
     public long getUserID(){
         return UserID;
     }
-    /**     Keine set-Methode FÜR die UserID, da:
-     *      - nicht benötigt, UserID wird automatisch generiert
-     *      - eine Doppelung der UserID wäre möglich
-     *
+    /*     Keine set-Methode FÜR die UserID, da:
+           - nicht benötigt, UserID wird automatisch generiert
+           - eine Doppelung der UserID wäre möglich
+
      */
 }
 
