@@ -63,7 +63,7 @@ public class UserDaten {
     }
 @Override
 public String toString(){
-        return "User: " + this.getName() + " " + this.getAlter() + " "+ this.getKoerpergroesse() + " "+ this.getGeschlecht() + " "+ this.getTrainingsziel() + " "+ this.getNahrungspraeferenz() + " "+ this.getGewicht();
+        return "User: " + this.getName() + ", " + this.getAlter()+ " Jahre" + ", "+ this.getKoerpergroesse()+ "cm" + ", "+ this.getGeschlecht() + ", "+ this.getTrainingsziel() + ", "+ "Nahrungspraeferenz: "+ this.getNahrungspraeferenz() + ", "+ this.getGewicht()+ "kg";
 }
     /**     Standardkonstruktor:
      *      Setzt alle Werte auf 0 bzw. "null", der Grundbedarf des Patienten wird hierbei nicht berechnet!
