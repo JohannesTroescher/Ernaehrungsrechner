@@ -12,8 +12,8 @@ public class Interface {
 
      */
     public Interface(double Kalorien_sollwert,String Rezeptvorschläge) {
-        this.Kalorien_sollwert=Kalorien_sollwert;
-        this.Rezeptvorschläge= Rezeptvorschläge;
+        this.Kalorien_sollwert = Kalorien_sollwert;
+        this.Rezeptvorschläge = Rezeptvorschläge;
     }
 
     /**

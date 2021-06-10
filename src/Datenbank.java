@@ -1,4 +1,5 @@
 import javax.xml.transform.stream.StreamSource;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Datenbank {
@@ -53,37 +54,72 @@ public class Datenbank {
      * Objekte würden dann Zeilenweise in das File geschrieben werden
      * @return returnt eine externe, abspeicherbare Datei
      */
-    public externeDatei UserDaten_dateierstellung(){
+    //public externeDatei UserDaten_dateierstellung(){
         //erstellt externe UserDatenListe-Datei aus der ArrayList UserListe
-        return externeUserDatei;
-    }
+
+        public static void save(ArrayList<UserDaten> UserListe) {
+            try {
+                FileOutputStream fos = new FileOutputStream(
+                        "src/Datenbank txt");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+                oos.writeObject(UserListe);
+                oos.close();
+                fos.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+
+      //  return externeUserDatei;
+   // }
 
 
     /**
      * soll das abgespeicherte (.txt) File in das Programm laden
      * @return returnt das abgespeicherte File
      */
-    public externeDatei UserDaten_dateiaufruf(){
+   // public externeDatei UserDaten_dateiaufruf(){
         //ruft in Speicher abgelegte Datei ab, und gibt die Datei an System zur weiteren Nutzung
-        return externeUserDatei;
-    }
+
+        private static ArrayList<UserDaten> load() {
+            ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
+            try {
+                FileInputStream fis = new FileInputStream(
+                        "src/Datenbank txt");
+                ObjectInputStream ois = new ObjectInputStream(fis);
+
+                UserListe = (ArrayList) ois.readObject();
+                ois.close();
+                fis.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            } catch (ClassNotFoundException c) {
+                System.out.println("Class not found");
+                c.printStackTrace();
+            }
+            return UserListe;
+        }
+
+     //   return externeUserDatei;
+   // }
 
 
     /**
      * soll die aufgerufene File wieder in eine "ArrayList" (z.B. wieder die UserListe) umwandeln
      * @param externeUserDatei  das aufgerufenen File
      */
-    public void UserDaten_auslesen(irgendeineExterne externeUserDatei){
+   // public void UserDaten_auslesen(irgendeineExterne externeUserDatei){
         //methode soll externe UserDatenListe-Datei auslesen (wandelt externeUserDatei in UserListe um)
-        UserListe=UserListeausDatei;
-    }
+   //     UserListe=UserListeausDatei;
+   // }
 
 
     /**
      * soll abgespeicherte normaleRezept-Datei aufrufen und in Programm laden
      * @return  returnt normaleRezepteDatei
      */
-    public externeDatei Rezepte_dateiaufruf_normal(){
+  /**  public externeDatei Rezepte_dateiaufruf_normal(){
         //ruft in Speicher abgelegte normaleRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         return normaleRezepteDatei;
     }
@@ -93,9 +129,9 @@ public class Datenbank {
      * soll abgespeicherte vegetarischeRezept-Datei aufrufen und in Programm laden
      * @return  returnt vegetarischeRezeptDatei
      */
-    public externeDatei Rezepte_dateiaufruf_vegetarisch(){
+    //public externeDatei Rezepte_dateiaufruf_vegetarisch(){
         //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
-        return vegetarischeRezepteDatei;
+      //  return vegetarischeRezepteDatei;
     }
 
 
@@ -103,8 +139,8 @@ public class Datenbank {
      * soll abgespeicherte veganeRezept-Datei aufrufen und in Programm laden
      * @return  returnt veganeRezepteDatei
      */
-    public externeDatei Rezepte_dateiaufruf_vegan(){
+    //public externeDatei Rezepte_dateiaufruf_vegan(){
         //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
-        return veganeRezepteDatei;
+    //    return veganeRezepteDatei;
     }
 }
