@@ -50,12 +50,12 @@ public class Interface {
 //ruft Rezepte auf, und gibt aufgerufene Rezepte an GUI um darzustellen
 
 
-    public long User_aufruf(long UserID) {
+    public int User_aufruf(int UserID) {
 //ruft die die Daten des entsprechenden Users auf (aus UserDatenDatei über Userdaten_auslesen())
         return UserID;
     }
 
-    public long User_änderung(long UserID) {
+    public int User_änderung(int UserID) {
 //geänderte User/null(wenn User nicht existiert)
 //Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
         return UserID;
