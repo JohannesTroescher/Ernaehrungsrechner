@@ -51,7 +51,7 @@ public class Rezepte {
 
     /**                     Set-Methode für die Kalorien
      *                      Setzt das Attribut "kalorien" auf den gewünschten Wert
-     * @param Kalorien      Gewünschter Kalorienwert
+     * @param kalorien      Gewünschter Kalorienwert
      * @throws Exception    Wirft Exception, wenn der gewünschte Wert "0" oder negativ ist
      */
     public void setKalorien(double kalorien) throws Exception{

@@ -132,7 +132,7 @@ public class Datenbank {
     //public externeDatei Rezepte_dateiaufruf_vegetarisch(){
         //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
       //  return vegetarischeRezepteDatei;
-    }
+    //}
 
 
     /**
@@ -142,5 +142,5 @@ public class Datenbank {
     //public externeDatei Rezepte_dateiaufruf_vegan(){
         //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
     //    return veganeRezepteDatei;
-    }
+    //}
 }
