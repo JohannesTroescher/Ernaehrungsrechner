@@ -82,7 +82,7 @@ public class Datenbank {
    // public externeDatei UserDaten_dateiaufruf(){
         //ruft in Speicher abgelegte Datei ab, und gibt die Datei an System zur weiteren Nutzung
 
-        private static ArrayList<UserDaten> load() {
+        public static ArrayList<UserDaten> load() {
             ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
             try {
                 FileInputStream fis = new FileInputStream(

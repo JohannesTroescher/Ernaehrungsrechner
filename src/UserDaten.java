@@ -61,7 +61,10 @@ public class UserDaten {
         counter=counter+1;
         UserID=counter;
     }
-
+@Override
+public String toString(){
+        return "User: " + this.getName() + " " + this.getAlter() + " "+ this.getKoerpergroesse() + " "+ this.getGeschlecht() + " "+ this.getTrainingsziel() + " "+ this.getNahrungspraeferenz() + " "+ this.getGewicht();
+}
     /**     Standardkonstruktor:
      *      Setzt alle Werte auf 0 bzw. "null", der Grundbedarf des Patienten wird hierbei nicht berechnet!
      */
