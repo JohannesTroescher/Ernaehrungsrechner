@@ -4,7 +4,7 @@ public class Rechner
     /**
     /*Attribute
      */
-    private double Grundbedarf ;
+    private double Gesamtkalorien;
     private double Kalorienverbrauch;
     private String Rezeptsortierung;                     //List?
 
@@ -13,7 +13,7 @@ public class Rechner
      */
     public Rechner()
     {
-    Grundbedarf=0;
+    Gesamtkalorien =0;
     Kalorienverbrauch=0;
     Rezeptsortierung="Null";
     }
@@ -22,7 +22,7 @@ public class Rechner
      */
     public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
     {
-        this.Grundbedarf = Kalorienbedarf;
+        this.Gesamtkalorien = Kalorienbedarf;
         this.Kalorienverbrauch = Kalorienverbrauch;
     }
 
@@ -40,11 +40,11 @@ public class Rechner
 
     public void setKalorienbedarf(double neuKalorienbedarf)
     {
-        Grundbedarf = neuKalorienbedarf;
+        Gesamtkalorien = neuKalorienbedarf;
     }
     public double getKalorienbedarf()
     {
-        return Grundbedarf;
+        return Gesamtkalorien;
     }
 
     /**                     Rechenoperation für Kalorien
@@ -55,7 +55,7 @@ public class Rechner
     public double Rechneroperation(int UserID) throws Exception
     {
       if ((Datenbank.UserListe.contains(UserID)))
-        return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
+          return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
       else
           throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
@@ -63,13 +63,13 @@ public class Rechner
     /**
     /*Gesamtumsatz, Trainingsziel, Nahrungspräferenz, return: Liste, Funktionsweise: Gibt passendes Rezept aus
      */
-    public String Rezept_sortieren()                   //Liste mit Rezepten?
+    public String Rezept_sortieren(String nahrungstyp)                   //Liste mit Rezepten?
     {
         return "null";
     }
 
     /**
-    /*Grundbedarf, return: nichts , Funktionsweise:berechnung des Grundbedarf
+    /*Gesamtkalorien, return: nichts , Funktionsweise:berechnung des Gesamtkalorien
     */
 
 
