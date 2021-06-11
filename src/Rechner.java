@@ -63,8 +63,10 @@ public class Rechner
     /**
     /*Gesamtumsatz, Trainingsziel, Nahrungspräferenz, return: Liste, Funktionsweise: Gibt passendes Rezept aus
      */
-    public String Rezept_sortieren(String nahrungstyp)                   //Liste mit Rezepten?
+    public String Rezept_sortieren(int UserID)                   //Liste mit Rezepten?
     {
+        String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
+        //Rezeptsortierungs-blargh
         return "null";
     }
 
