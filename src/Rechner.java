@@ -54,15 +54,15 @@ public class Rechner
     /**
     /*Extrakalorien, UserID, return:Gesamtumsatz, Funktionsweise: Berechnung von Grundbedarf und Gesamtumsatz
      */
-    public double Rechneroperation()
+    public double Rechneroperation(int UserID) throws Exception
     {
        /**
         /*Rechnung
       */
-        //655,1+(9,6xKörpergewicht_in_kg) + (1,8 x Körpergröße_in_cm)–(4,7xAlter_in _Jahren);
-        //= Grundbedarf
-        //return Grundbedarf+Extrakalorien=Gesamtumsatz;
-        return 0;
+      if ((Datenbank.UserListe.contains(UserID)))
+        return Datenbank.UserListe.get(UserID).getGrundbedarf()+Kalorienverbrauch;
+      else
+          throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
 
     /**
@@ -77,7 +77,5 @@ public class Rechner
     /*Grundbedarf, return: nichts , Funktionsweise:berechnung des Grundbedarf
     */
 
-    public void Grundbedarf()                          //?? siehe Rechneroperation
-    {}
 
 }
