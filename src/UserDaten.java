@@ -61,10 +61,10 @@ public class UserDaten {
         counter=counter+1;
         UserID=counter;
     }
-@Override
-public String toString(){
+    @Override
+    public String toString(){
         return "User: " + this.getName() + ", " + this.getAlter()+ " Jahre" + ", "+ this.getKoerpergroesse()+ "cm" + ", "+ this.getGeschlecht() + ", "+ this.getTrainingsziel() + ", "+ "Nahrungspraeferenz: "+ this.getNahrungspraeferenz() + ", "+ this.getGewicht()+ "kg";
-}
+    }
     /**     Standardkonstruktor:
      *      Setzt alle Werte auf 0 bzw. "null", der Grundbedarf des Patienten wird hierbei nicht berechnet!
      */
@@ -236,10 +236,9 @@ public String toString(){
     public int getUserID(){
         return UserID;
     }
-    /*     Keine set-Methode FÜR die UserID, da:
+    /**     Keine set-Methode FÜR die UserID, da:
            - nicht benötigt, UserID wird automatisch generiert
            - eine Doppelung der UserID wäre möglich
-
      */
 }
 
