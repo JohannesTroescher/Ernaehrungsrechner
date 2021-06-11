@@ -47,20 +47,15 @@ public class Rechner
         return Grundbedarf;
     }
 
-    /**
-    /*Methoden,Operationen
-     */
-
-    /**
-    /*Extrakalorien, UserID, return:Gesamtumsatz, Funktionsweise: Berechnung von Grundbedarf und Gesamtumsatz
+    /**                     Rechenoperation für Kalorien
+     * @param UserID        UserID des gewünschten Nutzers
+     * @return              Gibt Gesamtkalorienbedarf zurück
+     * @throws Exception    Wirft Exception, wenn der gewünschte Nutzer nicht existiert
      */
     public double Rechneroperation(int UserID) throws Exception
     {
-       /**
-        /*Rechnung
-      */
       if ((Datenbank.UserListe.contains(UserID)))
-        return Datenbank.UserListe.get(UserID).getGrundbedarf()+Kalorienverbrauch;
+        return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
       else
           throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
