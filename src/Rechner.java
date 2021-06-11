@@ -69,10 +69,4 @@ public class Rechner
         //Rezeptsortierungs-blargh
         return "null";
     }
-
-    /**
-    /*Gesamtkalorien, return: nichts , Funktionsweise:berechnung des Gesamtkalorien
-    */
-
-
 }
