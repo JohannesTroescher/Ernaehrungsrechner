@@ -1,13 +1,15 @@
-import java.util.ArrayList;
-
 public class DatenbankTest {
 
     public static void main(String[] args) {
         UserDaten Nutzer1 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzer2 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
         Datenbank.Userdaten_einlesen(Nutzer1);
-        Datenbank.save(Datenbank.UserListe);
+        Datenbank.Userdaten_einlesen(Nutzer2);
+        Datenbank.saveUserliste(Datenbank.UserListe);
+        Datenbank.loadUserListe();
 
-        System.out.println(Datenbank.UserListe);
+        System.out.println(Datenbank.loadUserListe());
+        System.out.println(Datenbank.Rezepte_dateiaufruf_normal());
 
     }
 

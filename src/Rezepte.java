@@ -29,6 +29,10 @@ public class Rezepte {
         this.art="null";
         this.kalorien=0;
     }
+@Override
+    public String toString(){
+        return this.art + " " + "Kalorien: " + this.kalorien;
+}
 
     /**             Get-Methode für Art des Rezepts
      * @return      Gibt Art des Rezeptes zurück
