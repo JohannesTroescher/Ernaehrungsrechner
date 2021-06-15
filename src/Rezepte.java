@@ -4,13 +4,14 @@ public class Rezepte {
      */
     private String art="null";
     private double kalorien=0;
+    private String beschreibung;
 
     /**                     Konstruktor für die Klasse Rezept
      *                      Erzeugt Objekt der Klasse Rezept
      * @param art           Art des Rezepts
      * @param kalorien      Anzahl der Kalorien des Rezepts
      */
-    public Rezepte(String art,double kalorien) {
+    public Rezepte(String art,double kalorien, String beschreibung) {
         try {
             this.setArt(art);
         } catch (Exception e) {
@@ -21,6 +22,7 @@ public class Rezepte {
         } catch(Exception e){
             e.printStackTrace();
         }
+        this.setBeschreibung(beschreibung);
     }
     /**     Standardkonstruktor für die Klasse Rezept
      *      Erzeugt ein Objekt der Klasse Rezept und setzt alle Attribute auf "null" bzw. 0
@@ -28,6 +30,7 @@ public class Rezepte {
     public Rezepte() {
         this.art="null";
         this.kalorien=0;
+        this.beschreibung="null";
     }
 @Override
     public String toString(){
@@ -70,5 +73,20 @@ public class Rezepte {
      */
     public double getKalorien(){
         return this.kalorien;
+    }
+
+    /**                         Set-Methode fpr die Beschreibung
+     *                          Setzt das Attribut "beschreibung" auf den gewünschten Wert
+     * @param beschreibung      Gewünschter Wert
+     */
+    public void setBeschreibung(String beschreibung){
+        this.beschreibung=beschreibung;
+    }
+
+    /**             Get-Methode für die Beschreibung
+     * @return      Gibt die Beschreibung zurück
+     */
+    public String getBeschreibung(){
+        return this.beschreibung;
     }
 }
