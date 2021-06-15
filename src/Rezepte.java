@@ -11,7 +11,7 @@ public class Rezepte {
      * @param art           Art des Rezepts
      * @param kalorien      Anzahl der Kalorien des Rezepts
      */
-    public Rezepte(String art,double kalorien, String beschreibung) {
+    public Rezepte(String art,double kalorien, String beschreibung){
         try {
             this.setArt(art);
         } catch (Exception e) {
