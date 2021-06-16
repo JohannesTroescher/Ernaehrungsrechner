@@ -36,7 +36,7 @@ public class Datenbank implements Serializable {
      * @param newUser geänderte User-Daten eines Users
      * @throws Exception wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
      */
-    public void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception {
+    public static void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception {
         if (UserListe.contains(UserID)) {
             int index = UserListe.indexOf(UserID);
             UserListe.set(index, newUser);
@@ -50,11 +50,10 @@ public class Datenbank implements Serializable {
      * @param UserID durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
      * @return returnt true wenn die "UserID" in der "UserListe" vorhanden ist, false wenn nicht
      */
-    public boolean UserID_exists(long UserID) {
-        if (UserListe.contains(UserID)) {
-            return true;
-        } else
-            return false;
+    public static void UserID_exists(int UserID) throws Exception{
+        if (UserListe.contains(UserDaten.UserID)) {
+
+        } else throw new Exception("gibts nicht");
     }
 
 
