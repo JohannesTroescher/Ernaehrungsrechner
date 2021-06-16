@@ -60,8 +60,6 @@ public class Datenbank {
      *
      * @return returnt eine externe, abspeicherbare Datei
      */
-    //public externeDatei UserDaten_dateierstellung(){
-    //erstellt externe UserDatenListe-Datei aus der ArrayList UserListe
     public static void saveUserliste(ArrayList<UserDaten> UserListe) {
         try {
             FileOutputStream fos = new FileOutputStream("src/Datenbank.txt");
@@ -75,17 +73,13 @@ public class Datenbank {
         }
     }
 
-    //  return externeUserDatei;
-    // }
-
 
     /**
      * soll das abgespeicherte (.txt) File in das Programm laden
      *
      * @return returnt das abgespeicherte File
      */
-    // public externeDatei UserDaten_dateiaufruf(){
-    //ruft in Speicher abgelegte Datei ab, und gibt die Datei an System zur weiteren Nutzung
+
     public static ArrayList<UserDaten> loadUserListe() {
         try {
             FileInputStream fis = new FileInputStream("src/Datenbank.txt");
@@ -103,22 +97,6 @@ public class Datenbank {
         return UserListe;
     }
 
-    //   return externeUserDatei;
-    // }
-
-
-    /**
-     * soll die aufgerufene File wieder in eine "ArrayList" (z.B. wieder die UserListe) umwandeln
-     * @param externeUserDatei  das aufgerufenen File
-     *
-     *
-     *                          !!!!!!!!!!!!! Wird nicht mehr benötigt
-     *
-     */
-    // public void UserDaten_auslesen(irgendeineExterne externeUserDatei){
-    //methode soll externe UserDatenListe-Datei auslesen (wandelt externeUserDatei in UserListe um)
-    //     UserListe=UserListeausDatei;
-    // }
 
 
     /**
@@ -127,12 +105,10 @@ public class Datenbank {
      * @return returnt normaleRezepteDatei
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() {
-        //ruft in Speicher abgelegte normaleRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
-
         try {
             Scanner s = new Scanner(new File("src/RezepteNormal.txt"));
-            while (s.hasNext()) {
-                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()), s.next());
+            while (s.hasNextLine()) {
+                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
                 RezepteNormalListe.add(normal);
             }
             s.close();
@@ -148,7 +124,6 @@ public class Datenbank {
      * @return returnt vegetarischeRezeptDatei
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
-        //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
             while (s.hasNext()) {
@@ -169,7 +144,6 @@ public class Datenbank {
      * @return returnt veganeRezepteDatei
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
-        //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
             while (s.hasNext()) {

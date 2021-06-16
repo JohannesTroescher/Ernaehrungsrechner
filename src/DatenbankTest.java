@@ -8,8 +8,10 @@ public class DatenbankTest {
         Datenbank.saveUserliste(Datenbank.UserListe);
         Datenbank.loadUserListe();
 
-        System.out.println(Datenbank.loadUserListe());
-        System.out.println(Datenbank.Rezepte_dateiaufruf_normal());
+        //System.out.println(Datenbank.loadUserListe());
+        //System.out.println(Datenbank.Rezepte_dateiaufruf_normal());
+        Datenbank.Rezepte_dateiaufruf_normal();
+        System.out.println(Datenbank.RezepteNormalListe.get(0));
 
     }
 
