@@ -1,6 +1,4 @@
-import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -134,7 +132,7 @@ public class Datenbank {
         try {
             Scanner s = new Scanner(new File("src/RezepteNormal.txt"));
             while (s.hasNext()) {
-                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()));
+                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()), s.next());
                 RezepteNormalListe.add(normal);
             }
             s.close();
@@ -154,7 +152,7 @@ public class Datenbank {
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
             while (s.hasNext()) {
-                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()));
+                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()), s.next());
                 RezepteVegetarischListe.add(vegetarisch);
             }
             s.close();
@@ -175,7 +173,7 @@ public class Datenbank {
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
             while (s.hasNext()) {
-                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()));
+                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()), s.next());
                 RezepteVeganListe.add(vegan);
             }
             s.close();
