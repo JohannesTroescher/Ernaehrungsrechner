@@ -1,8 +1,12 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
 
-public class Datenbank {
+public class Datenbank implements Serializable {
 
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
@@ -61,15 +65,16 @@ public class Datenbank {
      * @return returnt eine externe, abspeicherbare Datei
      */
     public static void saveUserliste(ArrayList<UserDaten> UserListe) {
-        try {
-            FileOutputStream fos = new FileOutputStream("src/Datenbank.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        try{
+            FileOutputStream writeData = new FileOutputStream("Datenbank");
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
-            oos.writeObject(UserListe);
-            oos.close();
-            fos.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+            writeStream.writeObject(UserListe);
+            writeStream.flush();
+            writeStream.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -81,18 +86,15 @@ public class Datenbank {
      */
 
     public static ArrayList<UserDaten> loadUserListe() {
-        try {
-            FileInputStream fis = new FileInputStream("src/Datenbank.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
+        try{
+            FileInputStream readData = new FileInputStream("Datenbank");
+            ObjectInputStream readStream = new ObjectInputStream(readData);
 
-            UserListe = (ArrayList) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+            UserListe = (ArrayList<UserDaten>) readStream.readObject();
+
+            readStream.close();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
         return UserListe;
     }
