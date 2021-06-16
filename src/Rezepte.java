@@ -40,7 +40,7 @@ public class Rezepte {
     }
 @Override
     public String toString(){
-        return this.art + " " + "Kalorien: " + this.kalorien + "Rezeptbeschreibung:" +this.Beschreibung;
+        return ":"+this.art + ": " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
 }
 
     /**             Get-Methode für Art des Rezepts

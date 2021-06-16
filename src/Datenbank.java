@@ -126,8 +126,8 @@ public class Datenbank {
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
-            while (s.hasNext()) {
-                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()), s.next());
+            while (s.hasNextLine()) {
+                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
                 RezepteVegetarischListe.add(vegetarisch);
             }
             s.close();
@@ -146,8 +146,8 @@ public class Datenbank {
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
-            while (s.hasNext()) {
-                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()), s.next());
+            while (s.hasNextLine()) {
+                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
                 RezepteVeganListe.add(vegan);
             }
             s.close();
