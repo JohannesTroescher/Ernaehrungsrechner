@@ -27,12 +27,9 @@ public class Datenbank implements Serializable{
 
 
     /**
-     * durchsucht die "UserListe" nach einer "UserID", wenn die "UserID" gefunden wurde sollen die Werte der Attribute
-     * des entsprechenden Objekts geändert werden
      *
-     * @param //UserID  durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
-     * @param newUser geänderte User-Daten eines Users
-     * @throws Exception wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
+     * @param name
+     * @param newUser
      */
     public static void Userdaten_aendern(String name,UserDaten newUser){
         int currentPosition = 0;
