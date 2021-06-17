@@ -1,10 +1,12 @@
-import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.Serializable;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
 
-public class Datenbank {
+public class Datenbank implements Serializable {
 
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
@@ -34,7 +36,7 @@ public class Datenbank {
      * @param newUser geänderte User-Daten eines Users
      * @throws Exception wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
      */
-    public void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception {
+    public static void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception {
         if (UserListe.contains(UserID)) {
             int index = UserListe.indexOf(UserID);
             UserListe.set(index, newUser);
@@ -48,11 +50,10 @@ public class Datenbank {
      * @param UserID durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
      * @return returnt true wenn die "UserID" in der "UserListe" vorhanden ist, false wenn nicht
      */
-    public boolean UserID_exists(long UserID) {
-        if (UserListe.contains(UserID)) {
-            return true;
-        } else
-            return false;
+    public static void UserID_exists(int UserID) throws Exception{
+        if (UserListe.contains(UserDaten.UserID)) {
+
+        } else throw new Exception("gibts nicht");
     }
 
 
@@ -62,23 +63,19 @@ public class Datenbank {
      *
      * @return returnt eine externe, abspeicherbare Datei
      */
-    //public externeDatei UserDaten_dateierstellung(){
-    //erstellt externe UserDatenListe-Datei aus der ArrayList UserListe
     public static void saveUserliste(ArrayList<UserDaten> UserListe) {
-        try {
-            FileOutputStream fos = new FileOutputStream("src/Datenbank.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+        try{
+            FileOutputStream writeData = new FileOutputStream("Datenbank");
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
-            oos.writeObject(UserListe);
-            oos.close();
-            fos.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+            writeStream.writeObject(UserListe);
+            writeStream.flush();
+            writeStream.close();
+
+        }catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-    //  return externeUserDatei;
-    // }
 
 
     /**
@@ -86,41 +83,21 @@ public class Datenbank {
      *
      * @return returnt das abgespeicherte File
      */
-    // public externeDatei UserDaten_dateiaufruf(){
-    //ruft in Speicher abgelegte Datei ab, und gibt die Datei an System zur weiteren Nutzung
-    public static ArrayList<UserDaten> loadUserListe() {
-        try {
-            FileInputStream fis = new FileInputStream("src/Datenbank.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
 
-            UserListe = (ArrayList) ois.readObject();
-            ois.close();
-            fis.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } catch (ClassNotFoundException c) {
-            System.out.println("Class not found");
-            c.printStackTrace();
+    public static ArrayList<UserDaten> loadUserListe() {
+        try{
+            FileInputStream readData = new FileInputStream("Datenbank");
+            ObjectInputStream readStream = new ObjectInputStream(readData);
+
+            UserListe = (ArrayList<UserDaten>) readStream.readObject();
+
+            readStream.close();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
         return UserListe;
     }
 
-    //   return externeUserDatei;
-    // }
-
-
-    /**
-     * soll die aufgerufene File wieder in eine "ArrayList" (z.B. wieder die UserListe) umwandeln
-     * @param externeUserDatei  das aufgerufenen File
-     *
-     *
-     *                          !!!!!!!!!!!!! Wird nicht mehr benötigt
-     *
-     */
-    // public void UserDaten_auslesen(irgendeineExterne externeUserDatei){
-    //methode soll externe UserDatenListe-Datei auslesen (wandelt externeUserDatei in UserListe um)
-    //     UserListe=UserListeausDatei;
-    // }
 
 
     /**
@@ -129,12 +106,10 @@ public class Datenbank {
      * @return returnt normaleRezepteDatei
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() {
-        //ruft in Speicher abgelegte normaleRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
-
         try {
             Scanner s = new Scanner(new File("src/RezepteNormal.txt"));
-            while (s.hasNext()) {
-                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()));
+            while (s.hasNextLine()) {
+                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
                 RezepteNormalListe.add(normal);
             }
             s.close();
@@ -150,11 +125,10 @@ public class Datenbank {
      * @return returnt vegetarischeRezeptDatei
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
-        //ruft in Speicher abgelegte vegetarischeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
-            while (s.hasNext()) {
-                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()));
+            while (s.hasNextLine()) {
+                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
                 RezepteVegetarischListe.add(vegetarisch);
             }
             s.close();
@@ -171,11 +145,10 @@ public class Datenbank {
      * @return returnt veganeRezepteDatei
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
-        //ruft in Speicher abgelegte veganeRezepte-Datei auf, und gibt die Datei an System zur weiteren Nutzung
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
-            while (s.hasNext()) {
-                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()));
+            while (s.hasNextLine()) {
+                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
                 RezepteVeganListe.add(vegan);
             }
             s.close();

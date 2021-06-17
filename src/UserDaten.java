@@ -1,4 +1,6 @@
-public class UserDaten {
+import java.io.Serializable;
+
+public class UserDaten implements Serializable {
     /**
      *  Klassenattribute der Klasse UserDaten
      */
@@ -10,7 +12,7 @@ public class UserDaten {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";
     private double gewicht=0;
-    private int UserID;
+    public static int UserID;
     static int counter=0;
     /**                     Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
