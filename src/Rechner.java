@@ -75,12 +75,28 @@ public class Rechner
           throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
 
-    /**
-    /*Gesamtumsatz, Trainingsziel, Nahrungspräferenz, return: Liste, Funktionsweise: Gibt passendes Rezept aus
+    /**                      Rezeptsortieren um passendes Rezept auszugeben
+     /*@param                 Nahrungspräferenz, Trainingsziel, Gesamtumsatz des User
+     *@return                Liste mit Rezepten
      */
-    public String Rezept_sortieren(int UserID)                   //Liste mit Rezepten?
+    public String Rezept_sortieren(String nahrungspraeferenz,double Gesamtkalorien,String Trainingsziel) throws Exception
     {
-        String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
+        if (nahrungspraeferenz.equals("normal"));
+
+        return String.valueOf(Datenbank.RezepteNormalListe);
+
+        else if(nahrungspraeferenz.equals("Vegetarisch"));
+
+        return String.valueOf(Datenbank.RezepteVegetarischListe);
+
+        else if (nahrungspraeferenz.equals("Vegan"));
+
+        return String.valueOf(Datenbank.RezepteVeganListe);
+
+            else
+        throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
+
+        // String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
         return "null";
     }
