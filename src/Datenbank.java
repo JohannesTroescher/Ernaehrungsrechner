@@ -23,7 +23,6 @@ public class Datenbank implements Serializable {
      * @param User Objekt vom Typ UserDaten
      */
     public static void Userdaten_einlesen(UserDaten User) {
-
         UserListe.add(User);
     }
 
@@ -36,10 +35,14 @@ public class Datenbank implements Serializable {
      * @param newUser geänderte User-Daten eines Users
      * @throws Exception wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
      */
-    public static void Userdaten_aendern(long UserID, UserDaten newUser) throws Exception {
-        if (UserListe.contains(UserID)) {
-            int index = UserListe.indexOf(UserID);
-            UserListe.set(index, newUser);
+    public static void Userdaten_aendern(int UserID, UserDaten newUser) throws Exception {
+        if (Datenbank.UserListe.size()>=UserID) {
+            UserListe.set(UserID, newUser);
+            try {
+                newUser.setUserID(UserID);
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
         } else throw new Exception("User existiert nicht.");
     }
 
@@ -51,7 +54,7 @@ public class Datenbank implements Serializable {
      * @return returnt true wenn die "UserID" in der "UserListe" vorhanden ist, false wenn nicht
      */
     public static void UserID_exists(int UserID) throws Exception{
-        if (UserListe.contains(UserDaten.UserID)) {
+        if (UserListe.size()>=UserID) {
 
         } else throw new Exception("gibts nicht");
     }

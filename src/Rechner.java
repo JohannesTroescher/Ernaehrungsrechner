@@ -54,7 +54,7 @@ public class Rechner
      */
     public double Rechneroperation(int UserID) throws Exception
     {
-      if ((Datenbank.UserListe.contains(UserID)))
+      if (Datenbank.UserListe.size()>=UserID)
           return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
       else
           throw new Exception ("Der gewünschte Nutzer existiert nicht!");

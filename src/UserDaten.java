@@ -12,7 +12,7 @@ public class UserDaten implements Serializable {
     private double grundbedarf =0;
     private String nahrungspraeferenz="null";
     private double gewicht=0;
-    public static int UserID;
+    private int UserID;
     static int counter=0;
     /**                     Konstruktor UserDaten
      *                      Erzeugt Objekt vom Typ UserID: Hierbei wird der Grundbedarf direkt, in abhängigkeit des Geschlechts, berechnet
@@ -60,8 +60,9 @@ public class UserDaten implements Serializable {
         }catch(Exception e) {
             e.printStackTrace();
         }
-        counter=counter+1;
         UserID=counter;
+        counter=counter+1;
+
     }
     @Override
     public String toString(){
@@ -79,8 +80,9 @@ public class UserDaten implements Serializable {
         this.grundbedarf =0;
         this.nahrungspraeferenz="null";
         this.gewicht=0;
-        counter=counter+1;
         UserID=counter;
+        counter=counter+1;
+
     }
 
     /**             Get-Methode für den Namen
@@ -238,9 +240,13 @@ public class UserDaten implements Serializable {
     public int getUserID(){
         return UserID;
     }
-    /**     Keine set-Methode FÜR die UserID, da:
-           - nicht benötigt, UserID wird automatisch generiert
-           - eine Doppelung der UserID wäre möglich
-     */
+
+    public void setUserID(int UserID)throws Exception{
+        if(UserID>=0) {
+            this.UserID = UserID;
+            counter -= 1;
+        }else
+            throw new Exception("Negative UserID nicht gestattet!");
+    }
 }
 
