@@ -104,6 +104,14 @@ public class Rechner
 
         return String.valueOf(Datenbank.RezepteNormalListe);
 
+        else if(nahrungspraeferenz.equals("Vegetarisch"));
+
+        return String.valueOf(Datenbank.RezepteVegetarischListe);
+
+        else if (nahrungspraeferenz.equals("Vegan"));
+
+        return String.valueOf(Datenbank.RezepteVeganListe);
+
         else
         throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
 
