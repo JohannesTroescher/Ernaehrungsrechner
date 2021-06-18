@@ -1,11 +1,12 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Optional;
 import java.util.Scanner;
+import java.io.Serializable;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.io.IOException;
 
-
-public class Datenbank implements Serializable{
+public class Datenbank implements Serializable {
 
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
@@ -15,54 +16,48 @@ public class Datenbank implements Serializable{
     static ArrayList<Rezepte> RezepteVegetarischListe = new ArrayList<Rezepte>();
     static ArrayList<Rezepte> RezepteVeganListe = new ArrayList<Rezepte>();
 
+
     /**
      * fügt ein Objekt vom Typ UserDaten der "UserListe" hinzu
      *
      * @param User Objekt vom Typ UserDaten
      */
     public static void Userdaten_einlesen(UserDaten User) {
-
         UserListe.add(User);
     }
 
 
     /**
+     * durchsucht die "UserListe" nach einer "UserID", wenn die "UserID" gefunden wurde sollen die Werte der Attribute
+     * des entsprechenden Objekts geändert werden
      *
-     * @param name
-     * @param newUser
+     * @param UserID  durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
+     * @param newUser geänderte User-Daten eines Users
+     * @throws Exception wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
      */
-    public static void Userdaten_aendern(String name,UserDaten newUser){
-        int currentPosition = 0;
-        for(UserDaten user : UserListe){
-            if (user.getName().equals(name)){
-                UserListe.get(currentPosition);
-                UserListe.set(currentPosition,newUser);
+    public static void Userdaten_aendern(int UserID, UserDaten newUser) throws Exception {
+        if (Datenbank.UserListe.size()>=UserID) {
+            UserListe.set(UserID, newUser);
+            try {
+                newUser.setUserID(UserID);
+            }catch (Exception e) {
+                e.printStackTrace();
             }
-            else
-                currentPosition++;
-        }
+        } else throw new Exception("User existiert nicht.");
     }
 
-    public static Object lookUpUser(UserDaten user){
-        return UserListe.stream()
-                .filter(p->p.getName().equals(user.getName()))
-                .findFirst();
-    }
 
-  /*  /**
+    /**
      * soll die "UserListe" nach einer "UserID" durchsuchen und returnen ob die "UserID" vorhanden ist oder nicht
      *
      * @param UserID durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
      * @return returnt true wenn die "UserID" in der "UserListe" vorhanden ist, false wenn nicht
      */
-   // public static boolean UserID_exists(int UserID){
-     //   for (UserDaten user : UserListe) {
-       //         if (user.getUserID() == UserID) {
-         //           return true;
-           //     }
-        //    }//
-      //return false;
-  //  }//
+    public static void UserID_exists(int UserID) throws Exception{
+        if (UserListe.size()>=UserID) {
+
+        } else throw new Exception("gibts nicht");
+    }
 
 
     /**
@@ -73,12 +68,12 @@ public class Datenbank implements Serializable{
      */
     public static void saveUserliste(ArrayList<UserDaten> UserListe) {
         try{
-            FileOutputStream fos = new FileOutputStream("Datenbank");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            FileOutputStream writeData = new FileOutputStream("Datenbank");
+            ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
-            oos.writeObject(UserListe);
-            oos.flush();
-            oos.close();
+            writeStream.writeObject(UserListe);
+            writeStream.flush();
+            writeStream.close();
 
         }catch (IOException e) {
             e.printStackTrace();

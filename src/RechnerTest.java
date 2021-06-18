@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RechnerTest {
@@ -36,7 +38,24 @@ class RechnerTest {
 
 
     @Test
-    void rechneroperation() {
+    void rechneroperation_positiv() throws Exception {
+        UserDaten testuser=new UserDaten();
+        testuser.setGrundbedarf(500);
+        //ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
+        Datenbank.Userdaten_einlesen(testuser);
+        Rechner testRechner=new Rechner();
+        testRechner.setKalorienverbrauch(200);
+        assertEquals(testRechner.Rechneroperation(testuser.getUserID()),700);
+    }
+    @Test
+    void rechneroperation_negativ() throws Exception {
+        UserDaten testuser1=new UserDaten();
+        testuser1.setGrundbedarf(500);
+        ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
+        Datenbank.UserListe.add(testuser1);
+        Rechner testRechner=new Rechner();
+        testRechner.setKalorienverbrauch(200);
+        assertNotEquals(testRechner.Rechneroperation(testuser1.getUserID()),500);
     }
 
     @Test
