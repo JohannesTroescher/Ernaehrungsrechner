@@ -20,10 +20,11 @@ public class Rechner
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung)
     {
         this.Gesamtkalorien = Kalorienbedarf;
         this.Kalorienverbrauch = Kalorienverbrauch;
+        this.Rezeptsortierung = Rezeptsortierung;
     }
 
     /**
@@ -62,6 +63,24 @@ public class Rechner
         return Gesamtkalorien;
     }
 
+    /**
+     * Set Methode
+     * @param neuRezeptsortierung
+     */
+    public void setRezeptsortierung(String neuRezeptsortierung)
+    {
+        Rezeptsortierung = neuRezeptsortierung;
+    }
+
+    /**
+     * Get Methode
+     * @return Rezeptsortierung
+     */
+    public String getRezeptsortierung()
+    {
+        return Rezeptsortierung;
+    }
+
     /**                     Rechenoperation für Kalorien
      * @param UserID        UserID des gewünschten Nutzers
      * @return              Gibt Gesamtkalorienbedarf zurück
@@ -75,25 +94,17 @@ public class Rechner
           throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
 
-    /**                      Rezeptsortieren um passendes Rezept auszugeben
+    /**                       Rezeptsortieren um passendes Rezept auszugeben
      /*@param                 Nahrungspräferenz, Trainingsziel, Gesamtumsatz des User
-     *@return                Liste mit Rezepten
+     *@return                 Liste mit Rezepten
      */
-    public String Rezept_sortieren(String nahrungspraeferenz,double Gesamtkalorien,String Trainingsziel) throws Exception
+    public String Rezeptsortierung(String nahrungspraeferenz,double Gesamtkalorien,String Trainingsziel) throws Exception
     {
         if (nahrungspraeferenz.equals("normal"));
 
         return String.valueOf(Datenbank.RezepteNormalListe);
 
-        else if(nahrungspraeferenz.equals("Vegetarisch"));
-
-        return String.valueOf(Datenbank.RezepteVegetarischListe);
-
-        else if (nahrungspraeferenz.equals("Vegan"));
-
-        return String.valueOf(Datenbank.RezepteVeganListe);
-
-            else
+        else
         throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
 
         // String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
