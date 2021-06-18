@@ -4,6 +4,7 @@ public class Rezepte {
      */
     private String art="null";
     private double kalorien=0;
+    private String proteine="null";
     private String Beschreibung="null";
 
     /**                     Konstruktor für die Klasse Rezept
@@ -12,7 +13,7 @@ public class Rezepte {
      * @param kalorien      Anzahl der Kalorien des Rezepts
      * @param beschreibung
      */
-    public Rezepte(String art, double kalorien, String beschreibung) {
+    public Rezepte(String art, double kalorien, String beschreibung,String proteine) {
 
         try {
             this.setBeschreibung(beschreibung);
@@ -27,6 +28,11 @@ public class Rezepte {
         try{
             this.setKalorien(kalorien);
         } catch(Exception e){
+            e.printStackTrace();
+        }
+        try {
+            this.setProteine(proteine);
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
@@ -81,11 +87,34 @@ public class Rezepte {
         return this.kalorien;
     }
 
+    /**             Get-Methode für Beschreibung
+     * @return      Gibt die Beschreibung zurück
+     */
     public String getBeschreibung() {
         return Beschreibung;
     }
 
+    /**                         Set-Methode für Beschreibung
+     * @param beschreibung      Setzt Attribut "Beschreibung" auf gewünschten Wert
+     */
     public void setBeschreibung(String beschreibung) {
         Beschreibung = beschreibung;
+    }
+
+    /**                     Set-Methode für Proteingehalt
+     * @param proteine      Setzt Attribut "Proteine" auf "proteinhaltig" oder "proteinarm"
+     * @throws Exception    Wirft Exception, wenn Eingabe von "proteinhaltig" oder "proteinarm" abweicht
+     */
+    public void setProteine(String proteine)throws Exception{
+        if(proteine.equalsIgnoreCase("proteinhaltig")||proteine.equalsIgnoreCase("proteinarm"))
+            this.proteine=proteine;
+        else throw new Exception("Bitte wähle \"proteinhaltig\" oder \"proeinarm\"");
+    }
+
+    /**             Get-Methode für Proteingehalt
+     * @return      Gibt Proteingehalt zurück
+     */
+    public String getProteine() {
+        return proteine;
     }
 }
