@@ -112,7 +112,7 @@ public class Datenbank implements Serializable {
         try {
             Scanner s = new Scanner(new File("src/RezepteNormal.txt"));
             while (s.hasNextLine()) {
-                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
+                Rezepte normal = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine(),s.nextLine());
                 RezepteNormalListe.add(normal);
             }
             s.close();
@@ -131,7 +131,7 @@ public class Datenbank implements Serializable {
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
             while (s.hasNextLine()) {
-                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
+                Rezepte vegetarisch = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine(),s.nextLine());
                 RezepteVegetarischListe.add(vegetarisch);
             }
             s.close();
@@ -151,7 +151,7 @@ public class Datenbank implements Serializable {
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
             while (s.hasNextLine()) {
-                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine());
+                Rezepte vegan = new Rezepte(s.next(), Double.parseDouble(s.next()), s.nextLine(),s.nextLine());
                 RezepteVeganListe.add(vegan);
             }
             s.close();
