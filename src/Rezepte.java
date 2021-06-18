@@ -1,3 +1,4 @@
+
 public class Rezepte {
     /**
      * Klassenattribute der Klasse Rezept
@@ -13,7 +14,7 @@ public class Rezepte {
      * @param kalorien      Anzahl der Kalorien des Rezepts
      * @param beschreibung
      */
-    public Rezepte(String art, double kalorien, String beschreibung,String proteine) {
+    public Rezepte(String art,String proteine, double kalorien, String beschreibung) {
 
         try {
             this.setBeschreibung(beschreibung);
@@ -43,6 +44,7 @@ public class Rezepte {
         this.art="null";
         this.kalorien=0;
         this.Beschreibung="null";
+        this.proteine="null";
     }
 @Override
     public String toString(){

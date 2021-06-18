@@ -29,8 +29,8 @@ public class DatenbankTest implements Serializable {
         int index = Datenbank.UserListe.indexOf(Nutzer1);
         System.out.println(TempListe.contains(Nutzer1));
         System.out.println(index);
-        System.out.println(Datenbank.lookUpUser(Nutzer2));
-        Datenbank.Userdaten_aendern("Rolf", newUser);
+        //System.out.println(Datenbank.lookUpUser(Nutzer2));
+        Datenbank.Userdaten_aendern(2, newUser);
         System.out.println(TempListe);
         //System.out.println(Datenbank.Rezepte_dateiaufruf_normal());
         //Datenbank.Rezepte_dateiaufruf_normal();
