@@ -2,14 +2,14 @@
 public class Rechner
 {
     /**
-    /*Attribute
+     *Attribute
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
-    private String Rezeptsortierung;                     //List?
+    private String Rezeptsortierung;
 
     /**
-    /*Standartkonsturktor
+     *Standartkonsturktor
      */
     public Rechner()
     {
@@ -18,7 +18,7 @@ public class Rechner
     Rezeptsortierung="Null";
     }
     /**
-    /*Konstruktor
+     *Konstruktor
      */
     public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
     {
@@ -27,21 +27,36 @@ public class Rechner
     }
 
     /**
-    /* Set und Get Methode
+     * Set Methode
+     * @param neuKalorienverbrauch
      */
     public void setKalorienverbrauch(double neuKalorienverbrauch)
     {
         Kalorienverbrauch = neuKalorienverbrauch;
     }
+
+    /**
+     * Get Methode
+     * @return Kalorienverbrauch
+     */
     public double getKalorienverbrauch()
     {
       return Kalorienverbrauch;
     }
 
+    /**
+     * Set Methode
+     * @param neuKalorienbedarf
+     */
     public void setKalorienbedarf(double neuKalorienbedarf)
     {
         Gesamtkalorien = neuKalorienbedarf;
     }
+
+    /**
+     * Get Methode
+     * @return Gesamtkalorien
+     */
     public double getKalorienbedarf()
     {
         return Gesamtkalorien;
