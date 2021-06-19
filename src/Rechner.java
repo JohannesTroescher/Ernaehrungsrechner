@@ -2,7 +2,7 @@
 public class Rechner
 {
     /**
-     *Attribute
+     *Klassenattribute der Klasse Rechner
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
@@ -10,6 +10,7 @@ public class Rechner
 
     /**
      *Standartkonsturktor
+     *Setzt alle Werte auf "Null"/0.
      */
     public Rechner()
     {
@@ -28,8 +29,8 @@ public class Rechner
     }
 
     /**
-     * Set Methode
-     * @param neuKalorienverbrauch
+     *                                                  Set Methode für den Kalorienverbrauch
+     * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
     public void setKalorienverbrauch(double neuKalorienverbrauch)
     {
@@ -37,17 +38,18 @@ public class Rechner
     }
 
     /**
-     * Get Methode
-     * @return Kalorienverbrauch
+     *                                                  Get Methode für den Kalorienverbrauch
+     * @return Kalorienverbrauch                        Gibt den Kalorienverbrauch zurück
      */
     public double getKalorienverbrauch()
     {
       return Kalorienverbrauch;
     }
 
+
     /**
-     * Set Methode
-     * @param neuKalorienbedarf
+     *                                                  Set Methode für den Kalorienbedarf
+     * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
      */
     public void setKalorienbedarf(double neuKalorienbedarf)
     {
@@ -55,8 +57,8 @@ public class Rechner
     }
 
     /**
-     * Get Methode
-     * @return Gesamtkalorien
+     *                                                  Get Methode für den Kalorienbedarf
+     * @return Gesamtkalorien                           Gibt den Gesamtkalorien zurück
      */
     public double getKalorienbedarf()
     {
@@ -64,8 +66,8 @@ public class Rechner
     }
 
     /**
-     * Set Methode
-     * @param neuRezeptsortierung
+     *                                                  Set Methode für Rezeptsortierung
+     * @param neuRezeptsortierung                       Setzt das Attribut Rezeptsortierung auf den eingeben Wert
      */
     public void setRezeptsortierung(String neuRezeptsortierung)
     {
@@ -73,8 +75,8 @@ public class Rechner
     }
 
     /**
-     * Get Methode
-     * @return Rezeptsortierung
+     *                                                  Get Methode für den Rezeptsortierung
+     * @return Rezeptsortierung                         Gibt Rezeptsortierung zurück
      */
     public String getRezeptsortierung()
     {
@@ -95,28 +97,20 @@ public class Rechner
     }
 
     /**                       Rezeptsortieren um passendes Rezept auszugeben
-     /*@param                 Nahrungspräferenz, Trainingsziel, Gesamtumsatz des User
+     /*@param                 Nahrungspräferenz
      *@return                 Liste mit Rezepten
      */
-    public String Rezeptsortierung(String nahrungspraeferenz,double Gesamtkalorien,String Trainingsziel) throws Exception
+    public String Rezeptsortierung(int UserID) throws Exception
     {
-        if (nahrungspraeferenz.equals("normal"));
+        return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
+            case "normal" -> String.valueOf(Datenbank.RezepteNormalListe);
+            case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
+            case "Vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
+            default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
+        };
 
-        return String.valueOf(Datenbank.RezepteNormalListe);
-
-        else if(nahrungspraeferenz.equals("Vegetarisch"));
-
-        return String.valueOf(Datenbank.RezepteVegetarischListe);
-
-        else if (nahrungspraeferenz.equals("Vegan"));
-
-        return String.valueOf(Datenbank.RezepteVeganListe);
-
-        else
-        throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
-
-        // String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
+        //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
-        return "null";
+        //return "null";
     }
 }

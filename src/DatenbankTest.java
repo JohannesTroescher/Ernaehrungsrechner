@@ -18,7 +18,7 @@ public class DatenbankTest implements Serializable {
         Datenbank.Userdaten_einlesen(Nutzer3);
         Datenbank.Userdaten_einlesen(Nutzer4);
         Datenbank.Userdaten_einlesen(Nutzer5);
-        Datenbank.saveUserliste(Datenbank.UserListe);
+        Datenbank.saveUserListe(Datenbank.UserListe);
         ArrayList<UserDaten>TempListe=Datenbank.loadUserListe();
         ArrayList<UserDaten>TestListe = new ArrayList<>();
         //UserDaten neuernutzer=new UserDaten("Moritz", 34,187.2,"männlich","Muskelaufbau","normal", 67.5);
