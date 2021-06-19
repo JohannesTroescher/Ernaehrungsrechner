@@ -7,12 +7,12 @@ public class Interface {
 
     /**
      *                                             Konstruktor der Klasse Interface
-     * @param Kalorien_sollwert                    Sollwert der Kalorien
-     * @param Rezeptvorschläge                     Rezeptvorschläge aus externer Datei
+     * @param kalorien_sollwert                    Sollwert der Kalorien
+     * @param rezeptvorschläge                     Rezeptvorschläge aus externer Datei
      */
-    public Interface(double Kalorien_sollwert,String Rezeptvorschläge) {
-        this.Kalorien_sollwert = Kalorien_sollwert;
-        this.Rezeptvorschläge = Rezeptvorschläge;
+    public Interface(double kalorien_sollwert,String rezeptvorschläge) {
+        this.Kalorien_sollwert = kalorien_sollwert;
+        this.Rezeptvorschläge = rezeptvorschläge;
     }
 
     /**
@@ -53,6 +53,17 @@ public class Interface {
         Kalorien_sollwert = kalorien_sollwert;
     }
 
+    /**
+     *
+     * @param name                               Name des Benutzers
+     * @param alter                              Alter des Benutzers
+     * @param groesse                            Körpergröße des Benutzers
+     * @param geschlecht                         Geschlecht des Benutzers
+     * @param training                           Trainingsziel des Benutzers
+     * @param nahrung                            Ernährungsart: Normal, Vegetarisch oder Vegan
+     * @param gewicht                            Körpergewicht des Benutzers
+     * @return                                   User
+     */
     public UserDaten User_erstellen(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
 //Erstellt einen neuen User//konstruktor aufrufen
         UserDaten User=new UserDaten(name,alter, groesse, geschlecht,training,nahrung,gewicht);

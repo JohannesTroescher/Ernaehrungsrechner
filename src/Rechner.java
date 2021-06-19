@@ -18,7 +18,7 @@ public class Rechner
     static ArrayList<Rezepte> RezepteVeganProteinarm;
 
     /**
-     *Standartkonsturktor
+     *Standardkonsturktor
      *Setzt alle Werte auf "Null"/0.
      */
     public Rechner()
