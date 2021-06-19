@@ -50,7 +50,7 @@ public class Rezepte {
      */
     @Override
     public String toString(){
-        return ":"+this.art + ": " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
+        return ":"+this.art + ": " + this.getProteine() + " " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
 }
 
     /**             Get-Methode für Art des Rezepts
@@ -112,7 +112,7 @@ public class Rezepte {
     public void setProteine(String proteine)throws Exception{
         if(proteine.equalsIgnoreCase("proteinhaltig")||proteine.equalsIgnoreCase("proteinarm"))
             this.proteine=proteine;
-        else throw new Exception("Bitte wähle \"proteinhaltig\" oder \"proeinarm\"");
+        else throw new Exception("Bitte wähle \"proteinhaltig\" oder \"proteinarm\"");
     }
 
     /**             Get-Methode für Proteingehalt
