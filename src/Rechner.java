@@ -10,10 +10,12 @@ public class Rechner
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
-    private String Rezeptsortierung;
-    private String RezeptsortierungVegetarisch;
-    private String RezeptsortierungVegan;
-
+    static ArrayList<Rezepte> RezepteNormalProteinhaltig;
+    static ArrayList<Rezepte> RezepteNormalProteinarm;
+    static ArrayList<Rezepte> RezepteVegetrischProteinhaltig;
+    static ArrayList<Rezepte> RezepteVegetarischProteinarm;
+    static ArrayList<Rezepte> RezepteVeganProteinhaltig;
+    static ArrayList<Rezepte> RezepteVeganProteinarm;
 
     /**
      *Standartkonsturktor
@@ -23,16 +25,16 @@ public class Rechner
     {
     Gesamtkalorien =0;
     Kalorienverbrauch=0;
-    Rezeptsortierung="Null";
+
     }
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung)
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
     {
         this.Gesamtkalorien = Kalorienbedarf;
         this.Kalorienverbrauch = Kalorienverbrauch;
-        this.Rezeptsortierung = Rezeptsortierung;
+
     }
 
     /**
@@ -72,23 +74,6 @@ public class Rechner
         return Gesamtkalorien;
     }
 
-    /**
-     *                                                  Set Methode für Rezeptsortierung
-     * @param neuRezeptsortierung                       Setzt das Attribut Rezeptsortierung auf den eingeben Wert
-     */
-    public void setRezeptsortierung(String neuRezeptsortierung)
-    {
-        Rezeptsortierung = neuRezeptsortierung;
-    }
-
-    /**
-     *                                                  Get Methode für den Rezeptsortierung
-     * @return Rezeptsortierung                         Gibt Rezeptsortierung zurück
-     */
-    public String getRezeptsortierung()
-    {
-        return Rezeptsortierung;
-    }
 
     /**                     Rechenoperation für Kalorien
      * @param UserID        UserID des gewünschten Nutzers
@@ -123,6 +108,7 @@ public class Rechner
                 Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteNormalListe.add(normal);
             }
+
             s.close();
 
         }
