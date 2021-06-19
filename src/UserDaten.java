@@ -3,6 +3,8 @@ import java.io.Serializable;
 public class UserDaten implements Serializable {
     /**
      *  Klassenattribute der Klasse UserDaten
+     * @author  J.Bamboschek und J.Hofmann
+     * @version 1.1
      */
     private String name= "null";
     private int alter=0;
