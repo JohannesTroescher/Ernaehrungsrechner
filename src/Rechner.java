@@ -125,12 +125,12 @@ public class Rechner
     FileNotFoundException e) {
     e.printStackTrace();
 }
-        return RezepteNormalListe;
 
-            return String.valueOf(Datenbank.RezepteVeganListe);
 
-            else
-            throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
+            //return String.valueOf(Datenbank.RezepteVeganListe);
+
+            //else
+            //throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
         //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
         //return "null";
