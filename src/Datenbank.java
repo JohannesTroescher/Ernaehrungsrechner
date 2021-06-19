@@ -6,6 +6,13 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 
+/**
+ * Alle Methoden in der Datenbank sind static damit sie nicht Objektgebunden sind. So muss nicht erst ein Objekt vom Typ Datenbank instanziiert werden um die Methoden aufzurufen.
+ * So spart man sich auch einen Konstruktor, und diverse get/set-Methoden. Außerdem macht es das nutzen der Datenbank-Methoden im Programm selbst deutlich einfacher, und unkomplizierter.
+ *          --> es wurde Objektorientiert/funktionell programmiert
+ */
+
+
 public class Datenbank implements Serializable {
 
     /**
@@ -14,7 +21,8 @@ public class Datenbank implements Serializable {
      * Arraylist "RezepteVegetarischListe" wird erstellt um sie später mit Rezepten aus RezepteVegetarisch-Datei zu befüllen
      * Arraylist "RezepteVeganListe" wird erstellt um sie später mit Rezepten aus RezepteVegan-Datei zu befüllen
      *
-     * static weil :
+     * static weil : Damit zum nutzen der Methoden und der Listen aus der Datenbank nicht erst ein Objekt instanziiert werden muss
+     *                  --> die Listen sind so nicht Objektgebunden, und können einfach von überall aufgerufen/verwendet/verändert werden
      */
     static ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
     static ArrayList<Rezepte> RezepteNormalListe = new ArrayList<>();
