@@ -62,12 +62,12 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * Soll aus der "UserListe" eine externe Datei machen (z.B ein .txt File, --> einfach editierbar und testbar)
-     * Objekte würden dann Zeilenweise in das File geschrieben werden
+     * Soll aus der "UserListe" eine externe Datei machen
+     * Objekte in UserListe wwerden in das File geschrieben
      *
-     * @param UserListe "UserListe" mit enthaltenen "Userdaten" wird in eine externe .txt File geschrieben
+     * @param UserListe "UserListe" mit enthaltenen "Userdaten"
      */
-    public static void saveUserliste(ArrayList<UserDaten> UserListe) {
+    public static void saveUserListe(ArrayList<UserDaten> UserListe) {
         try{
             FileOutputStream writeData = new FileOutputStream("Datenbank");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
@@ -83,7 +83,7 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * Soll das abgespeicherte .txt File in das Programm laden
+     * Läd das abgespeicherte File wieder in die UserListe (ArrayList<>)
      *
      * @return Gibt die geladene "UserListe" aus der .txt File wieder
      */
@@ -105,9 +105,9 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * Soll abgespeicherte normaleRezept-Datei aufrufen und in Programm laden
+     * Soll abgespeicherte RezepteNormal-Datei aufrufen und in RezepteNormalListe laden
      *
-     * @return Gibt die geladene .txt File der ArrayList "normaleRezepteDatei" wieder
+     * @return returnt RezepteNormalListe
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() {
         try {
@@ -124,9 +124,9 @@ public class Datenbank implements Serializable {
     }
 
     /**
-     * Soll abgespeicherte vegetarischeRezept-Datei aufrufen und in Programm laden
+     * Soll abgespeicherte RezepteVegetarisch-Datei aufrufen und in RezepteVegetarischListe laden
      *
-     * @return Gibt die geladene .txt File der ArrayList "RezepteVegetarischListe" wieder
+     * @return returnt RezepteVegetarischListe
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
         try {
@@ -144,9 +144,9 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * Soll abgespeicherte veganeRezept-Datei aufrufen und in Programm laden
+     * Soll abgespeicherte RezepteVegan-Datei aufrufen und in RezepteVeganListe laden
      *
-     * @return Gibt die geladene .txt File der ArrayList "RezepteVeganListe" wieder
+     * @return returnt RezepteVeganListe
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
         try {
