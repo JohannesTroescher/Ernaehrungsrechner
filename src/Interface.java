@@ -6,9 +6,9 @@ public class Interface {
     private String Rezeptvorschläge;
 
     /**
-     *
-     * @param Kalorien_sollwert Sollwert der Kalorien
-     * @param Rezeptvorschläge Rezeptvorschläge aus externer Datei
+     *                                             Konstruktor der Klasse Interface
+     * @param Kalorien_sollwert                    Sollwert der Kalorien
+     * @param Rezeptvorschläge                     Rezeptvorschläge aus externer Datei
      */
     public Interface(double Kalorien_sollwert,String Rezeptvorschläge) {
         this.Kalorien_sollwert = Kalorien_sollwert;
@@ -20,30 +20,34 @@ public class Interface {
      */
     public Interface() {
     }
+
     /**
-     * Get Methode
-     * @return Rezeptvorschläge
+     *                                            Get Methode für die Rezeptvorschläge
+     * @return Rezeptvorschläge                   gibt die passenden Rezeptvorschläge zurück
      */
     public String getRezeptvorschläge() {
         return Rezeptvorschläge;
     }
+
     /**
-     * Set Methode
-     * @param rezeptvorschläge
+     *                                           Set Methode für die Rezeptvorschläge
+     * @param rezeptvorschläge                   setzt Rezeptvorschläge auf eienen bestimmten Wert
      */
     public void setRezeptvorschläge(String rezeptvorschläge) {
         Rezeptvorschläge = rezeptvorschläge;
     }
+
     /**
-     * Get Methode
-     * @return Kalorien_sollwert
+     *                                           Get Methode für den Kalorien_sollwert
+     * @return                                   Kalorien_sollwert  gibt den Kaloriensollwert zurück
      */
     public double getKalorien_sollwert() {
         return Kalorien_sollwert;
     }
+
     /**
-     * Set Methode
-     * @param kalorien_sollwert
+     *                                           Set Methode für den Kaloriensollwert
+     * @param kalorien_sollwert                  Setzt den Kaloriensollwert auf einen bestimmten Wert
      */
     public void setKalorien_sollwert(double kalorien_sollwert) {
         Kalorien_sollwert = kalorien_sollwert;
@@ -55,21 +59,33 @@ public class Interface {
         return User;
     }
 
+    /**
+     *  ruft Rezepte auf, und gibt aufgerufene Rezepte an GUI um darzustellen
+     */
 
     public void Information_display() {
     }
-//ruft Rezepte auf, und gibt aufgerufene Rezepte an GUI um darzustellen
 
-
+    /**
+     * ruft die die Daten des entsprechenden Users auf (aus UserDatenDatei über Userdaten_auslesen()
+     * @param UserID                             UserID des "Users"
+     * @return                                   UserID
+     */
     public int User_aufruf(int UserID) {
-//ruft die die Daten des entsprechenden Users auf (aus UserDatenDatei über Userdaten_auslesen())
         return UserID;
     }
 
+    /**
+     * Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
+     * @param UserID                             UserID
+     * @return                                   geänderte UserID
+     * @throws Exception                         Wirft Exception, wenn UserID nicht vorhanden
+     */
     public int User_änderung(int UserID) {
-//geänderte User/null(wenn User nicht existiert)
-//Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
+if(UserID!=0)
         return UserID;
+else
+    throw new Exception ("UserID existiert nicht");
     }
 
 }
