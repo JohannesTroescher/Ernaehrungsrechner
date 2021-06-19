@@ -11,6 +11,9 @@ public class Rechner
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
     private String Rezeptsortierung;
+    private String RezeptsortierungVegetarisch;
+    private String RezeptsortierungVegan;
+
 
     /**
      *Standartkonsturktor
@@ -108,7 +111,7 @@ public class Rechner
     {
         Scanner s = null;
         try {
-            s = new Scanner(new File("src/RezeptNormal.txt"));
+            s = new Scanner(new File("src/RezepteNormal.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -124,7 +127,48 @@ public class Rechner
 
         }
         return Datenbank.RezepteNormalListe;
+    }
 
+    public ArrayList<Rezepte> RezeptsortierungVegetarisch()
+    {
+        Scanner s = null;
+        try {
+            s = new Scanner(new File("src/RezepteVegetarisch.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
+        while (s.hasNextLine()) {
+            if (s.hasNext("proteinhaltig")) ;
+            {
+                Rezepte Vegetarisch = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
+                Datenbank.RezepteVegetarischListe.add(Vegetarisch);
+            }
+            s.close();
+
+        }
+        return Datenbank.RezepteVegetarischListe;
+    }
+
+    public ArrayList<Rezepte> RezeptsortierungVegan()
+    {
+        Scanner s = null;
+        try {
+            s = new Scanner(new File("src/RezepteVegan.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while (s.hasNextLine())
+        {
+            if (s.hasNext("proteinhaltig"));
+            {
+                Rezepte Vegan = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
+                Datenbank.RezepteVeganListe.add(Vegan);
+            }
+            s.close();
+
+        }
+        return Datenbank.RezepteVeganListe;
     }
 }
