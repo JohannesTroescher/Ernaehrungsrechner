@@ -57,8 +57,8 @@ public class Rechner
     }
 
     /**
-     * Get Methode
-     * @return Gesamtkalorien
+     *                                                  Get Methode für den Kalorienbedarf
+     * @return Gesamtkalorien                           Gibt den Gesamtkalorien zurück
      */
     public double getKalorienbedarf()
     {
@@ -66,8 +66,8 @@ public class Rechner
     }
 
     /**
-     * Set Methode
-     * @param neuRezeptsortierung
+     *                                                  Set Methode für Rezeptsortierung
+     * @param neuRezeptsortierung                       Setzt das Attribut Rezeptsortierung auf den eingeben Wert
      */
     public void setRezeptsortierung(String neuRezeptsortierung)
     {
@@ -75,8 +75,8 @@ public class Rechner
     }
 
     /**
-     * Get Methode
-     * @return Rezeptsortierung
+     *                                                  Get Methode für den Rezeptsortierung
+     * @return Rezeptsortierung                         Gibt Rezeptsortierung zurück
      */
     public String getRezeptsortierung()
     {
@@ -97,7 +97,7 @@ public class Rechner
     }
 
     /**                       Rezeptsortieren um passendes Rezept auszugeben
-     /*@param                 Nahrungspräferenz, Trainingsziel, Gesamtumsatz des User
+     /*@param                 Nahrungspräferenz
      *@return                 Liste mit Rezepten
      */
     public String Rezeptsortierung(int UserID) throws Exception
@@ -109,7 +109,7 @@ public class Rechner
             default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
         };
 
-        // String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
+        //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
         //return "null";
     }
