@@ -110,22 +110,24 @@ public class Rechner
            // case "" -> String.valueOf(Datenbank.RezepteVegetarischListe);
            // case "" -> String.valueOf(Datenbank.RezepteVeganListe);
           //  default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
-
-        Scanner s=new Scanner(new File("src/RezeptNormal.txt"));
-
-        while (s.hasNextLine().equals("proteine")) {
+        {
+            Scanner s = new Scanner(new File("src/RezeptNormal.txt"));
+        }
+        catch (FileNotFoundException e);
+        {
+            e.printStackTrace();
+        }
+        while (scan.hasNextLine().equals("proteine"))
+        {
            String proteine=scan.nextLine();
-           system.out.println(proteine);
-
+           System.out.println(proteine);
+           System.out.println(proteine.toUpperCase());
 
         }
         s.close();
     }
-    catch (
-    FileNotFoundException e) {
-    e.printStackTrace();
-}
 
+    }
 
             //return String.valueOf(Datenbank.RezepteVeganListe);
 
