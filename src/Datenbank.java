@@ -10,6 +10,7 @@ public class Datenbank implements Serializable {
 
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
+     * static weil : ...
      */
     static ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
     static ArrayList<Rezepte> RezepteNormalListe = new ArrayList<>();
@@ -31,9 +32,9 @@ public class Datenbank implements Serializable {
      * durchsucht die "UserListe" nach einer "UserID", wenn die "UserID" gefunden wurde sollen die Werte der Attribute
      * des entsprechenden Objekts geändert werden
      *
-     * @param UserID  durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
-     * @param newUser geänderte User-Daten eines Users
-     * @throws Exception wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
+     * @param UserID  Durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
+     * @param newUser Deänderte User-Daten eines Users
+     * @throws Exception Wirft Exception wenn "UserListe" die gesuchte "UserID" nicht enthält
      */
     public static void Userdaten_aendern(int UserID, UserDaten newUser) throws Exception {
         if (Datenbank.UserListe.size()>=UserID) {
@@ -48,10 +49,10 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * soll die "UserListe" nach einer "UserID" durchsuchen und returnen ob die "UserID" vorhanden ist oder nicht
+     * Soll die "UserListe" nach einer "UserID" durchsuchen und returnen ob die "UserID" vorhanden ist oder nicht
      *
-     * @param UserID durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
-     * @return returnt true wenn die "UserID" in der "UserListe" vorhanden ist, false wenn nicht
+     * @param UserID Durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
+     * @throws Exception Wirft eine Exception, wenn die "UserID" > "UserListen.size" ist
      */
     public static void UserID_exists(int UserID) throws Exception{
         if (UserListe.size()>=UserID) {
@@ -61,10 +62,10 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * soll aus der "UserListe" eine externe Datei machen (z.B ein .txt File, --> einfach editierbar und testbar)
+     * Soll aus der "UserListe" eine externe Datei machen (z.B ein .txt File, --> einfach editierbar und testbar)
      * Objekte würden dann Zeilenweise in das File geschrieben werden
      *
-     * @return returnt eine externe, abspeicherbare Datei
+     * @param UserListe "UserListe" mit enthaltenen "Userdaten" wird in eine externe .txt File geschrieben
      */
     public static void saveUserliste(ArrayList<UserDaten> UserListe) {
         try{
@@ -82,9 +83,9 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * soll das abgespeicherte (.txt) File in das Programm laden
+     * Soll das abgespeicherte (.txt) File in das Programm laden
      *
-     * @return returnt das abgespeicherte File
+     * @return Gibt die geladene "UserListe" aus der .txt File wieder
      */
 
     public static ArrayList<UserDaten> loadUserListe() {
@@ -104,9 +105,9 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * soll abgespeicherte normaleRezept-Datei aufrufen und in Programm laden
+     * Soll abgespeicherte normaleRezept-Datei aufrufen und in Programm laden
      *
-     * @return returnt normaleRezepteDatei
+     * @return Gibt die geladene .txt File der ArrayList "normaleRezepteDatei" wieder
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() {
         try {
@@ -123,9 +124,9 @@ public class Datenbank implements Serializable {
     }
 
     /**
-     * soll abgespeicherte vegetarischeRezept-Datei aufrufen und in Programm laden
+     * Soll abgespeicherte vegetarischeRezept-Datei aufrufen und in Programm laden
      *
-     * @return returnt vegetarischeRezeptDatei
+     * @return Gibt die geladene .txt File der ArrayList "RezepteVegetarischListe" wieder
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
         try {
@@ -143,9 +144,9 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * soll abgespeicherte veganeRezept-Datei aufrufen und in Programm laden
+     * Soll abgespeicherte veganeRezept-Datei aufrufen und in Programm laden
      *
-     * @return returnt veganeRezepteDatei
+     * @return Gibt die geladene .txt File der ArrayList "RezepteVeganListe" wieder
      */
     public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
         try {
