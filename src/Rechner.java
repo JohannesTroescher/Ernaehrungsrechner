@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class Rechner
 {
@@ -102,13 +105,32 @@ public class Rechner
      */
     public String Rezeptsortierung(int UserID) throws Exception
     {
-        return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
-            case "normal" -> String.valueOf(Datenbank.RezepteNormalListe);
-            case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
-            case "Vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
-            default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
-        };
+       // return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
+        //  case "proteine" -> String.valueOf(Datenbank.RezepteNormalListe);
+           // case "" -> String.valueOf(Datenbank.RezepteVegetarischListe);
+           // case "" -> String.valueOf(Datenbank.RezepteVeganListe);
+          //  default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
 
+        Scanner s=new Scanner(new File("src/RezeptNormal.txt"));
+
+        while (s.hasNextLine().equals("proteine")) {
+           String proteine=scan.nextLine();
+           system.out.println(proteine);
+
+
+        }
+        s.close();
+    }
+    catch (
+    FileNotFoundException e) {
+    e.printStackTrace();
+}
+        return RezepteNormalListe;
+
+            return String.valueOf(Datenbank.RezepteVeganListe);
+
+            else
+            throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
         //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
         //return "null";

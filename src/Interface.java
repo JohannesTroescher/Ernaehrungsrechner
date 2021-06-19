@@ -66,10 +66,18 @@ public class Interface {
         return UserID;
     }
 
-    public int User_änderung(int UserID) {
+    public void User_änderung(int UserID) {
 //geänderte User/null(wenn User nicht existiert)
 //Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
-        return UserID;
+        if(Datenbank.UserID_exists(UserID)!="null")
+        {
+            Datenbank.Userdaten_aendern(UserID, UserDaten newUser);
+        }
+        else
+    {
+
+    }
+
     }
 
 }
