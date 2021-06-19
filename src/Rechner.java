@@ -2,14 +2,14 @@
 public class Rechner
 {
     /**
-    /*Attribute
+     *Attribute
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
-    private String Rezeptsortierung;                     //List?
+    private String Rezeptsortierung;
 
     /**
-    /*Standartkonsturktor
+     *Standartkonsturktor
      */
     public Rechner()
     {
@@ -18,33 +18,67 @@ public class Rechner
     Rezeptsortierung="Null";
     }
     /**
-    /*Konstruktor
+     *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung)
     {
         this.Gesamtkalorien = Kalorienbedarf;
         this.Kalorienverbrauch = Kalorienverbrauch;
+        this.Rezeptsortierung = Rezeptsortierung;
     }
 
     /**
-    /* Set und Get Methode
+     * Set Methode
+     * @param neuKalorienverbrauch
      */
     public void setKalorienverbrauch(double neuKalorienverbrauch)
     {
         Kalorienverbrauch = neuKalorienverbrauch;
     }
+
+    /**
+     * Get Methode
+     * @return Kalorienverbrauch
+     */
     public double getKalorienverbrauch()
     {
       return Kalorienverbrauch;
     }
 
+    /**
+     * Set Methode
+     * @param neuKalorienbedarf
+     */
     public void setKalorienbedarf(double neuKalorienbedarf)
     {
         Gesamtkalorien = neuKalorienbedarf;
     }
+
+    /**
+     * Get Methode
+     * @return Gesamtkalorien
+     */
     public double getKalorienbedarf()
     {
         return Gesamtkalorien;
+    }
+
+    /**
+     * Set Methode
+     * @param neuRezeptsortierung
+     */
+    public void setRezeptsortierung(String neuRezeptsortierung)
+    {
+        Rezeptsortierung = neuRezeptsortierung;
+    }
+
+    /**
+     * Get Methode
+     * @return Rezeptsortierung
+     */
+    public String getRezeptsortierung()
+    {
+        return Rezeptsortierung;
     }
 
     /**                     Rechenoperation für Kalorien
@@ -60,12 +94,28 @@ public class Rechner
           throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
 
-    /**
-    /*Gesamtumsatz, Trainingsziel, Nahrungspräferenz, return: Liste, Funktionsweise: Gibt passendes Rezept aus
+    /**                       Rezeptsortieren um passendes Rezept auszugeben
+     /*@param                 Nahrungspräferenz, Trainingsziel, Gesamtumsatz des User
+     *@return                 Liste mit Rezepten
      */
-    public String Rezept_sortieren(int UserID)                   //Liste mit Rezepten?
+    public String Rezeptsortierung(String nahrungspraeferenz,double Gesamtkalorien,String Trainingsziel) throws Exception
     {
-        String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
+        if (nahrungspraeferenz.equals("normal"));
+
+        return String.valueOf(Datenbank.RezepteNormalListe);
+
+        else if(nahrungspraeferenz.equals("Vegetarisch"));
+
+        return String.valueOf(Datenbank.RezepteVegetarischListe);
+
+        else if (nahrungspraeferenz.equals("Vegan"));
+
+        return String.valueOf(Datenbank.RezepteVeganListe);
+
+        else
+        throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
+
+        // String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
         return "null";
     }

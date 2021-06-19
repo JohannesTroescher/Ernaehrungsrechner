@@ -9,7 +9,6 @@ public class Interface {
      *
      * @param Kalorien_sollwert Sollwert der Kalorien
      * @param Rezeptvorschläge Rezeptvorschläge aus externer Datei
-
      */
     public Interface(double Kalorien_sollwert,String Rezeptvorschläge) {
         this.Kalorien_sollwert = Kalorien_sollwert;
@@ -21,19 +20,31 @@ public class Interface {
      */
     public Interface() {
     }
-
+    /**
+     * Get Methode
+     * @return Rezeptvorschläge
+     */
     public String getRezeptvorschläge() {
         return Rezeptvorschläge;
     }
-
+    /**
+     * Set Methode
+     * @param rezeptvorschläge
+     */
     public void setRezeptvorschläge(String rezeptvorschläge) {
         Rezeptvorschläge = rezeptvorschläge;
     }
-
+    /**
+     * Get Methode
+     * @return Kalorien_sollwert
+     */
     public double getKalorien_sollwert() {
         return Kalorien_sollwert;
     }
-
+    /**
+     * Set Methode
+     * @param kalorien_sollwert
+     */
     public void setKalorien_sollwert(double kalorien_sollwert) {
         Kalorien_sollwert = kalorien_sollwert;
     }
