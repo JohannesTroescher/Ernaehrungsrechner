@@ -103,7 +103,7 @@ public class Rechner
 
         while (s.hasNextLine())
         {
-            if (s.hasNext("proteinhaltig"));
+            if (s.hasNext("proteinhaltig"))
             {
                 Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteNormalListe.add(normal);
@@ -125,7 +125,7 @@ public class Rechner
         }
 
         while (s.hasNextLine()) {
-            if (s.hasNext("proteinhaltig")) ;
+            if (s.hasNext("proteinhaltig"))
             {
                 Rezepte Vegetarisch = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
                 Datenbank.RezepteVegetarischListe.add(Vegetarisch);
@@ -147,7 +147,7 @@ public class Rechner
 
         while (s.hasNextLine())
         {
-            if (s.hasNext("proteinhaltig"));
+            if (s.hasNext("proteinhaltig"))
             {
                 Rezepte Vegan = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteVeganListe.add(Vegan);
