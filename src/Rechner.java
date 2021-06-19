@@ -103,38 +103,31 @@ public class Rechner
      /*@param                 Nahrungspräferenz
      *@return                 Liste mit Rezepten
      */
-    public String Rezeptsortierung(int UserID) throws Exception
-    {
-       // return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
-        //  case "proteine" -> String.valueOf(Datenbank.RezepteNormalListe);
-           // case "" -> String.valueOf(Datenbank.RezepteVegetarischListe);
-           // case "" -> String.valueOf(Datenbank.RezepteVeganListe);
-          //  default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
-        {
+    public String Rezeptsortierung(int UserID) throws Exception {
+        // return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
+        //  case "Normal" -> String.valueOf(Datenbank.RezepteNormalListe);
+        // case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
+        // case "Vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
+        //  default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
+        try {
             Scanner s = new Scanner(new File("src/RezeptNormal.txt"));
-        }
-        catch (FileNotFoundException e);
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        while (scan.hasNextLine().equals("proteine"))
-        {
-           String proteine=scan.nextLine();
-           System.out.println(proteine);
-           System.out.println(proteine.toUpperCase());
+        while (s.hasNextLine().equals("proteine")) {
+            String proteine = s.nextLine();
+            System.out.println(proteine);
+            System.out.println(proteine.toUpperCase());
 
         }
         s.close();
-    }
 
-    }
+        //return String.valueOf(Datenbank.RezepteVeganListe);
 
-            //return String.valueOf(Datenbank.RezepteVeganListe);
-
-            //else
-            //throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
+        //else
+        //throw new Exception ("Leider gibt es für Ihre Angaben kein Rezept!");
         //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
         //Rezeptsortierungs-blargh
-        //return "null";
+        //return "null";}
     }
 }
