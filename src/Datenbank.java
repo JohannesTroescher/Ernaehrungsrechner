@@ -83,7 +83,7 @@ public class Datenbank implements Serializable {
 
 
     /**
-     * Soll das abgespeicherte (.txt) File in das Programm laden
+     * Soll das abgespeicherte .txt File in das Programm laden
      *
      * @return Gibt die geladene "UserListe" aus der .txt File wieder
      */
