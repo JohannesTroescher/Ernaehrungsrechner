@@ -2,6 +2,8 @@
 public class Rezepte {
     /**
      * Klassenattribute der Klasse Rezept
+     * @author  J.Bamboschek und J.Hofmann
+     * @version 1.1
      */
     private String art="null";
     private double kalorien=0;
@@ -12,15 +14,11 @@ public class Rezepte {
      *                      Erzeugt Objekt der Klasse Rezept
      * @param art           Art des Rezepts
      * @param kalorien      Anzahl der Kalorien des Rezepts
-     * @param beschreibung
+     * @param beschreibung  Beschreibung des Rezeptes
      */
     public Rezepte(String art,String proteine, double kalorien, String beschreibung) {
 
-        try {
             this.setBeschreibung(beschreibung);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
         try {
             this.setArt(art);
         } catch (Exception e) {
@@ -46,7 +44,11 @@ public class Rezepte {
         this.Beschreibung="null";
         this.proteine="null";
     }
-@Override
+
+    /**             To-String-Methode
+     * @return      Gibt Attribute als String zurück
+     */
+    @Override
     public String toString(){
         return ":"+this.art + ": " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
 }
