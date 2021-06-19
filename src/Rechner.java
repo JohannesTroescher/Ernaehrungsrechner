@@ -89,7 +89,7 @@ public class Rechner
     }
 
     /**                       Rezeptsortieren um passendes Rezept auszugeben
-     /*@param                 Nahrungspräferenz
+     /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
      *@return                 Liste mit Rezepten
      */
     public ArrayList<Rezepte> Rezeptsortierung()
