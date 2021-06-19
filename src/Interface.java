@@ -81,7 +81,7 @@ public class Interface {
      * @return                                   geänderte UserID
      * @throws Exception                         Wirft Exception, wenn UserID nicht vorhanden
      */
-    public int User_änderung(int UserID) {
+    public int User_änderung(int UserID) throws Exception {
 if(UserID!=0)
         return UserID;
 else
