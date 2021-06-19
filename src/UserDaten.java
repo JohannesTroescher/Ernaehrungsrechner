@@ -64,6 +64,10 @@ public class UserDaten implements Serializable {
         counter=counter+1;
 
     }
+
+    /**             To-String Methode
+     * @return      Gibt Attribute als String zurück
+     */
     @Override
     public String toString(){
         return "User: " + this.getName() + ", " + this.getAlter()+ " Jahre" + ", "+ this.getKoerpergroesse()+ "cm" + ", "+ this.getGeschlecht() + ", "+ this.getTrainingsziel() + ", "+ "Nahrungspraeferenz: "+ this.getNahrungspraeferenz() + ", "+ this.getGewicht()+ "kg";
@@ -82,9 +86,7 @@ public class UserDaten implements Serializable {
         this.gewicht=0;
         UserID=counter;
         counter=counter+1;
-
     }
-
     /**             Get-Methode für den Namen
      * @return      gibt den Namen zurück
      */
@@ -241,6 +243,15 @@ public class UserDaten implements Serializable {
         return UserID;
     }
 
+    /**                     Set-Methode für User-ID
+     *                      Setzt das Attribut "UserID" auf den gewünschten Wert
+     *                      Wird benötigt, damit bei Änderung eines Users seine alte User-ID beibehalten
+     *                      werden kann, sowie der counter wieder reduziert wird, da bei jeder "Änderung"
+     *                      eines Users ein neuer User erstellt wird, und der Speicherplatz des alten Users
+     *                      innerhalb der Datenbank überschrieben wird (vgl. Datenbank "UserDaten_aendern")
+     * @param UserID        Gewünschter Wert
+     * @throws Exception    Wirft Exception, bei Eingabe von negativen Zahlenwerten
+     */
     public void setUserID(int UserID)throws Exception{
         if(UserID>=0) {
             this.UserID = UserID;
