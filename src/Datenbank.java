@@ -10,7 +10,11 @@ public class Datenbank implements Serializable {
 
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
-     * static weil : ...
+     * Arraylist "RezepteNormalListe" wird erstellt um sie später mit Rezepten aus RezepteNormal-Datei zu befüllen
+     * Arraylist "RezepteVegetarischListe" wird erstellt um sie später mit Rezepten aus RezepteVegetarisch-Datei zu befüllen
+     * Arraylist "RezepteVeganListe" wird erstellt um sie später mit Rezepten aus RezepteVegan-Datei zu befüllen
+     *
+     * static weil :
      */
     static ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
     static ArrayList<Rezepte> RezepteNormalListe = new ArrayList<>();
