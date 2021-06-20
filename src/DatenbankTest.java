@@ -122,11 +122,27 @@ public class DatenbankTest {
     @Test
     @Order(13)
     void UserListespeicheroperationen_positiv()throws Exception{
+        UserDaten Nutzera = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzerb = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        Datenbank.Userdaten_einlesen(Nutzera);
+        Datenbank.Userdaten_einlesen(Nutzerb);
+        Datenbank.saveUserListe(Datenbank.UserListe);
+        Datenbank.loadUserListe();
+        assertEquals(Datenbank.UserListe.get(Nutzera.getUserID()).getName(),Nutzera.getName());
+        assertEquals(Datenbank.UserListe.get(Nutzera.getUserID()).getUserID(),0);
 
     }
     @Test
     @Order(14)
     void UserListespeicheroperationen_negativ()throws Exception{
+        UserDaten Nutzerc = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzerd = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        Datenbank.Userdaten_einlesen(Nutzerc);
+        Datenbank.Userdaten_einlesen(Nutzerd);
+        Datenbank.saveUserListe(Datenbank.UserListe);
+        Datenbank.loadUserListe();
+        assertNotEquals(Datenbank.UserListe.get(Nutzerc.getUserID()).getName(),"Wolfgang");
+        assertNotEquals(Datenbank.UserListe.get(Nutzerd.getUserID()).getUserID(),1);
 
     }
 }

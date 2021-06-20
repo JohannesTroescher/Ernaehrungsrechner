@@ -79,7 +79,7 @@ public class Datenbank implements Serializable {
      *
      * @param UserListe "UserListe" mit enthaltenen "Userdaten"
      */
-    public static void saveUserListe(ArrayList<UserDaten> UserListe) {
+    public static void saveUserListe(ArrayList<UserDaten> UserListe){
         try{
             FileOutputStream writeData = new FileOutputStream("Datenbank");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
