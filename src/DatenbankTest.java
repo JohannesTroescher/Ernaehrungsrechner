@@ -65,4 +65,68 @@ public class DatenbankTest {
             Datenbank.UserID_exists(-1);
         });
     }
+    @Test
+    @Order(7)
+    void Rezepte_Dateiaufruf_normal_positiv()throws Exception{
+        Datenbank.Rezepte_dateiaufruf_normal();
+        assertEquals(Datenbank.RezepteNormalListe.get(0).getKalorien(),540.0);
+        assertEquals(Datenbank.RezepteNormalListe.get(1).getProteine(),"proteinarm");
+        assertEquals(Datenbank.RezepteNormalListe.get(2).getBeschreibung()," Salamander");
+
+    }
+    @Test
+    @Order(8)
+    void Rezepte_Dateiaufruf_normal_negativ()throws Exception{
+        Datenbank.Rezepte_dateiaufruf_normal();
+        assertNotEquals(Datenbank.RezepteNormalListe.get(0).getKalorien(),840.0);
+        assertNotEquals(Datenbank.RezepteNormalListe.get(1).getProteine(),"protenarm");
+        assertNotEquals(Datenbank.RezepteNormalListe.get(2).getBeschreibung()," Salamaner");
+
+    }
+    @Test
+    @Order(9)
+    void Rezepte_Dateiaufruf_vegeta_positiv()throws Exception{
+        Datenbank.Rezepte_dateiaufruf_vegetarisch();
+        assertEquals(Datenbank.RezepteVegetarischListe.get(0).getKalorien(),88);
+        assertEquals(Datenbank.RezepteVegetarischListe.get(1).getProteine(),"proteinarm");
+        assertEquals(Datenbank.RezepteVegetarischListe.get(2).getBeschreibung()," Gras");
+
+    }
+    @Test
+    @Order(10)
+    void Rezepte_Dateiaufruf_vegeta_negativ()throws Exception{
+        Datenbank.Rezepte_dateiaufruf_vegetarisch();
+        assertNotEquals(Datenbank.RezepteVegetarischListe.get(0).getKalorien(),56);
+        assertNotEquals(Datenbank.RezepteVegetarischListe.get(1).getProteine(),"protenarm");
+        assertNotEquals(Datenbank.RezepteVegetarischListe.get(2).getBeschreibung()," Salamaner");
+
+    }
+    @Test
+    @Order(11)
+    void Rezepte_Dateiaufruf_vega_positiv()throws Exception{
+        Datenbank.Rezepte_dateiaufruf_vegan();
+        assertEquals(Datenbank.RezepteVeganListe.get(0).getKalorien(),8);
+        assertEquals(Datenbank.RezepteVeganListe.get(1).getProteine(),"proteinarm");
+        assertEquals(Datenbank.RezepteVeganListe.get(2).getBeschreibung()," Erde");
+
+    }
+    @Test
+    @Order(12)
+    void Rezepte_Dateiaufruf_vega_negativ()throws Exception{
+        Datenbank.Rezepte_dateiaufruf_vegan();
+        assertNotEquals(Datenbank.RezepteVeganListe.get(0).getKalorien(),56);
+        assertNotEquals(Datenbank.RezepteVeganListe.get(1).getProteine(),"protenarm");
+        assertNotEquals(Datenbank.RezepteVeganListe.get(2).getBeschreibung()," Salamaner");
+
+    }
+    @Test
+    @Order(13)
+    void UserListespeicheroperationen_positiv()throws Exception{
+
+    }
+    @Test
+    @Order(14)
+    void UserListespeicheroperationen_negativ()throws Exception{
+
+    }
 }
