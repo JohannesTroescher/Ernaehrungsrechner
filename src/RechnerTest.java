@@ -66,17 +66,19 @@ class RechnerTest {
         assertNotEquals(testRechner.Rechneroperation(testuser1.getUserID()),500);
     }
 
-    //@Test
-    //@Order(7)
-    //void rezept_sortieren() {
-     //   Rechner test= new Rechner(800,800);
-      //  assertEquals(test.Rezeptsortierung(),Datenbank.RezepteNormalListe.get(0));
-       // assertEquals(test.RezeptsortierungVegetarisch(),Datenbank.RezepteVegetarischListe.get(0));
-        //assertEquals(test.RezeptsortierungVegan(),Datenbank.RezepteVeganListe.get(0));
+    @Test
+    @Order(7)
+    void rezept_sortieren() throws Exception {
+        Rechner test= new Rechner(800,800);
+        test.Rezeptsortierung();
+        test.RezeptsortierungVegetarisch();
+        test.RezeptsortierungVegan();
+        assertEquals(Datenbank.RezepteNormalListe.get(0).getKalorien(),540);
+        assertEquals(Datenbank.RezepteNormalListe.get(1).getKalorien(),485.1);
     //}
 
-    @Test
-    @Order(8)
-    void grundbedarf() {
+    //@Test
+    //@Order(8)
+    //void grundbedarf() {
     }
 }
