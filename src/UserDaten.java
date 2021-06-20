@@ -26,7 +26,7 @@ public class UserDaten implements Serializable {
      * @param nahrung       Gewünsche Nahrungsart: ["normal", "vegetarisch", "vegan"]
      * @param gewicht       Gewicht Alter des Nutzers [kg]
      */
-    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
+    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht){
         this.setName(name);
         try {
             this.setAlter(alter);

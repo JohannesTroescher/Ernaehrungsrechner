@@ -74,6 +74,7 @@ public class Interface {
             Datenbank.UserListe.add(User);
         }catch (Exception e) {
             e.printStackTrace();
+
         }
     }
 
