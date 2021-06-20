@@ -100,4 +100,27 @@ public class InterfaceTest {
         assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getNahrungspraeferenz(),"normal");
         assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getGewicht(),80);
     }
+    @Test
+    @Order(8)
+    void User_aufruf_positiv() throws Exception {
+        Interface testat = new Interface(500,"Test-Rezept");
+        UserDaten neu=new UserDaten();
+        UserDaten neu2=new UserDaten();
+        UserDaten neu3=new UserDaten();
+        Datenbank.Userdaten_einlesen(neu);
+        Datenbank.Userdaten_einlesen(neu2);
+        Datenbank.Userdaten_einlesen(neu3);
+        assertEquals(testat.User_aufruf(neu.getUserID()),neu);
+        assertEquals(testat.User_aufruf(neu2.getUserID()),neu2);
+        assertEquals(testat.User_aufruf(neu3.getUserID()),neu3);
+    }
+    @Test
+    @Order(8)
+    void User_aufruf_negativ(){
+        assertThrows(Exception.class, () -> {
+           Interface testat=new Interface();
+           testat.User_aufruf(-1);
+           testat.User_aufruf(99);
+        });
+    }
 }
