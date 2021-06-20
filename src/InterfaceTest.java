@@ -76,7 +76,12 @@ public class InterfaceTest {
         assertThrows(Exception.class, () -> {
             Interface test3= new Interface(500,"Test");
             test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", 60.6);
-            });
+            test3.User_erstellen("Walter", 30, -180, "weiblich", "abnehmen", "normal", 60.6);
+            test3.User_erstellen("Walter", 30, 180, "Fliese", "abnehmen", "normal", 60.6);
+            test3.User_erstellen("Walter", 30, 180, "weiblich", "PUMPEN", "normal", 60.6);
+            test3.User_erstellen("Walter", 30, 180, "weiblich", "abnehmen", "steine", 60.6);
+            test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", -60.6);
+        });
     }
     @Test
     @Order(7)

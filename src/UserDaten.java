@@ -28,40 +28,16 @@ public class UserDaten implements Serializable {
      */
     public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht)throws Exception{
         this.setName(name);
-        //try {
-            this.setAlter(alter);
-        //}catch(Exception e) {
-          //  e.printStackTrace();
-        //}
-        try {
-            this.setKoerpergroesse(groesse);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            this.setGeschlecht(geschlecht);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            this.setTrainingsziel(training);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-        try{
-            this.setGewicht(gewicht);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+        this.setAlter(alter);
+        this.setKoerpergroesse(groesse);
+        this.setGeschlecht(geschlecht);
+        this.setTrainingsziel(training);
+        this.setGewicht(gewicht);
         if(geschlecht.equalsIgnoreCase("männlich"))
             this.grundbedarf=Math.round(66.47+13.7*gewicht+5*groesse-6.8*alter);
         else if(geschlecht.equalsIgnoreCase("weiblich"))
             this.grundbedarf=Math.round(655.1+9.6*gewicht+1.8*groesse-4.7*alter);
-        try {
-            this.setNahrungspraeferenz(nahrung);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
+        this.setNahrungspraeferenz(nahrung);
         UserID=counter;
         counter=counter+1;
 

@@ -33,14 +33,14 @@ class RechnerTest {
         assertEquals(test.getKalorienbedarf(),500);
     }
 
-    //@Test
-    //@Order(4)
-    //void Kalorienbedarf_negativ() throws Exception{
-     //   assertThrows(Exception.class,()->{
-       //     Rechner test = new Rechner();
-         //   test.setKalorienbedarf(-10);
-        //});
-    //}
+    @Test
+    @Order(4)
+    void Kalorienbedarf_negativ() throws Exception{
+        assertThrows(Exception.class,()->{
+            Rechner test = new Rechner();
+            test.setKalorienbedarf(-10);
+        });
+    }
 
 
     @Test
