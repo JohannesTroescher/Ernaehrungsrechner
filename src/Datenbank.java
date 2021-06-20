@@ -121,7 +121,7 @@ public class Datenbank implements Serializable {
      *
      * @return returnt RezepteNormalListe
      */
-    public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() {
+    public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() throws Exception{
         try {
             Scanner s = new Scanner(new File("src/RezepteNormal.txt"));
             while (s.hasNextLine()) {
@@ -140,7 +140,7 @@ public class Datenbank implements Serializable {
      *
      * @return returnt RezepteVegetarischListe
      */
-    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
+    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() throws Exception{
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
             while (s.hasNextLine()) {
@@ -160,7 +160,7 @@ public class Datenbank implements Serializable {
      *
      * @return returnt RezepteVeganListe
      */
-    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
+    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() throws Exception{
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
             while (s.hasNextLine()) {

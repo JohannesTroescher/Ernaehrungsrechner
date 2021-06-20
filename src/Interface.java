@@ -105,10 +105,13 @@ public class Interface {
      * @return geänderte UserID
      * @throws Exception Wirft Exception, wenn UserID nicht vorhanden
      */
-   // public int User_änderung() throws Exception {
-     // if (Datenbank.UserListe.get(UserID) != 0) {
+    public void User_aenderung(int UserID,String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) throws Exception {
+        try {
+            UserDaten newuser = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
+            Datenbank.Userdaten_aendern(UserID, newuser);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+     }
 
-      //} else
-       //  throw new Exception("UserID existiert nicht");
-    //}
 }

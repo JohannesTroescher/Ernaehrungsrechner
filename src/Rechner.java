@@ -92,7 +92,7 @@ public class Rechner
      /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
      *@return                 Liste mit Rezepten
      */
-    public ArrayList<Rezepte> Rezeptsortierung()
+    public ArrayList<Rezepte> Rezeptsortierung() throws Exception
     {
         Scanner s = null;
         try {
@@ -116,7 +116,7 @@ public class Rechner
         return Datenbank.RezepteNormalListe;
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegetarisch()
+    public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception
     {
         Scanner s = null;
         try {
@@ -137,7 +137,7 @@ public class Rechner
         return Datenbank.RezepteVegetarischListe;
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegan()
+    public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception
     {
         Scanner s = null;
         try {

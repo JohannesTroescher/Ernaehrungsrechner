@@ -1,15 +1,20 @@
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.TestMethodOrder;
 import static org.junit.jupiter.api.Assertions.*;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class InterfaceTest {
     @Test
+    @Order(1)
     void Rezeptvorschläge_positiv() {
         Interface test = new Interface(800,"Test-Rezept");
         assertEquals(test.getRezeptvorschläge(),"Test-Rezept");
         test.setRezeptvorschläge("Rezept");
         assertEquals(test.getRezeptvorschläge(),"Rezept");
     }
+    @Order(2)
     @Test
     void Rezeptvorschläge_negativ() {
         Interface test = new Interface(500,"Test-Rezept");
@@ -18,6 +23,7 @@ public class InterfaceTest {
         assertNotEquals(test.getRezeptvorschläge(),"Test");
     }
     @Test
+    @Order(3)
     void Kaloriensollwert_positiv(){
         Interface test = new Interface(800,"Test-Rezept");
         assertEquals(test.getKalorien_sollwert(),800);
@@ -25,12 +31,14 @@ public class InterfaceTest {
         assertEquals(test.getKalorien_sollwert(),500);
     }
     @Test
+    @Order(4)
     void Kaloriensollwert_negativ(){
         Interface test = new Interface(500,"Test-Rezept");
         assertNotEquals(test.getKalorien_sollwert(),800);
         test.setKalorien_sollwert(800);
         assertNotEquals(test.getKalorien_sollwert(),900);
     }
+    @Order(5)
     @Test
     void UserErstellen_positiv()throws Exception{
         Interface test = new Interface(800,"Test-Rezept");
@@ -51,6 +59,7 @@ public class InterfaceTest {
         assertEquals(Datenbank.UserListe.get(5).getGrundbedarf(),1420);
     }
     @Test
+    @Order(6)
     void UserErstellen_negativ()throws Exception{
         Interface test2 = new Interface(800,"Test-Rezept");
         test2.User_erstellen("Walter",30,180,"weiblich","abnehmen","normal",60.6);
@@ -68,5 +77,22 @@ public class InterfaceTest {
             Interface test3= new Interface(500,"Test");
             test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", 60.6);
             });
+    }
+    @Test
+    @Order(7)
+    void User_aenderung_positiv() throws Exception {
+        Interface test4= new Interface(4,"Bla");
+        UserDaten Nutzerx = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzery = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        Datenbank.Userdaten_einlesen(Nutzerx);
+        Datenbank.Userdaten_einlesen(Nutzery);
+        test4.User_aenderung(Nutzerx.getUserID(),"Frieder",35,180,"männlich","muskelaufbau","normal",80);
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getName(),"Frieder");
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getAlter(),35);
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getKoerpergroesse(),180);
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getGeschlecht(),"männlich");
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getTrainingsziel(),"muskelaufbau");
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getNahrungspraeferenz(),"normal");
+        assertEquals(Datenbank.UserListe.get(Nutzerx.getUserID()).getGewicht(),80);
     }
 }
