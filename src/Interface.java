@@ -68,14 +68,14 @@ public class Interface {
      * @param gewicht    Körpergewicht des Benutzers
      * @return User
      */
-    public void User_erstellen(String name, int alter, double groesse, String geschlecht, String training, String nahrung, double gewicht) {
-        try {
+    public void User_erstellen(String name, int alter, double groesse, String geschlecht, String training, String nahrung, double gewicht) throws Exception {
+        //try {
             UserDaten User = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
-            Datenbank.UserListe.add(User);
-        }catch (Exception e) {
-            e.printStackTrace();
+            Datenbank.Userdaten_einlesen(User);
+        //} catch (Exception e) {
+         //   e.printStackTrace();
 
-        }
+        //}
     }
 
     /**

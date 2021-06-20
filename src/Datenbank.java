@@ -66,10 +66,10 @@ public class Datenbank implements Serializable {
      * @param UserID Durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
      * @throws Exception Wirft eine Exception, wenn die "UserID" > "UserListen.size" ist
      */
-    public static void UserID_exists(int UserID) throws Exception{
+    public static int UserID_exists(int UserID) throws Exception{
         if (UserListe.size()>=UserID) {
-
-        } else throw new Exception("gibts nicht");
+            return UserID;
+        } else throw new Exception("UserID existiert nicht!");
     }
 
 

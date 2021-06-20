@@ -26,13 +26,13 @@ public class UserDaten implements Serializable {
      * @param nahrung       Gewünsche Nahrungsart: ["normal", "vegetarisch", "vegan"]
      * @param gewicht       Gewicht Alter des Nutzers [kg]
      */
-    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht){
+    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht)throws Exception{
         this.setName(name);
-        try {
+        //try {
             this.setAlter(alter);
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
+        //}catch(Exception e) {
+          //  e.printStackTrace();
+        //}
         try {
             this.setKoerpergroesse(groesse);
         }catch(Exception e) {

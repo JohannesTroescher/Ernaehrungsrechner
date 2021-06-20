@@ -140,7 +140,7 @@ class UserDatenTest {
 
 
     @Test
-    void Gesamttest(){
+    void Gesamttest()throws Exception{
         UserDaten test18 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",85);
         assertEquals(test18.getName(),"Manfred Müller");
         assertEquals(test18.getAlter(),45);

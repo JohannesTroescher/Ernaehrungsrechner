@@ -32,10 +32,9 @@ public class InterfaceTest {
         assertNotEquals(test.getKalorien_sollwert(),900);
     }
     @Test
-    void UserErstellen_positiv(){
+    void UserErstellen_positiv()throws Exception{
         Interface test = new Interface(800,"Test-Rezept");
-        test.User_erstellen("Günther",30,180,"männlich","abnehmen","normal",60.6);
-        test.User_erstellen("Frieder",80,180,"männlich","abnehmen","normal",60.6);
+        test.User_erstellen("Günther", 30, 180, "männlich", "abnehmen", "normal", 60.6);test.User_erstellen("Frieder",80,180,"männlich","abnehmen","normal",60.6);
         test.User_erstellen("Rüdiger",34,180,"männlich","abnehmen","normal",60.6);
         test.User_erstellen("Heinz",50,180,"männlich","abnehmen","normal",60.6);
 
@@ -67,7 +66,7 @@ public class InterfaceTest {
         assertNotEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1447.5);
         assertThrows(Exception.class, () -> {
             Interface test3= new Interface(500,"Test");
-            test3.User_erstellen("Walter",-30,180,"weiblich","abnehmen","normal",60.6);
-        });
+            test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", 60.6);
+            });
     }
 }

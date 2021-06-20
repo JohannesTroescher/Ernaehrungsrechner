@@ -107,6 +107,7 @@ public class Rechner
             {
                 Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteNormalListe.add(normal);
+
             }
 
             s.close();

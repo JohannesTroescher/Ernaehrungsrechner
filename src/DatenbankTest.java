@@ -1,43 +1,68 @@
-import java.io.IOException;
-import java.io.Serializable;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
-import java.util.Date;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
-public class DatenbankTest implements Serializable {
 
-    public static void main(String[] args) throws Exception {
+public class DatenbankTest {
 
+    @Test
+    @Order(1)
+    void UserDaten_einlesen_positiv()throws Exception{
         UserDaten Nutzer1 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
         UserDaten Nutzer2 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
-        UserDaten Nutzer3 = new UserDaten("Udo",15,280.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzer4 = new UserDaten("Rollo",75,480.1,"männlich","Muskelaufbau","normal",65.2);
-        UserDaten Nutzer5 = new UserDaten("Rowe",35,580.1,"männlich","Muskelaufbau","normal",85.2);
-        UserDaten newUser = new UserDaten("DeineMudda",100,480.1,"weiblich","Muskelaufbau","normal",185.2);
         Datenbank.Userdaten_einlesen(Nutzer1);
         Datenbank.Userdaten_einlesen(Nutzer2);
+        assertEquals(Datenbank.UserListe.get(Nutzer1.getUserID()),Nutzer1);
+        assertEquals(Datenbank.UserListe.get(Nutzer2.getUserID()),Nutzer2);
+    }
+    @Test
+    @Order(2)
+    void UserDaten_einlesen_negativ()throws Exception{
+        UserDaten Nutzer3 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzer4 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
         Datenbank.Userdaten_einlesen(Nutzer3);
         Datenbank.Userdaten_einlesen(Nutzer4);
-        Datenbank.Userdaten_einlesen(Nutzer5);
-        Datenbank.saveUserListe(Datenbank.UserListe);
-        ArrayList<UserDaten>TempListe=Datenbank.loadUserListe();
-        ArrayList<UserDaten>TestListe = new ArrayList<>();
-        //UserDaten neuernutzer=new UserDaten("Moritz", 34,187.2,"männlich","Muskelaufbau","normal", 67.5);
-        //TestListe.add(neuernutzer);
-        //System.out.println(TestListe.indexOf(neuernutzer));
-        //System.out.println(Nutzer2.getUserID());
-        Datenbank.Rezepte_dateiaufruf_normal();
-        System.out.println(Datenbank.RezepteNormalListe);
-       //Datenbank.UserID_exists(1);
-       //int index = Datenbank.UserListe.indexOf(Nutzer1);
-        //System.out.println(TempListe.contains(Nutzer1));
-        //System.out.println(index);
-        //System.out.println(Datenbank.lookUpUser(Nutzer2));
-        //Datenbank.Userdaten_aendern(2, newUser);
-        //System.out.println(TempListe);
-        //System.out.println(Datenbank.Rezepte_dateiaufruf_normal());
-        //Datenbank.Rezepte_dateiaufruf_normal();
-        //System.out.println(Datenbank.RezepteNormalListe.get(0));
-
+        assertNotEquals(Datenbank.UserListe.get(1),Nutzer3);
+        assertNotEquals(Datenbank.UserListe.get(0),Nutzer4);
+        assertNotEquals(UserDaten.counter,-1);
     }
-
+    @Test
+    @Order(3)
+    void UserDaten_aendern_positiv()throws Exception{
+        UserDaten Nutzer5 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzer6 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
+        Datenbank.Userdaten_einlesen(Nutzer5);
+        Datenbank.Userdaten_einlesen(Nutzer6);
+        Datenbank.Userdaten_aendern(0,Nutzer5);
+        assertEquals(Datenbank.UserListe.get(5),Nutzer6);
+        assertEquals(UserDaten.counter,5);
+    }
+    @Test
+    @Order(4)
+    void UserDaten_aendern_negativ()throws Exception{
+        UserDaten Nutzer7 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        UserDaten Nutzer8 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
+        Datenbank.Userdaten_einlesen(Nutzer7);
+        Datenbank.Userdaten_einlesen(Nutzer8);
+        Datenbank.Userdaten_aendern(0,Nutzer7);
+        assertNotEquals(Datenbank.UserListe.get(0),Nutzer8);
+        assertNotEquals(UserDaten.counter,5);
+    }
+    @Test
+    @Order(5)
+    void UserID_exists_positiv()throws Exception{
+        assertEquals(Datenbank.UserID_exists(3),3);
+    }
+    @Test
+    @Order(6)
+    void UserID_exists_negativ()throws Exception{
+        assertThrows(Exception.class,()->{
+            Datenbank.UserID_exists(25);
+            Datenbank.UserID_exists(-1);
+        });
+    }
 }

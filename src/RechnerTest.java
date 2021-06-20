@@ -60,6 +60,10 @@ class RechnerTest {
 
     @Test
     void rezept_sortieren() {
+        Rechner test= new Rechner(800,800);
+        assertEquals(test.Rezeptsortierung(),Datenbank.RezepteNormalListe.get(0));
+        assertEquals(test.RezeptsortierungVegetarisch(),Datenbank.RezepteVegetarischListe.get(0));
+        assertEquals(test.RezeptsortierungVegan(),Datenbank.RezepteVeganListe.get(0));
     }
 
     @Test
