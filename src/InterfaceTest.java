@@ -15,7 +15,7 @@ public class InterfaceTest {
         Interface test = new Interface(500,"Test-Rezept");
         assertNotEquals(test.getRezeptvorschläge(),"Rezept");
         test.setRezeptvorschläge("Rezept");
-        assertEquals(test.getRezeptvorschläge(),"Test");
+        assertNotEquals(test.getRezeptvorschläge(),"Test");
     }
     @Test
     void Kaloriensollwert_positiv(){
@@ -29,35 +29,39 @@ public class InterfaceTest {
         Interface test = new Interface(500,"Test-Rezept");
         assertNotEquals(test.getKalorien_sollwert(),800);
         test.setKalorien_sollwert(800);
-        assertEquals(test.getKalorien_sollwert(),900);
+        assertNotEquals(test.getKalorien_sollwert(),900);
     }
     @Test
     void UserErstellen_positiv(){
         Interface test = new Interface(800,"Test-Rezept");
-        UserDaten a=test.User_erstellen("Walter",30,180,"männlich","abnehmen","normal",60.6);
-        assertEquals(a.getName(),"Walter");
-        assertEquals(a.getAlter(),30);
-        assertEquals(a.getKoerpergroesse(),180);
-        assertEquals(a.getGeschlecht(),"mÄnnlich");
-        assertEquals(a.getTrainingsziel(),"AbnEhmen");
-        assertEquals(a.getNahrungspraeferenz(),"normAl");
-        assertEquals(a.getGewicht(),60.6);
-        assertEquals(a.getGrundbedarf(),1447.5);
+        test.User_erstellen("Walter",30,180,"männlich","abnehmen","normal",60.6);
+        test.User_erstellen("Waltraud",30,180,"weiblich","abnehmen","normal",60.6);
+        assertEquals(Datenbank.UserListe.get(0).getName(),"Walter");
+        assertEquals(Datenbank.UserListe.get(0).getAlter(),30);
+        assertEquals(Datenbank.UserListe.get(0).getKoerpergroesse(),180);
+        assertEquals(Datenbank.UserListe.get(0).getGeschlecht(),"männlich");
+        assertEquals(Datenbank.UserListe.get(0).getTrainingsziel(),"abnehmen");
+        assertEquals(Datenbank.UserListe.get(0).getNahrungspraeferenz(),"normal");
+        assertEquals(Datenbank.UserListe.get(0).getGewicht(),60.6);
+        assertEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1593);
+        assertEquals(Datenbank.UserListe.get(1).getGrundbedarf(),1420);
     }
     @Test
     void UserErstellen_negativ(){
         Interface test2 = new Interface(800,"Test-Rezept");
-        UserDaten b=test2.User_erstellen("Walter",30,180,"weiblich","abnehmen","normal",60.6);
-        assertNotEquals(b.getName(),"Richter");
-        assertNotEquals(b.getAlter(),45);
-        assertNotEquals(b.getKoerpergroesse(),18);
-        assertNotEquals(b.getGeschlecht(),"mÄnnlic");
-        assertNotEquals(b.getTrainingsziel(),"Kör");
-        assertNotEquals(b.getNahrungspraeferenz(),"brot");
-        assertNotEquals(b.getGewicht(),60);
-        assertNotEquals(b.getGrundbedarf(),1447.5);
+        test2.User_erstellen("Walter",30,180,"weiblich","abnehmen","normal",60.6);
+        test2.User_erstellen("Marianne",30,180,"weiblich","abnehmen","normal",60.6);
+        assertNotEquals(Datenbank.UserListe.get(Datenbank.UserListe.get(0).getUserID()).getName(),"Richter");
+        assertNotEquals(Datenbank.UserListe.get(0).getAlter(),45);
+        assertNotEquals(Datenbank.UserListe.get(0).getKoerpergroesse(),18);
+        assertNotEquals(Datenbank.UserListe.get(0).getGeschlecht(),"männlic");
+        assertNotEquals(Datenbank.UserListe.get(0).getTrainingsziel(),"Kör");
+        assertNotEquals(Datenbank.UserListe.get(0).getNahrungspraeferenz(),"brot");
+        assertNotEquals(Datenbank.UserListe.get(0).getGewicht(),60);
+        assertNotEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1447.5);
+        assertNotEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1447.5);
         assertThrows(Exception.class, () ->{
-            UserDaten a=test2.User_erstellen("Walter",-30,180,"weiblich","abnehmen","normal",60.6);
+           test2.User_erstellen("Walter",-30,180,"weiblich","abnehmen","normal",60.6);
         });
     }
 }

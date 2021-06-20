@@ -68,10 +68,13 @@ public class Interface {
      * @param gewicht    Körpergewicht des Benutzers
      * @return User
      */
-    public UserDaten User_erstellen(String name, int alter, double groesse, String geschlecht, String training, String nahrung, double gewicht) {
-//Erstellt einen neuen User//konstruktor aufrufen
-        UserDaten User = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
-        return User;
+    public void User_erstellen(String name, int alter, double groesse, String geschlecht, String training, String nahrung, double gewicht) {
+        try {
+            UserDaten User = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
+            Datenbank.UserListe.add(User);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -87,9 +90,11 @@ public class Interface {
      * @param UserID UserID des "Users"
      * @return UserID
      */
-    public int User_aufruf(int UserID) {
-        UserID = Datenbank.UserListe.get(UserID);
-        return UserID;
+    public UserDaten User_aufruf(int UserID) throws Exception {
+        if (Datenbank.UserListe.size()>=UserID)
+            return Datenbank.UserListe.get(UserID);
+        else
+            throw new Exception ("Der gewünschte User existiert nicht!");
     }
 
     /**
@@ -99,11 +104,10 @@ public class Interface {
      * @return geänderte UserID
      * @throws Exception Wirft Exception, wenn UserID nicht vorhanden
      */
-    public int User_änderung() throws Exception {
-      //  if (Datenbank.UserListe.get(UserID) != 0) {
+   // public int User_änderung() throws Exception {
+     // if (Datenbank.UserListe.get(UserID) != 0) {
 
-      //  } else
-        //    throw new Exception("UserID existiert nicht");
-       // return UserID;
-    }
+      //} else
+       //  throw new Exception("UserID existiert nicht");
+    //}
 }

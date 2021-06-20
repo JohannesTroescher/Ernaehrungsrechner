@@ -54,9 +54,9 @@ public class UserDaten implements Serializable {
             e.printStackTrace();
         }
         if(geschlecht.equalsIgnoreCase("männlich"))
-            this.grundbedarf=66.47+13.7*gewicht+5*groesse-6.8*alter;
+            this.grundbedarf=Math.round(66.47+13.7*gewicht+5*groesse-6.8*alter);
         else if(geschlecht.equalsIgnoreCase("weiblich"))
-            this.grundbedarf=655.1+9.6*gewicht+1.8*groesse-4.7*alter;
+            this.grundbedarf=Math.round(655.1+9.6*gewicht+1.8*groesse-4.7*alter);
         try {
             this.setNahrungspraeferenz(nahrung);
         }catch(Exception e) {
