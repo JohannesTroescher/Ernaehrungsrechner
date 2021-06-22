@@ -1,3 +1,3 @@
-Vegetarisch proteinhaltig 88 Kuchen
-Vegetarisch proteinarm 42 Brot
-Vegetarisch proteinhaltig 485.1 Gras
+Vegetarisch proteinhaltig 1500 Kuchen
+Vegetarisch proteinarm 1000 Brot
+Vegetarisch proteinhaltig 500 Gras
