@@ -30,10 +30,9 @@ public class Rechner
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
-    {
-        this.Gesamtkalorien = Kalorienbedarf;
-        this.Kalorienverbrauch = Kalorienverbrauch;
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch) throws Exception {
+        this.setKalorienverbrauch(Kalorienverbrauch);
+        this.setKalorienbedarf(Kalorienbedarf);
 
     }
 
@@ -41,9 +40,10 @@ public class Rechner
      *                                                  Set Methode für den Kalorienverbrauch
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
-    public void setKalorienverbrauch(double neuKalorienverbrauch)
-    {
-        Kalorienverbrauch = neuKalorienverbrauch;
+    public void setKalorienverbrauch(double neuKalorienverbrauch) throws Exception{
+        if(neuKalorienverbrauch>0)
+            Kalorienverbrauch = neuKalorienverbrauch;
+        else throw new Exception ("Bitte wählen Sie einen gültigen Kalorienverbrauch!");
     }
 
     /**
@@ -60,9 +60,10 @@ public class Rechner
      *                                                  Set Methode für den Kalorienbedarf
      * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
      */
-    public void setKalorienbedarf(double neuKalorienbedarf)
-    {
-        Gesamtkalorien = neuKalorienbedarf;
+    public void setKalorienbedarf(double neuKalorienbedarf) throws Exception {
+        if(neuKalorienbedarf>0)
+            Gesamtkalorien = neuKalorienbedarf;
+        else throw new Exception ("Wählen Sie bitte einen gültigen Kalorienbedarf!");
     }
 
     /**

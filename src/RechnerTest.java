@@ -16,14 +16,14 @@ class RechnerTest {
         assertEquals(test.getKalorienverbrauch(),1000);
     }
 
-   // @Test
-   //@Order(2)
-    //void Kalorienverbrauch_negativ() throws Exception{
-     //   assertThrows(Exception.class,()->{
-       //     Rechner test = new Rechner();
-         //   test.setKalorienverbrauch(-10);
-        //});
-    //}
+   @Test
+   @Order(2)
+    void Kalorienverbrauch_negativ() throws Exception{
+        assertThrows(Exception.class,()->{
+            Rechner test = new Rechner();
+            test.setKalorienverbrauch(-10);
+        });
+    }
 
     @Test
     @Order(3)
@@ -41,10 +41,27 @@ class RechnerTest {
             test.setKalorienbedarf(-10);
         });
     }
-
-
     @Test
     @Order(5)
+    void Konstruktor_positiv() throws Exception{
+        Rechner test = new Rechner();
+        Rechner test2= new Rechner(200,400);
+        assertEquals(test.getKalorienbedarf(),0);
+        assertEquals(test.getKalorienverbrauch(),0);
+        assertEquals(test2.getKalorienbedarf(),200);
+        assertEquals(test2.getKalorienverbrauch(),400);
+    }
+
+    @Test
+    @Order(6)
+    void Konstruktor_negativ() throws Exception{
+        assertThrows(Exception.class,()->{
+            Rechner test3 = new Rechner(-2,-500);
+        });
+    }
+
+    @Test
+    @Order(7)
     void rechneroperation_positiv() throws Exception {
         UserDaten testuser=new UserDaten();
         testuser.setGrundbedarf(500);
@@ -55,7 +72,7 @@ class RechnerTest {
         assertEquals(testRechner.Rechneroperation(testuser.getUserID()),700);
     }
     @Test
-    @Order(6)
+    @Order(8)
     void rechneroperation_negativ() throws Exception {
         UserDaten testuser1=new UserDaten();
         testuser1.setGrundbedarf(500);
@@ -67,7 +84,7 @@ class RechnerTest {
     }
 
     @Test
-    @Order(7)
+    @Order(9)
     void rezept_sortieren() throws Exception {
         Rechner test= new Rechner(800,800);
         test.Rezeptsortierung();
