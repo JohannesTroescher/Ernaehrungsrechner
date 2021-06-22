@@ -6,13 +6,14 @@ public class Interface {
     private String Rezeptvorschläge;
 
     /**
+     * Konstruktor der Klasse Interface
      *
-     * @param Kalorien_sollwert Sollwert der Kalorien
-     * @param Rezeptvorschläge Rezeptvorschläge aus externer Datei
+     * @param kalorien_sollwert Sollwert der Kalorien
+     * @param rezeptvorschläge  Rezeptvorschläge aus externer Datei
      */
-    public Interface(double Kalorien_sollwert,String Rezeptvorschläge) {
-        this.Kalorien_sollwert = Kalorien_sollwert;
-        this.Rezeptvorschläge = Rezeptvorschläge;
+    public Interface(double kalorien_sollwert, String rezeptvorschläge) {
+        this.Kalorien_sollwert = kalorien_sollwert;
+        this.Rezeptvorschläge = rezeptvorschläge;
     }
 
     /**
@@ -20,56 +21,97 @@ public class Interface {
      */
     public Interface() {
     }
+
     /**
-     * Get Methode
-     * @return Rezeptvorschläge
+     * Get Methode für die Rezeptvorschläge
+     *
+     * @return Rezeptvorschläge                   gibt die passenden Rezeptvorschläge zurück
      */
     public String getRezeptvorschläge() {
         return Rezeptvorschläge;
     }
+
     /**
-     * Set Methode
-     * @param rezeptvorschläge
+     * Set Methode für die Rezeptvorschläge
+     *
+     * @param rezeptvorschläge setzt Rezeptvorschläge auf eienen bestimmten Wert
      */
     public void setRezeptvorschläge(String rezeptvorschläge) {
         Rezeptvorschläge = rezeptvorschläge;
     }
+
     /**
-     * Get Methode
-     * @return Kalorien_sollwert
+     * Get Methode für den Kalorien_sollwert
+     *
+     * @return Kalorien_sollwert  gibt den Kaloriensollwert zurück
      */
     public double getKalorien_sollwert() {
         return Kalorien_sollwert;
     }
+
     /**
-     * Set Methode
-     * @param kalorien_sollwert
+     * Set Methode für den Kaloriensollwert
+     *
+     * @param kalorien_sollwert Setzt den Kaloriensollwert auf einen bestimmten Wert
      */
     public void setKalorien_sollwert(double kalorien_sollwert) {
         Kalorien_sollwert = kalorien_sollwert;
     }
 
-    public UserDaten User_erstellen(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) {
-//Erstellt einen neuen User//konstruktor aufrufen
-        UserDaten User=new UserDaten(name,alter, groesse, geschlecht,training,nahrung,gewicht);
-        return User;
+    /**
+     * @param name       Name des Benutzers
+     * @param alter      Alter des Benutzers
+     * @param groesse    Körpergröße des Benutzers
+     * @param geschlecht Geschlecht des Benutzers
+     * @param training   Trainingsziel des Benutzers
+     * @param nahrung    Ernährungsart: Normal, Vegetarisch oder Vegan
+     * @param gewicht    Körpergewicht des Benutzers
+     * @return User
+     */
+    public void User_erstellen(String name, int alter, double groesse, String geschlecht, String training, String nahrung, double gewicht) throws Exception {
+        //try {
+            UserDaten User = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
+            Datenbank.Userdaten_einlesen(User);
+        //} catch (Exception e) {
+         //   e.printStackTrace();
+
+        //}
     }
 
+    /**
+     * ruft Rezepte auf, und gibt aufgerufene Rezepte an GUI um darzustellen
+     */
 
     public void Information_display() {
     }
-//ruft Rezepte auf, und gibt aufgerufene Rezepte an GUI um darzustellen
 
-
-    public int User_aufruf(int UserID) {
-//ruft die die Daten des entsprechenden Users auf (aus UserDatenDatei über Userdaten_auslesen())
-        return UserID;
+    /**
+     * ruft die die Daten des entsprechenden Users auf (aus UserDatenDatei über Userdaten_auslesen()
+     *
+     * @param UserID UserID des "Users"
+     * @return UserID
+     */
+    public UserDaten User_aufruf(int UserID) throws Exception {
+        if (Datenbank.UserListe.size()>=UserID)
+            return Datenbank.UserListe.get(UserID);
+        else
+            throw new Exception ("Der gewünschte User existiert nicht!");
     }
 
-    public int User_änderung(int UserID) {
-//geänderte User/null(wenn User nicht existiert)
-//Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
-        return UserID;
-    }
+    /**
+     * Funktionsweise: ersetzt alte Userdaten mit neuen, ruft Userdaten_aendern() auf wenn nicht null
+     *
+     *
+     * @return geänderte UserID
+     * @throws Exception Wirft Exception, wenn UserID nicht vorhanden
+     */
+    public void User_aenderung(int UserID,String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht) throws Exception {
+        try {
+            UserDaten newuser = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
+            Datenbank.Userdaten_aendern(UserID, newuser);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+     }
 
 }

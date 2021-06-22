@@ -1,11 +1,12 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class UserDatenTest {
 
     @Test
+    @Order(1)
     void Name() {
         UserDaten test0 = new UserDaten();
         test0.setName("Melanie Müller");
@@ -13,6 +14,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(2)
     void Alter_positiv() throws Exception {
         UserDaten test1 = new UserDaten();
         test1.setAlter(35);
@@ -20,6 +22,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(3)
     void Alter_negativ() throws Exception {
         assertThrows(Exception.class, () -> {
             UserDaten test2 = new UserDaten();
@@ -28,6 +31,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(4)
     void Koerpergroesse_positiv() throws Exception{
         UserDaten test3 = new UserDaten();
         test3.setKoerpergroesse(170);
@@ -35,6 +39,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(5)
     void Koerpergroesse_negativ() throws Exception{
         assertThrows(Exception.class, () -> {
             UserDaten test4 = new UserDaten();
@@ -43,6 +48,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(6)
     void Geschlecht_positiv() throws Exception{
         UserDaten test5 = new UserDaten();
         test5.setGeschlecht("MäNNliCH");
@@ -50,6 +56,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(7)
     void KGeschlecht_negativ() throws Exception{
         assertThrows(Exception.class, () -> {
             UserDaten test6 = new UserDaten();
@@ -58,6 +65,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(8)
     void Trainingsziel_positiv() throws Exception {
         UserDaten test7 = new UserDaten();
         test7.setTrainingsziel("mUSKelAufbaU");
@@ -65,6 +73,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(9)
     void Trainingsziel_negativ() throws Exception{
         assertThrows(Exception.class, () -> {
             UserDaten test8 = new UserDaten();
@@ -73,6 +82,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(10)
     void Gewicht_positiv() throws Exception{
         UserDaten test9 = new UserDaten();
         test9.setGewicht(85);
@@ -80,6 +90,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(11)
     void Gewicht_negativ() throws Exception{
         assertThrows(Exception.class, () -> {
             UserDaten test10 = new UserDaten();
@@ -89,6 +100,7 @@ class UserDatenTest {
 
 
     @Test
+    @Order(12)
     void Grundbedarf_positiv() throws Exception{
         UserDaten test11 = new UserDaten();
         test11.setGrundbedarf(4000);
@@ -96,6 +108,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(13)
     void Grundbedarf_negativ() throws Exception{
         assertThrows(Exception.class, () -> {
             UserDaten test12 = new UserDaten();
@@ -105,6 +118,7 @@ class UserDatenTest {
 
 
     @Test
+    @Order(14)
     void Nahrungspraeferenz_positiv() throws Exception{
         UserDaten test13 = new UserDaten();
         test13.setNahrungspraeferenz("NorMAl");
@@ -112,6 +126,7 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(15)
     void Nahrungspraeferenz_negativ() throws Exception{
         assertThrows(Exception.class, () -> {
             UserDaten test14 = new UserDaten();
@@ -120,11 +135,13 @@ class UserDatenTest {
     }
 
     @Test
+    @Order(16)
     void getUserID() {
         UserDaten test15 = new UserDaten();
-        assertEquals(test15.getUserID(),11);
+        assertEquals(test15.getUserID(),15);
     }
     @Test
+    @Order(17)
     void setUserID_positiv() throws Exception{
         UserDaten test16 = new UserDaten();
         int i=UserDaten.counter;
@@ -133,6 +150,7 @@ class UserDatenTest {
         assertEquals(UserDaten.counter,i-1);
     }
     @Test
+    @Order(18)
     void setUserID_negativ() throws Exception{
         UserDaten test17 = new UserDaten();
         assertThrows(Exception.class,()->{test17.setUserID(-1);});
@@ -140,8 +158,10 @@ class UserDatenTest {
 
 
     @Test
-    void Gesamttest(){
+    @Order(20)
+    void Konstruktor_positiv()throws Exception{
         UserDaten test18 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",85);
+        UserDaten test19= new UserDaten();
         assertEquals(test18.getName(),"Manfred Müller");
         assertEquals(test18.getAlter(),45);
         assertEquals(test18.getKoerpergroesse(),185);
@@ -149,7 +169,27 @@ class UserDatenTest {
         assertEquals(test18.getTrainingsziel(),"Muskelaufbau");
         assertEquals(test18.getNahrungspraeferenz(),"Normal");
         assertEquals(test18.getGewicht(),85);
-        assertEquals(test18.getUserID(),2);
+        assertEquals(test18.getUserID(),17);
+        assertEquals(test19.getName(),"null");
+        assertEquals(test19.getAlter(),0);
+        assertEquals(test19.getKoerpergroesse(),0);
+        assertEquals(test19.getGeschlecht(),"null");
+        assertEquals(test19.getTrainingsziel(),"null");
+        assertEquals(test19.getNahrungspraeferenz(),"null");
+        assertEquals(test19.getGewicht(),0);
+        assertEquals(test19.getUserID(),18);
     }
+    @Test
+    @Order(21)
+    void Konstruktor_negativ() throws Exception{
+        assertThrows(Exception.class, () -> {
+            UserDaten test20 = new UserDaten("Manfred Müller",-45,185,"männlich","Muskelaufbau","Normal",85);
+            UserDaten test21= new UserDaten("Manfred Müller",45,-185,"männlich","Muskelaufbau","Normal",85);
+            UserDaten test22 = new UserDaten("Manfred Müller",45,185,"ännlich","Muskelaufbau","Normal",85);
+            UserDaten test23= new UserDaten("Manfred Müller",45,185,"männlich","Mskelaufbau","Normal",85);
+            UserDaten test24 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Norml",85);
+            UserDaten test25= new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",-85);
 
+        });
+    }
 }

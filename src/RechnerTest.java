@@ -1,19 +1,23 @@
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.TestMethodOrder;
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RechnerTest {
 
     @Test
+    @Order(1)
     void Kalorienverbrauch_positiv() throws Exception{
         Rechner test = new Rechner();
         test.setKalorienverbrauch(1000);
         assertEquals(test.getKalorienverbrauch(),1000);
     }
 
-    @Test
+   @Test
+   @Order(2)
     void Kalorienverbrauch_negativ() throws Exception{
         assertThrows(Exception.class,()->{
             Rechner test = new Rechner();
@@ -22,6 +26,7 @@ class RechnerTest {
     }
 
     @Test
+    @Order(3)
     void Kalorienbedarf_positiv() throws Exception{
         Rechner test = new Rechner();
         test.setKalorienbedarf(500);
@@ -29,15 +34,34 @@ class RechnerTest {
     }
 
     @Test
+    @Order(4)
     void Kalorienbedarf_negativ() throws Exception{
         assertThrows(Exception.class,()->{
             Rechner test = new Rechner();
             test.setKalorienbedarf(-10);
         });
     }
-
+    @Test
+    @Order(5)
+    void Konstruktor_positiv() throws Exception{
+        Rechner test = new Rechner();
+        Rechner test2= new Rechner(200,400);
+        assertEquals(test.getKalorienbedarf(),0);
+        assertEquals(test.getKalorienverbrauch(),0);
+        assertEquals(test2.getKalorienbedarf(),200);
+        assertEquals(test2.getKalorienverbrauch(),400);
+    }
 
     @Test
+    @Order(6)
+    void Konstruktor_negativ() throws Exception{
+        assertThrows(Exception.class,()->{
+            Rechner test3 = new Rechner(-2,-500);
+        });
+    }
+
+    @Test
+    @Order(7)
     void rechneroperation_positiv() throws Exception {
         UserDaten testuser=new UserDaten();
         testuser.setGrundbedarf(500);
@@ -48,6 +72,7 @@ class RechnerTest {
         assertEquals(testRechner.Rechneroperation(testuser.getUserID()),700);
     }
     @Test
+    @Order(8)
     void rechneroperation_negativ() throws Exception {
         UserDaten testuser1=new UserDaten();
         testuser1.setGrundbedarf(500);
@@ -59,10 +84,18 @@ class RechnerTest {
     }
 
     @Test
-    void rezept_sortieren() {
-    }
+    @Order(9)
+    void rezept_sortieren() throws Exception {
+        Rechner test= new Rechner(800,800);
+        test.Rezeptsortierung();
+        test.RezeptsortierungVegetarisch();
+        test.RezeptsortierungVegan();
+        assertEquals(Datenbank.RezepteNormalListe.get(0).getKalorien(),540);
+        assertEquals(Datenbank.RezepteNormalListe.get(1).getKalorien(),485.1);
+    //}
 
-    @Test
-    void grundbedarf() {
+    //@Test
+    //@Order(8)
+    //void grundbedarf() {
     }
 }

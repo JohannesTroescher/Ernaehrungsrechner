@@ -16,24 +16,12 @@ public class Rezepte {
      * @param kalorien      Anzahl der Kalorien des Rezepts
      * @param beschreibung  Beschreibung des Rezeptes
      */
-    public Rezepte(String art,String proteine, double kalorien, String beschreibung) {
+    public Rezepte(String art,String proteine, double kalorien, String beschreibung)throws Exception{
 
             this.setBeschreibung(beschreibung);
-        try {
             this.setArt(art);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try{
             this.setKalorien(kalorien);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        try {
             this.setProteine(proteine);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
     /**     Standardkonstruktor für die Klasse Rezept
      *      Erzeugt ein Objekt der Klasse Rezept und setzt alle Attribute auf "null" bzw. 0
@@ -50,7 +38,7 @@ public class Rezepte {
      */
     @Override
     public String toString(){
-        return ":"+this.art + ": " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
+        return ":"+this.art + ": " + this.getProteine() + " " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
 }
 
     /**             Get-Methode für Art des Rezepts
@@ -112,7 +100,7 @@ public class Rezepte {
     public void setProteine(String proteine)throws Exception{
         if(proteine.equalsIgnoreCase("proteinhaltig")||proteine.equalsIgnoreCase("proteinarm"))
             this.proteine=proteine;
-        else throw new Exception("Bitte wähle \"proteinhaltig\" oder \"proeinarm\"");
+        else throw new Exception("Bitte wähle \"proteinhaltig\" oder \"proteinarm\"");
     }
 
     /**             Get-Methode für Proteingehalt

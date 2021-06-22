@@ -17,8 +17,8 @@ public class Datenbank implements Serializable {
 
     /**
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
-     * Arraylist "RezepteNormalListe" wird erstellt um sie später mit Rezepten aus RezepteNormal-Datei zu befüllen
-     * Arraylist "RezepteVegetarischListe" wird erstellt um sie später mit Rezepten aus RezepteVegetarisch-Datei zu befüllen
+     * ArrayList "RezepteNormalListe" wird erstellt um sie später mit Rezepten aus RezepteNormal-Datei zu befüllen
+     * ArrayLÖist "RezepteVegetarischListe" wird erstellt um sie später mit Rezepten aus RezepteVegetarisch-Datei zu befüllen
      * Arraylist "RezepteVeganListe" wird erstellt um sie später mit Rezepten aus RezepteVegan-Datei zu befüllen
      *
      * static weil : Damit zum nutzen der Methoden und der Listen aus der Datenbank nicht erst ein Objekt instanziiert werden muss
@@ -66,10 +66,10 @@ public class Datenbank implements Serializable {
      * @param UserID Durchlaufende einzigartige Nummer um ein Objekt vom Typ "UserDaten" eindeutig zu identifizieren
      * @throws Exception Wirft eine Exception, wenn die "UserID" > "UserListen.size" ist
      */
-    public static void UserID_exists(int UserID) throws Exception{
+    public static int UserID_exists(int UserID) throws Exception{
         if (UserListe.size()>=UserID) {
-
-        } else throw new Exception("gibts nicht");
+            return UserID;
+        } else throw new Exception("UserID existiert nicht!");
     }
 
 
@@ -79,7 +79,7 @@ public class Datenbank implements Serializable {
      *
      * @param UserListe "UserListe" mit enthaltenen "Userdaten"
      */
-    public static void saveUserListe(ArrayList<UserDaten> UserListe) {
+    public static void saveUserListe(ArrayList<UserDaten> UserListe){
         try{
             FileOutputStream writeData = new FileOutputStream("Datenbank");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
@@ -121,7 +121,7 @@ public class Datenbank implements Serializable {
      *
      * @return returnt RezepteNormalListe
      */
-    public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() {
+    public static ArrayList<Rezepte> Rezepte_dateiaufruf_normal() throws Exception{
         try {
             Scanner s = new Scanner(new File("src/RezepteNormal.txt"));
             while (s.hasNextLine()) {
@@ -140,7 +140,7 @@ public class Datenbank implements Serializable {
      *
      * @return returnt RezepteVegetarischListe
      */
-    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() {
+    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegetarisch() throws Exception{
         try {
             Scanner s = new Scanner(new File("src/RezepteVegetarisch.txt"));
             while (s.hasNextLine()) {
@@ -160,7 +160,7 @@ public class Datenbank implements Serializable {
      *
      * @return returnt RezepteVeganListe
      */
-    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() {
+    public static ArrayList<Rezepte> Rezepte_dateiaufruf_vegan() throws Exception{
         try {
             Scanner s = new Scanner(new File("src/RezepteVegan.txt"));
             while (s.hasNextLine()) {
