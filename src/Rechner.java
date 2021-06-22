@@ -1,7 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Rechner
 {
@@ -10,40 +6,35 @@ public class Rechner
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
-    static ArrayList<Rezepte> RezepteNormalProteinhaltig;
-    static ArrayList<Rezepte> RezepteNormalProteinarm;
-    static ArrayList<Rezepte> RezepteVegetrischProteinhaltig;
-    static ArrayList<Rezepte> RezepteVegetarischProteinarm;
-    static ArrayList<Rezepte> RezepteVeganProteinhaltig;
-    static ArrayList<Rezepte> RezepteVeganProteinarm;
+    private String Rezeptsortierung;
 
     /**
-     *Standardkonsturktor
+     *Standartkonsturktor
      *Setzt alle Werte auf "Null"/0.
      */
     public Rechner()
     {
     Gesamtkalorien =0;
     Kalorienverbrauch=0;
-
+    Rezeptsortierung="Null";
     }
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch) throws Exception {
-        this.setKalorienverbrauch(Kalorienverbrauch);
-        this.setKalorienbedarf(Kalorienbedarf);
-
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung)
+    {
+        this.Gesamtkalorien = Kalorienbedarf;
+        this.Kalorienverbrauch = Kalorienverbrauch;
+        this.Rezeptsortierung = Rezeptsortierung;
     }
 
     /**
      *                                                  Set Methode für den Kalorienverbrauch
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
-    public void setKalorienverbrauch(double neuKalorienverbrauch) throws Exception{
-        if(neuKalorienverbrauch>0)
-            Kalorienverbrauch = neuKalorienverbrauch;
-        else throw new Exception ("Bitte wählen Sie einen gültigen Kalorienverbrauch!");
+    public void setKalorienverbrauch(double neuKalorienverbrauch)
+    {
+        Kalorienverbrauch = neuKalorienverbrauch;
     }
 
     /**
@@ -60,10 +51,9 @@ public class Rechner
      *                                                  Set Methode für den Kalorienbedarf
      * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
      */
-    public void setKalorienbedarf(double neuKalorienbedarf) throws Exception {
-        if(neuKalorienbedarf>0)
-            Gesamtkalorien = neuKalorienbedarf;
-        else throw new Exception ("Wählen Sie bitte einen gültigen Kalorienbedarf!");
+    public void setKalorienbedarf(double neuKalorienbedarf)
+    {
+        Gesamtkalorien = neuKalorienbedarf;
     }
 
     /**
@@ -75,6 +65,23 @@ public class Rechner
         return Gesamtkalorien;
     }
 
+    /**
+     *                                                  Set Methode für Rezeptsortierung
+     * @param neuRezeptsortierung                       Setzt das Attribut Rezeptsortierung auf den eingeben Wert
+     */
+    public void setRezeptsortierung(String neuRezeptsortierung)
+    {
+        Rezeptsortierung = neuRezeptsortierung;
+    }
+
+    /**
+     *                                                  Get Methode für den Rezeptsortierung
+     * @return Rezeptsortierung                         Gibt Rezeptsortierung zurück
+     */
+    public String getRezeptsortierung()
+    {
+        return Rezeptsortierung;
+    }
 
     /**                     Rechenoperation für Kalorien
      * @param UserID        UserID des gewünschten Nutzers
@@ -90,73 +97,20 @@ public class Rechner
     }
 
     /**                       Rezeptsortieren um passendes Rezept auszugeben
-     /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
+     /*@param                 Nahrungspräferenz
      *@return                 Liste mit Rezepten
      */
-    public ArrayList<Rezepte> Rezeptsortierung() throws Exception
+    public String Rezeptsortierung(int UserID) throws Exception
     {
-        Scanner s = null;
-        try {
-            s = new Scanner(new File("src/RezepteNormal.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
+            case "normal" -> String.valueOf(Datenbank.RezepteNormalListe);
+            case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
+            case "Vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
+            default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
+        };
 
-        while (s.hasNextLine())
-        {
-            if (s.hasNext("proteinhaltig"))
-            {
-                Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
-                Datenbank.RezepteNormalListe.add(normal);
-
-            }
-
-            s.close();
-
-        }
-        return Datenbank.RezepteNormalListe;
-    }
-
-    public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception
-    {
-        Scanner s = null;
-        try {
-            s = new Scanner(new File("src/RezepteVegetarisch.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        while (s.hasNextLine()) {
-            if (s.hasNext("proteinhaltig"))
-            {
-                Rezepte Vegetarisch = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
-                Datenbank.RezepteVegetarischListe.add(Vegetarisch);
-            }
-            s.close();
-
-        }
-        return Datenbank.RezepteVegetarischListe;
-    }
-
-    public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception
-    {
-        Scanner s = null;
-        try {
-            s = new Scanner(new File("src/RezepteVegan.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        while (s.hasNextLine())
-        {
-            if (s.hasNext("proteinhaltig"))
-            {
-                Rezepte Vegan = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
-                Datenbank.RezepteVeganListe.add(Vegan);
-            }
-            s.close();
-
-        }
-        return Datenbank.RezepteVeganListe;
+        //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
+        //Rezeptsortierungs-blargh
+        //return "null";
     }
 }
