@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Rechner
 {
@@ -101,18 +105,71 @@ public class Rechner
      /*@param                 Nahrungspräferenz
      *@return                 Liste mit Rezepten
      */
-    public String Rezeptsortierung(int UserID) throws Exception
+    public ArrayList<Rezepte> Rezeptsortierung() throws Exception
     {
+        Scanner s = null;
+        try {
+            s = new Scanner(new File("src/RezepteNormal.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
-            case "normal" -> String.valueOf(Datenbank.RezepteNormalListe);
-            case "Normal" -> String.valueOf(Datenbank.RezepteNormalListe);
-            case "vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
-            case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
-            case "vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
-            case "Vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
-            default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
-        };
+        while (s.hasNextLine())
+        {
+            if (s.hasNext("proteinhaltig"))
+            {
+                Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
+                Datenbank.RezepteNormalListe.add(normal);
 
+            }
+
+            s.close();
+
+        }
+        return Datenbank.RezepteNormalListe;
+    }
+
+    public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception
+    {
+        Scanner s = null;
+        try {
+            s = new Scanner(new File("src/RezepteVegetarisch.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while (s.hasNextLine()) {
+            if (s.hasNext("proteinhaltig"))
+            {
+                Rezepte Vegetarisch = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
+                Datenbank.RezepteVegetarischListe.add(Vegetarisch);
+            }
+            s.close();
+
+        }
+        return Datenbank.RezepteVegetarischListe;
+    }
+
+    public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception
+    {
+        Scanner s = null;
+        try {
+            s = new Scanner(new File("src/RezepteVegan.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        while (s.hasNextLine())
+        {
+            if (s.hasNext("proteinhaltig"))
+            {
+                Rezepte Vegan = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
+                Datenbank.RezepteVeganListe.add(Vegan);
+            }
+            s.close();
+
+        }
+        return Datenbank.RezepteVeganListe;
     }
 }
+
