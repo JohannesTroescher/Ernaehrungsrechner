@@ -38,7 +38,7 @@ public class Rechner
     }
 
     /**
-     *                                                  Set Methode fÃ¼r den Kalorienverbrauch
+     *                                                  Set Methode für den Kalorienverbrauch
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
     public void setKalorienverbrauch(double neuKalorienverbrauch)
@@ -75,8 +75,8 @@ public class Rechner
     }
 
 
-    /**                     Rechenoperation fÃ¼r Kalorien
-     * @param UserID        UserID des gewÃ¼nschten Nutzers
+    /**                     Rechenoperation für Kalorien
+     * @param UserID        UserID des gewünschten Nutzers
      * @return              Gibt Gesamtkalorienbedarf zurÃ¼ck
      * @throws Exception    Wirft Exception, wenn der gewÃ¼nschte Nutzer nicht existiert
      */
@@ -85,7 +85,7 @@ public class Rechner
         if (Datenbank.UserListe.size()>=UserID)
             return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
         else
-            throw new Exception ("Der gewÃ¼nschte Nutzer existiert nicht!");
+            throw new Exception ("Der gewünschte Nutzer existiert nicht!");
     }
 
     /**                       Rezeptsortieren um passendes Rezept auszugeben
