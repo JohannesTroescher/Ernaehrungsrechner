@@ -86,26 +86,27 @@ class RechnerTest {
     @Test
     @Order(9)
     void rezept_sortieren_positiv() throws Exception {
+        Datenbank.Rezepte_dateiaufruf_normal();
+        Datenbank.Rezepte_dateiaufruf_vegetarisch();
+        Datenbank.Rezepte_dateiaufruf_vegan();
         UserDaten testU1 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","normal",85);
-        UserDaten testU2= new UserDaten("Sybille Fred",45,185,"weiblich","Muskelaufbau","Vegetarisch",85);
-        UserDaten testU3 = new UserDaten("Manfred Te",45,185,"männlich","Muskelaufbau","Vegan",85);
+        UserDaten testU2= new UserDaten("Sybille Fred",45,185,"weiblich","Muskelaufbau","vegetarisch",85);
+        UserDaten testU3 = new UserDaten("Manfred Te",45,185,"männlich","Muskelaufbau","vegan",85);
+        UserDaten testU4 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",85);
+        UserDaten testU5= new UserDaten("Sybille Fred",45,185,"weiblich","Muskelaufbau","Vegetarisch",85);
+        UserDaten testU6 = new UserDaten("Manfred Te",45,185,"männlich","Muskelaufbau","Vegan",85);
         Datenbank.Userdaten_einlesen(testU1);
         Datenbank.Userdaten_einlesen(testU2);
         Datenbank.Userdaten_einlesen(testU3);
+        Datenbank.Userdaten_einlesen(testU4);
+        Datenbank.Userdaten_einlesen(testU5);
+        Datenbank.Userdaten_einlesen(testU6);
         Rechner test= new Rechner(800,800,"test");
         assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU1.getUserID()).getUserID()),"[:Normal: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Normal: proteinarm Kalorien: 500.0 Rezeptbeschreibung:  Brot, :Normal: proteinhaltig Kalorien: 1000.0 Rezeptbeschreibung:  Salamander]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU2.getUserID()).getUserID()),"[:Vegetarisch: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Vegetarisch: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegetarisch: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Gras, :Vegetarisch: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Vegetarisch: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegetarisch: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Gras]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU3.getUserID()).getUserID()),"[:Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde, :Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde, :Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde]");
+        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU2.getUserID()).getUserID()),"[:Vegetarisch: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Vegetarisch: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegetarisch: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Gras]");
+        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU3.getUserID()).getUserID()),"[:Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde]");
+        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU4.getUserID()).getUserID()),"[:Normal: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Normal: proteinarm Kalorien: 500.0 Rezeptbeschreibung:  Brot, :Normal: proteinhaltig Kalorien: 1000.0 Rezeptbeschreibung:  Salamander]");
+        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU5.getUserID()).getUserID()),"[:Vegetarisch: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Vegetarisch: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegetarisch: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Gras]");
+        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU6.getUserID()).getUserID()),"[:Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde]");
     }
-    @Test
-    @Order(10)
-    void rezept_sortieren_negativ() throws Exception {
-        UserDaten testU1 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",85);
-        Datenbank.Userdaten_einlesen(testU1);
-        Rechner test= new Rechner(800,800,"test");
-        assertThrows(Exception.class,()->{
-            test.Rezeptsortierung(Datenbank.UserListe.get(testU1.getUserID()).getUserID());
-        });
-        }
-
-    }
+}

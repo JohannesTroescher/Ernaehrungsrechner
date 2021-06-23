@@ -103,13 +103,13 @@ public class Rechner
      */
     public String Rezeptsortierung(int UserID) throws Exception
     {
-        Datenbank.Rezepte_dateiaufruf_normal();
-        Datenbank.Rezepte_dateiaufruf_vegetarisch();
-        Datenbank.Rezepte_dateiaufruf_vegan();
 
         return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
             case "normal" -> String.valueOf(Datenbank.RezepteNormalListe);
+            case "Normal" -> String.valueOf(Datenbank.RezepteNormalListe);
+            case "vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
             case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
+            case "vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
             case "Vegan" -> String.valueOf(Datenbank.RezepteVeganListe);
             default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
         };
