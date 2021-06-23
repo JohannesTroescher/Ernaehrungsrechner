@@ -108,7 +108,9 @@ public class Rechner
                 Datenbank.RezepteNormalListe.add(normal);
             }
             else
+            {
 
+            }
             s.close();
 
         }
@@ -130,6 +132,9 @@ public class Rechner
                 Datenbank.RezepteVegetarischListe.add(Vegetarisch);
             }
             else
+            {
+
+            }
             s.close();
 
         }
