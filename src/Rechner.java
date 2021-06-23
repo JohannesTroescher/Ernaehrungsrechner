@@ -10,102 +10,89 @@ public class Rechner
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
-    private String Rezeptsortierung;
+    static ArrayList<Rezepte> RezepteNormalProteinhaltig;
+    static ArrayList<Rezepte> RezepteNormalProteinarm;
+    static ArrayList<Rezepte> RezepteVegetrischProteinhaltig;
+    static ArrayList<Rezepte> RezepteVegetarischProteinarm;
+    static ArrayList<Rezepte> RezepteVeganProteinhaltig;
+    static ArrayList<Rezepte> RezepteVeganProteinarm;
 
     /**
-     *Standartkonsturktor
+     *Standardkonsturktor
      *Setzt alle Werte auf "Null"/0.
      */
     public Rechner()
     {
-    Gesamtkalorien =0;
-    Kalorienverbrauch=0;
-    Rezeptsortierung="Null";
+        Gesamtkalorien =0;
+        Kalorienverbrauch=0;
+
     }
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung) throws Exception {
-        this.setKalorienbedarf(Kalorienbedarf);
-        this.setKalorienverbrauch(Kalorienverbrauch);
-        this.Rezeptsortierung = Rezeptsortierung;
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
+    {
+        this.Gesamtkalorien = Kalorienbedarf;
+        this.Kalorienverbrauch = Kalorienverbrauch;
+
     }
 
     /**
-     *                                                  Set Methode für den Kalorienverbrauch
+     *                                                  Set Methode fÃ¼r den Kalorienverbrauch
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
-    public void setKalorienverbrauch(double neuKalorienverbrauch) throws Exception
+    public void setKalorienverbrauch(double neuKalorienverbrauch)
     {
-        if (neuKalorienverbrauch>=0)Kalorienverbrauch = neuKalorienverbrauch;
-        else throw new Exception ("Bitte wählen Sie einen gültigen Kalorienverbrauch!");
+        Kalorienverbrauch = neuKalorienverbrauch;
     }
 
     /**
-     *                                                  Get Methode für den Kalorienverbrauch
-     * @return Kalorienverbrauch                        Gibt den Kalorienverbrauch zurück
+     *                                                  Get Methode fÃ¼r den Kalorienverbrauch
+     * @return Kalorienverbrauch                        Gibt den Kalorienverbrauch zurÃ¼ck
      */
     public double getKalorienverbrauch()
     {
-      return Kalorienverbrauch;
+        return Kalorienverbrauch;
     }
 
 
     /**
-     *                                                  Set Methode für den Kalorienbedarf
+     *                                                  Set Methode fÃ¼r den Kalorienbedarf
      * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
      */
-    public void setKalorienbedarf(double neuKalorienbedarf)throws Exception
+    public void setKalorienbedarf(double neuKalorienbedarf)
     {
-        if(neuKalorienbedarf>0)Gesamtkalorien = neuKalorienbedarf;
-        else throw new Exception("Bitte wählen Sie einen gültigen Kalorienbedarf!");
+        Gesamtkalorien = neuKalorienbedarf;
     }
 
     /**
-     *                                                  Get Methode für den Kalorienbedarf
-     * @return Gesamtkalorien                           Gibt den Gesamtkalorien zurück
+     *                                                  Get Methode fÃ¼r den Kalorienbedarf
+     * @return Gesamtkalorien                           Gibt den Gesamtkalorien zurÃ¼ck
      */
     public double getKalorienbedarf()
     {
         return Gesamtkalorien;
     }
 
-    /**
-     *                                                  Set Methode für Rezeptsortierung
-     * @param neuRezeptsortierung                       Setzt das Attribut Rezeptsortierung auf den eingeben Wert
-     */
-    public void setRezeptsortierung(String neuRezeptsortierung)
-    {
-        Rezeptsortierung = neuRezeptsortierung;
-    }
 
-    /**
-     *                                                  Get Methode für den Rezeptsortierung
-     * @return Rezeptsortierung                         Gibt Rezeptsortierung zurück
-     */
-    public String getRezeptsortierung()
-    {
-        return Rezeptsortierung;
-    }
-
-    /**                     Rechenoperation für Kalorien
-     * @param UserID        UserID des gewünschten Nutzers
-     * @return              Gibt Gesamtkalorienbedarf zurück
-     * @throws Exception    Wirft Exception, sofern der gewünschte Nutzer nicht existiert
+    /**                     Rechenoperation fÃ¼r Kalorien
+     * @param UserID        UserID des gewÃ¼nschten Nutzers
+     * @return              Gibt Gesamtkalorienbedarf zurÃ¼ck
+     * @throws Exception    Wirft Exception, wenn der gewÃ¼nschte Nutzer nicht existiert
      */
     public double Rechneroperation(int UserID) throws Exception
     {
-      if (Datenbank.UserListe.size()>=UserID)
-          return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
-      else
-          throw new Exception ("Der gewünschte Nutzer existiert nicht!");
+        if (Datenbank.UserListe.size()>=UserID)
+            return Datenbank.UserListe.get(UserID).getGrundbedarf()+this.Kalorienverbrauch;
+        else
+            throw new Exception ("Der gewÃ¼nschte Nutzer existiert nicht!");
     }
 
     /**                       Rezeptsortieren um passendes Rezept auszugeben
-     /*@param                 Nahrungspräferenz
+     /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
      *@return                 Liste mit Rezepten
      */
-    public ArrayList<Rezepte> Rezeptsortierung() throws Exception
+    public ArrayList<Rezepte> Rezeptsortierung()
     {
         Scanner s = null;
         try {
@@ -120,7 +107,6 @@ public class Rechner
             {
                 Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteNormalListe.add(normal);
-
             }
 
             s.close();
@@ -129,7 +115,7 @@ public class Rechner
         return Datenbank.RezepteNormalListe;
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception
+    public ArrayList<Rezepte> RezeptsortierungVegetarisch()
     {
         Scanner s = null;
         try {
@@ -150,7 +136,7 @@ public class Rechner
         return Datenbank.RezepteVegetarischListe;
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception
+    public ArrayList<Rezepte> RezeptsortierungVegan()
     {
         Scanner s = null;
         try {
@@ -172,4 +158,3 @@ public class Rechner
         return Datenbank.RezepteVeganListe;
     }
 }
-
