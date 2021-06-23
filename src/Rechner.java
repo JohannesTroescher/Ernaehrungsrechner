@@ -92,8 +92,7 @@ public class Rechner
      /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
      *@return                 Liste mit Rezepten
      */
-    public ArrayList<Rezepte> Rezeptsortierung()
-    {
+    public ArrayList<Rezepte> Rezeptsortierung() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteNormal.txt"));
@@ -108,6 +107,7 @@ public class Rechner
                 Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteNormalListe.add(normal);
             }
+            else
 
             s.close();
 
@@ -115,8 +115,7 @@ public class Rechner
         return Datenbank.RezepteNormalListe;
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegetarisch()
-    {
+    public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteVegetarisch.txt"));
@@ -130,14 +129,14 @@ public class Rechner
                 Rezepte Vegetarisch = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
                 Datenbank.RezepteVegetarischListe.add(Vegetarisch);
             }
+            else
             s.close();
 
         }
         return Datenbank.RezepteVegetarischListe;
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegan()
-    {
+    public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteVegan.txt"));
@@ -152,6 +151,7 @@ public class Rechner
                 Rezepte Vegan = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
                 Datenbank.RezepteVeganListe.add(Vegan);
             }
+            else
             s.close();
 
         }
