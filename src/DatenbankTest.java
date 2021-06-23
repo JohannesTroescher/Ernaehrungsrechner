@@ -69,7 +69,7 @@ public class DatenbankTest {
     @Order(7)
     void Rezepte_Dateiaufruf_normal_positiv()throws Exception{
         Datenbank.Rezepte_dateiaufruf_normal();
-        assertEquals(Datenbank.RezepteNormalListe.get(0).getKalorien(),540.0);
+        assertEquals(Datenbank.RezepteNormalListe.get(0).getKalorien(),1500.0);
         assertEquals(Datenbank.RezepteNormalListe.get(1).getProteine(),"proteinarm");
         assertEquals(Datenbank.RezepteNormalListe.get(2).getBeschreibung()," Salamander");
 
@@ -87,7 +87,7 @@ public class DatenbankTest {
     @Order(9)
     void Rezepte_Dateiaufruf_vegeta_positiv()throws Exception{
         Datenbank.Rezepte_dateiaufruf_vegetarisch();
-        assertEquals(Datenbank.RezepteVegetarischListe.get(0).getKalorien(),88);
+        assertEquals(Datenbank.RezepteVegetarischListe.get(0).getKalorien(),1500);
         assertEquals(Datenbank.RezepteVegetarischListe.get(1).getProteine(),"proteinarm");
         assertEquals(Datenbank.RezepteVegetarischListe.get(2).getBeschreibung()," Gras");
 
@@ -105,7 +105,7 @@ public class DatenbankTest {
     @Order(11)
     void Rezepte_Dateiaufruf_vega_positiv()throws Exception{
         Datenbank.Rezepte_dateiaufruf_vegan();
-        assertEquals(Datenbank.RezepteVeganListe.get(0).getKalorien(),8);
+        assertEquals(Datenbank.RezepteVeganListe.get(0).getKalorien(),500);
         assertEquals(Datenbank.RezepteVeganListe.get(1).getProteine(),"proteinarm");
         assertEquals(Datenbank.RezepteVeganListe.get(2).getBeschreibung()," Erde");
 

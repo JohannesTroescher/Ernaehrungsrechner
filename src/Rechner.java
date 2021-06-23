@@ -21,10 +21,9 @@ public class Rechner
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung)
-    {
-        this.Gesamtkalorien = Kalorienbedarf;
-        this.Kalorienverbrauch = Kalorienverbrauch;
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch, String Rezeptsortierung) throws Exception {
+        this.setKalorienbedarf(Kalorienbedarf);
+        this.setKalorienverbrauch(Kalorienverbrauch);
         this.Rezeptsortierung = Rezeptsortierung;
     }
 
@@ -32,9 +31,10 @@ public class Rechner
      *                                                  Set Methode für den Kalorienverbrauch
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
-    public void setKalorienverbrauch(double neuKalorienverbrauch)
+    public void setKalorienverbrauch(double neuKalorienverbrauch) throws Exception
     {
-        Kalorienverbrauch = neuKalorienverbrauch;
+        if (neuKalorienverbrauch>=0)Kalorienverbrauch = neuKalorienverbrauch;
+        else throw new Exception ("Bitte wählen Sie einen gültigen Kalorienverbrauch!");
     }
 
     /**
@@ -51,9 +51,10 @@ public class Rechner
      *                                                  Set Methode für den Kalorienbedarf
      * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
      */
-    public void setKalorienbedarf(double neuKalorienbedarf)
+    public void setKalorienbedarf(double neuKalorienbedarf)throws Exception
     {
-        Gesamtkalorien = neuKalorienbedarf;
+        if(neuKalorienbedarf>0)Gesamtkalorien = neuKalorienbedarf;
+        else throw new Exception("Bitte wählen Sie einen gültigen Kalorienbedarf!");
     }
 
     /**
@@ -102,6 +103,10 @@ public class Rechner
      */
     public String Rezeptsortierung(int UserID) throws Exception
     {
+        Datenbank.Rezepte_dateiaufruf_normal();
+        Datenbank.Rezepte_dateiaufruf_vegetarisch();
+        Datenbank.Rezepte_dateiaufruf_vegan();
+
         return switch (Datenbank.UserListe.get(UserID).getNahrungspraeferenz()) {
             case "normal" -> String.valueOf(Datenbank.RezepteNormalListe);
             case "Vegetarisch" -> String.valueOf(Datenbank.RezepteVegetarischListe);
@@ -109,8 +114,5 @@ public class Rechner
             default -> throw new Exception("Leider gibt es für Ihre Angaben kein Rezept!");
         };
 
-        //String nahrung=Datenbank.UserListe.get(UserID).getNahrungspraeferenz();
-        //Rezeptsortierungs-blargh
-        //return "null";
     }
 }

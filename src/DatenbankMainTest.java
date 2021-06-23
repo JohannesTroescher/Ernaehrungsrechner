@@ -6,7 +6,7 @@ import java.util.Date;
 public class DatenbankMainTest implements Serializable {
 
     public static void main(String[] args) throws Exception {
-        Rechner bla=new Rechner(800, 60);
+       // Rechner bla=new Rechner(800, 60);
         UserDaten Nutzer1 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
         UserDaten Nutzer2 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
         UserDaten Nutzer3 = new UserDaten("Udo",15,280.1,"männlich","Muskelaufbau","normal",45.2);
@@ -27,7 +27,7 @@ public class DatenbankMainTest implements Serializable {
         //System.out.println(Nutzer2.getUserID());
         Datenbank.Rezepte_dateiaufruf_normal();
         //System.out.println(Datenbank.RezepteNormalListe);
-        bla.Rezeptsortierung();
+        //bla.Rezeptsortierung();
         System.out.println(Datenbank.RezepteNormalListe.get(0));
 
        //Datenbank.UserID_exists(1);
