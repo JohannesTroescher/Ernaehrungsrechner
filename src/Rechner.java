@@ -87,7 +87,7 @@ public class Rechner
     /**                     Rechenoperation für Kalorien
      * @param UserID        UserID des gewünschten Nutzers
      * @return              Gibt Gesamtkalorienbedarf zurück
-     * @throws Exception    Wirft Exception, wenn der gewünschte Nutzer nicht existiert
+     * @throws Exception    Wirft Exception, sofern der gewünschte Nutzer nicht existiert
      */
     public double Rechneroperation(int UserID) throws Exception
     {
