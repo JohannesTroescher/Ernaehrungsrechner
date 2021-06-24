@@ -10,12 +10,12 @@ public class Rechner
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
-    static ArrayList<Rezepte> RezepteNormalProteinhaltig;
-    static ArrayList<Rezepte> RezepteNormalProteinarm;
-    static ArrayList<Rezepte> RezepteVegetarischProteinhaltig;
-    static ArrayList<Rezepte> RezepteVegetarischProteinarm;
-    static ArrayList<Rezepte> RezepteVeganProteinhaltig;
-    static ArrayList<Rezepte> RezepteVeganProteinarm;
+    static ArrayList<Rezepte> RezepteNormalProteinhaltig=new ArrayList<Rezepte>();
+    static ArrayList<Rezepte> RezepteNormalProteinarm=new ArrayList<Rezepte>();
+    static ArrayList<Rezepte> RezepteVegetarischProteinhaltig=new ArrayList<Rezepte>();
+    static ArrayList<Rezepte> RezepteVegetarischProteinarm=new ArrayList<Rezepte>();
+    static ArrayList<Rezepte> RezepteVeganProteinhaltig=new ArrayList<Rezepte>();
+    static ArrayList<Rezepte> RezepteVeganProteinarm=new ArrayList<Rezepte>();
 
 
     /**
@@ -31,10 +31,10 @@ public class Rechner
     /**
      *Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch)
+    public Rechner(double Kalorienbedarf, double Kalorienverbrauch) throws Exception
     {
-        this.Gesamtkalorien = Kalorienbedarf;
-        this.Kalorienverbrauch = Kalorienverbrauch;
+        this.setKalorienbedarf(Kalorienbedarf);
+        this.setKalorienverbrauch(Kalorienverbrauch);
 
     }
 
@@ -42,9 +42,10 @@ public class Rechner
      *                                                  Set Methode für den Kalorienverbrauch
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
-    public void setKalorienverbrauch(double neuKalorienverbrauch)
-    {
-        Kalorienverbrauch = neuKalorienverbrauch;
+    public void setKalorienverbrauch(double neuKalorienverbrauch) throws Exception{
+        if(neuKalorienverbrauch>0)
+            Kalorienverbrauch = neuKalorienverbrauch;
+        else throw new Exception("Bitte geben Sie einen gültigen Kalorienverbrauch an!");
     }
 
     /**
@@ -61,9 +62,10 @@ public class Rechner
      *                                                  Set Methode fÃ¼r den Kalorienbedarf
      * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
      */
-    public void setKalorienbedarf(double neuKalorienbedarf)
-    {
-        Gesamtkalorien = neuKalorienbedarf;
+    public void setKalorienbedarf(double neuKalorienbedarf) throws Exception{
+        if(neuKalorienbedarf>=0)
+            Gesamtkalorien = neuKalorienbedarf;
+        else throw new Exception("Bitte geben Sie einen gültigen Kalorienbedarf an!");
     }
 
     /**
@@ -93,78 +95,60 @@ public class Rechner
      /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
      *@return                 Liste mit Rezepten
      */
-    public ArrayList<Rezepte> Rezeptsortierung() throws Exception {
+    public void Rezeptsortierung() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteNormal.txt"));
+
+            while (s.hasNextLine()) {
+                    Rezepte normal = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
+                    if (normal.getProteine().equalsIgnoreCase("proteinhaltig"))
+                        Rechner.RezepteNormalProteinhaltig.add(normal);
+                    else
+                        Rechner.RezepteNormalProteinarm.add(normal);
+                }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        while (s.hasNextLine())
-        {
-            if (s.hasNext("proteinhaltig"))
-            {
-                Rezepte normal = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
-                Datenbank.RezepteNormalListe.add(normal);
-            }
-            else
-            {
-            return RezepteNormalProteinarm;
-            }
             s.close();
 
         }
-        return RezepteNormalProteinhaltig;
-    }
 
-    public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception {
+    public void RezeptsortierungVegetarisch() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteVegetarisch.txt"));
+
+            while (s.hasNextLine()) {
+                Rezepte normal = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
+                if (normal.getProteine().equalsIgnoreCase("proteinhaltig"))
+                    Rechner.RezepteVegetarischProteinhaltig.add(normal);
+                else
+                    Rechner.RezepteVegetarischProteinarm.add(normal);
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        while (s.hasNextLine()) {
-            if (s.hasNext("proteinhaltig"))
-            {
-                Rezepte Vegetarisch = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
-                Datenbank.RezepteVegetarischListe.add(Vegetarisch);
-            }
-            else
-            {
-            return RezepteVegetarischProteinarm;
-            }
             s.close();
-
-        }
-        return RezepteVegetarischProteinhaltig;
-
     }
 
-    public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception {
+    public void RezeptsortierungVegan() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteVegan.txt"));
+
+            while (s.hasNextLine()) {
+                Rezepte normal = new Rezepte(s.next(), s.next(), Double.parseDouble(s.next()), s.nextLine());
+                if (normal.getProteine().equalsIgnoreCase("proteinhaltig"))
+                    Rechner.RezepteVeganProteinhaltig.add(normal);
+                else
+                    Rechner.RezepteVeganProteinarm.add(normal);
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        while (s.hasNextLine())
-        {
-            if (s.hasNext("proteinhaltig"))
-            {
-                Rezepte Vegan = new Rezepte(s.next(),s.next(), Double.parseDouble(s.next()),s.nextLine());
-                Datenbank.RezepteVeganListe.add(Vegan);
-            }
-            else
-            {
-            return RezepteVeganProteinarm;
-            }
             s.close();
-
-        }
-        return RezepteVeganProteinhaltig;
     }
 }

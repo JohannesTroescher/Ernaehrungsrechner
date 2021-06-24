@@ -1,3 +1,4 @@
 Normal proteinhaltig 1500 Kuchen
 Normal proteinarm 500 Brot
 Normal proteinhaltig 1000 Salamander
+Normal proteinarm 800 Salbei

@@ -1,3 +1,4 @@
-Vegan proteinhaltig 500 Kuchen
-Vegan  proteinarm 1000 Brot
-Vegan  proteinhaltig 1500 Erde
+Vegan proteinhaltig 500 Tofu
+Vegan proteinarm 1000 Brotteig
+Vegan proteinhaltig 1500 Erde
+Vegan proteinarm 1000 Blätter

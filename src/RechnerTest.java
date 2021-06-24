@@ -45,7 +45,7 @@ class RechnerTest {
     @Order(5)
     void Konstruktor_positiv() throws Exception{
         Rechner test = new Rechner();
-        Rechner test2= new Rechner(200,400,"test");
+        Rechner test2= new Rechner(200,400);
         assertEquals(test.getKalorienbedarf(),0);
         assertEquals(test.getKalorienverbrauch(),0);
         assertEquals(test2.getKalorienbedarf(),200);
@@ -56,7 +56,7 @@ class RechnerTest {
     @Order(6)
     void Konstruktor_negativ() throws Exception{
         assertThrows(Exception.class,()->{
-            Rechner test3 = new Rechner(-2,-500,"test");
+            Rechner test3 = new Rechner(-2,-500);
         });
     }
 
@@ -86,27 +86,33 @@ class RechnerTest {
     @Test
     @Order(9)
     void rezept_sortieren_positiv() throws Exception {
-        Datenbank.Rezepte_dateiaufruf_normal();
-        Datenbank.Rezepte_dateiaufruf_vegetarisch();
-        Datenbank.Rezepte_dateiaufruf_vegan();
         UserDaten testU1 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","normal",85);
         UserDaten testU2= new UserDaten("Sybille Fred",45,185,"weiblich","Muskelaufbau","vegetarisch",85);
         UserDaten testU3 = new UserDaten("Manfred Te",45,185,"männlich","Muskelaufbau","vegan",85);
-        UserDaten testU4 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","Normal",85);
-        UserDaten testU5= new UserDaten("Sybille Fred",45,185,"weiblich","Muskelaufbau","Vegetarisch",85);
-        UserDaten testU6 = new UserDaten("Manfred Te",45,185,"männlich","Muskelaufbau","Vegan",85);
+        UserDaten testU4 = new UserDaten("Manfred Müller",45,185,"männlich","Abnehmen","Normal",85);
+        UserDaten testU5= new UserDaten("Sybille Fred",45,185,"weiblich","Abnehmen","Vegetarisch",85);
+        UserDaten testU6 = new UserDaten("Manfred Te",45,185,"männlich","Abnehmen","Vegan",85);
         Datenbank.Userdaten_einlesen(testU1);
         Datenbank.Userdaten_einlesen(testU2);
         Datenbank.Userdaten_einlesen(testU3);
         Datenbank.Userdaten_einlesen(testU4);
         Datenbank.Userdaten_einlesen(testU5);
         Datenbank.Userdaten_einlesen(testU6);
-        Rechner test= new Rechner(800,800,"test");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU1.getUserID()).getUserID()),"[:Normal: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Normal: proteinarm Kalorien: 500.0 Rezeptbeschreibung:  Brot, :Normal: proteinhaltig Kalorien: 1000.0 Rezeptbeschreibung:  Salamander]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU2.getUserID()).getUserID()),"[:Vegetarisch: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Vegetarisch: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegetarisch: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Gras]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU3.getUserID()).getUserID()),"[:Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU4.getUserID()).getUserID()),"[:Normal: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Normal: proteinarm Kalorien: 500.0 Rezeptbeschreibung:  Brot, :Normal: proteinhaltig Kalorien: 1000.0 Rezeptbeschreibung:  Salamander]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU5.getUserID()).getUserID()),"[:Vegetarisch: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Kuchen, :Vegetarisch: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegetarisch: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Gras]");
-        assertEquals(test.Rezeptsortierung(Datenbank.UserListe.get(testU6.getUserID()).getUserID()),"[:Vegan: proteinhaltig Kalorien: 500.0 Rezeptbeschreibung:  Kuchen, :Vegan: proteinarm Kalorien: 1000.0 Rezeptbeschreibung:  Brot, :Vegan: proteinhaltig Kalorien: 1500.0 Rezeptbeschreibung:  Erde]");
+        Rechner test= new Rechner(800,800);
+        test.Rezeptsortierung();
+        test.RezeptsortierungVegetarisch();
+        test.RezeptsortierungVegan();
+        assertEquals(Rechner.RezepteNormalProteinhaltig.get(0).getBeschreibung()," Kuchen");
+        assertEquals(Rechner.RezepteNormalProteinhaltig.get(1).getBeschreibung()," Salamander");
+        assertEquals(Rechner.RezepteVegetarischProteinhaltig.get(0).getBeschreibung()," Sand-Kuchen");
+        assertEquals(Rechner.RezepteVegetarischProteinhaltig.get(1).getBeschreibung()," Gras");
+        assertEquals(Rechner.RezepteVeganProteinhaltig.get(0).getBeschreibung()," Tofu");
+        assertEquals(Rechner.RezepteVeganProteinhaltig.get(1).getBeschreibung()," Erde");
+        assertEquals(Rechner.RezepteNormalProteinarm.get(0).getBeschreibung()," Brot");
+        assertEquals(Rechner.RezepteNormalProteinarm.get(1).getBeschreibung()," Salbei");
+        assertEquals(Rechner.RezepteVegetarischProteinarm.get(0).getBeschreibung()," Brot");
+        assertEquals(Rechner.RezepteVegetarischProteinarm.get(1).getBeschreibung()," Luft");
+        assertEquals(Rechner.RezepteVeganProteinarm.get(0).getBeschreibung()," Brotteig");
+        assertEquals(Rechner.RezepteVeganProteinarm.get(1).getBeschreibung()," Blätter");
     }
 }
