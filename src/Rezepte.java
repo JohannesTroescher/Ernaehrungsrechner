@@ -66,7 +66,7 @@ public class Rezepte {
      * @throws Exception    Wirft Exception, wenn der gewünschte Wert "0" oder negativ ist
      */
     public void setKalorien(double kalorien) throws Exception{
-        if(kalorien>1)
+        if(kalorien>=1)
             this.kalorien=kalorien;
         else
             throw new Exception("Bitte geben Sie einen gültigen Kalorienwert an!");
