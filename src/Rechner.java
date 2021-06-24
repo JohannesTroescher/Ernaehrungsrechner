@@ -7,6 +7,8 @@ public class Rechner
 {
     /**
      *Klassenattribute der Klasse Rechner
+     * @author F.Hahn und J.Kusmat
+     * @version1.1
      */
     private double Gesamtkalorien;
     private double Kalorienverbrauch;
@@ -26,7 +28,6 @@ public class Rechner
     {
         Gesamtkalorien =0;
         Kalorienverbrauch=0;
-
     }
     /**
      *Konstruktor
@@ -35,7 +36,6 @@ public class Rechner
     {
         this.Gesamtkalorien = Kalorienbedarf;
         this.Kalorienverbrauch = Kalorienverbrauch;
-
     }
 
     /**
