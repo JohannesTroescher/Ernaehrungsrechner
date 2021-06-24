@@ -12,7 +12,7 @@ public class Rechner
     private double Kalorienverbrauch;
     static ArrayList<Rezepte> RezepteNormalProteinhaltig;
     static ArrayList<Rezepte> RezepteNormalProteinarm;
-    static ArrayList<Rezepte> RezepteVegetrischProteinhaltig;
+    static ArrayList<Rezepte> RezepteVegetarischProteinhaltig;
     static ArrayList<Rezepte> RezepteVegetarischProteinarm;
     static ArrayList<Rezepte> RezepteVeganProteinhaltig;
     static ArrayList<Rezepte> RezepteVeganProteinarm;
@@ -109,12 +109,12 @@ public class Rechner
             }
             else
             {
-
+            return RezepteNormalProteinarm;
             }
             s.close();
 
         }
-        return Datenbank.RezepteNormalListe;
+        return RezepteNormalProteinhaltig;
     }
 
     public ArrayList<Rezepte> RezeptsortierungVegetarisch() throws Exception {
@@ -133,12 +133,13 @@ public class Rechner
             }
             else
             {
-
+            return RezepteVegetarischProteinarm;
             }
             s.close();
 
         }
-        return Datenbank.RezepteVegetarischListe;
+        return RezepteVegetarischProteinhaltig;
+
     }
 
     public ArrayList<Rezepte> RezeptsortierungVegan() throws Exception {
@@ -157,9 +158,12 @@ public class Rechner
                 Datenbank.RezepteVeganListe.add(Vegan);
             }
             else
+            {
+            return RezepteVeganProteinarm;
+            }
             s.close();
 
         }
-        return Datenbank.RezepteVeganListe;
+        return RezepteVeganProteinhaltig;
     }
 }
