@@ -21,7 +21,7 @@ public class Datenbank implements Serializable {
      * ArrayLÖist "RezepteVegetarischListe" wird erstellt um sie später mit Rezepten aus RezepteVegetarisch-Datei zu befüllen
      * Arraylist "RezepteVeganListe" wird erstellt um sie später mit Rezepten aus RezepteVegan-Datei zu befüllen
      *
-     * static weil : Damit zum nutzen der Methoden und der Listen aus der Datenbank nicht erst ein Objekt instanziiert werden muss
+     * static weil: Damit zum nutzen der Methoden und der Listen aus der Datenbank nicht erst ein Objekt instanziiert werden muss
      *                  --> die Listen sind so nicht Objektgebunden, und können einfach von überall aufgerufen/verwendet/verändert werden
      */
     static ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
