@@ -29,7 +29,7 @@ public class Rechner
 
     }
     /**
-     *Konstruktor
+     * Konstruktor
      */
     public Rechner(double Kalorienbedarf, double Kalorienverbrauch) throws Exception
     {
