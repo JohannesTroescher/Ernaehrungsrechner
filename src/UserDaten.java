@@ -163,7 +163,7 @@ public class UserDaten implements Serializable {
      * @throws Exception    Wirft Exception, wenn das Gewicht "0" oder negativ ist
      */
     public void setGewicht(double gewicht) throws Exception {
-        if (gewicht > 1)
+        if (gewicht > 0)
             this.gewicht = gewicht;
         else
             throw new Exception("Bitte geben Sie ein gültiges Gewicht ein!");
@@ -188,7 +188,7 @@ public class UserDaten implements Serializable {
      * @param grundbedarf   Der gewünschte Grundbedarf
      * @throws Exception    Wirft Exception, wenn der Grundbedarf "0" oder negativ ist
      */
-    public void setGrundbedarf(int grundbedarf) throws Exception {
+    public void setGrundbedarf(double grundbedarf) throws Exception {
         if(grundbedarf >0)
             this.grundbedarf = grundbedarf;
         else

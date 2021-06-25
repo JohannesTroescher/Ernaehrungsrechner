@@ -111,7 +111,6 @@ public class Rechner
             e.printStackTrace();
         }
             s.close();
-
         }
 
     public void RezeptsortierungVegetarisch() throws Exception {
@@ -129,7 +128,6 @@ public class Rechner
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
             s.close();
     }
 
@@ -148,7 +146,6 @@ public class Rechner
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
             s.close();
     }
 }
