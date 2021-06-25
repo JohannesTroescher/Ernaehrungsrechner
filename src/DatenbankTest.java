@@ -12,44 +12,42 @@ public class DatenbankTest {
     @Test
     @Order(1)
     void UserDaten_einlesen_positiv()throws Exception{
-        UserDaten Nutzer1 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzer2 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
-        Datenbank.Userdaten_einlesen(Nutzer1);
-        Datenbank.Userdaten_einlesen(Nutzer2);
-        assertEquals(Datenbank.UserListe.get(Nutzer1.getUserID()),Nutzer1);
-        assertEquals(Datenbank.UserListe.get(Nutzer2.getUserID()),Nutzer2);
+        UserDaten User1 = new UserDaten("Heinz Erst",70,180.5,"männlich","abnehmen","normal",80.5);
+        UserDaten User2 = new UserDaten("Hannelore Zweit",50,160.5,"weiblich","muskelaufbau","vegetarisch",50.5);
+        Datenbank.Userdaten_einlesen(User1);
+        Datenbank.Userdaten_einlesen(User2);
+        assertEquals(Datenbank.UserListe.get(User1.getUserID()),User1);
+        assertEquals(Datenbank.UserListe.get(User2.getUserID()),User2);
     }
     @Test
     @Order(2)
     void UserDaten_einlesen_negativ()throws Exception{
-        UserDaten Nutzer3 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzer4 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
-        Datenbank.Userdaten_einlesen(Nutzer3);
-        Datenbank.Userdaten_einlesen(Nutzer4);
-        assertNotEquals(Datenbank.UserListe.get(1),Nutzer3);
-        assertNotEquals(Datenbank.UserListe.get(0),Nutzer4);
+        UserDaten User3 = new UserDaten("Dietmar Dritt",25,190.5,"männlich","muskelaufbau","vegan",90.5);
+        UserDaten User4 = new UserDaten("Willi Quadro",65,190.5,"männlich","abnehmen","normal",90.5);
+        Datenbank.Userdaten_einlesen(User3);
+        Datenbank.Userdaten_einlesen(User4);
+        assertNotEquals(Datenbank.UserListe.get(1),User3);
+        assertNotEquals(Datenbank.UserListe.get(0),User4);
         assertNotEquals(UserDaten.counter,-1);
     }
     @Test
     @Order(3)
     void UserDaten_aendern_positiv()throws Exception{
-        UserDaten Nutzer5 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzer6 = new UserDaten("Rolf",55,180.1,"männlich","Muskelaufbau","normal",75.2);
-        Datenbank.Userdaten_einlesen(Nutzer5);
-        Datenbank.Userdaten_einlesen(Nutzer6);
-        Datenbank.Userdaten_aendern(0,Nutzer5);
-        assertEquals(Datenbank.UserListe.get(5),Nutzer6);
+        UserDaten User5 = new UserDaten("Heinz Penta",70,180.5,"männlich","abnehmen","normal",80.5);
+        UserDaten User6 = new UserDaten("Hannelore Hexa",50,160.5,"weiblich","muskelaufbau","vegetarisch",50.5);
+        Datenbank.Userdaten_einlesen(User5);
+        Datenbank.Userdaten_aendern(0,User6);
+        assertEquals(Datenbank.UserListe.get(0),User6);
         assertEquals(UserDaten.counter,5);
     }
     @Test
     @Order(4)
     void UserDaten_aendern_negativ()throws Exception{
-        UserDaten Nutzer7 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzer8 = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        Datenbank.Userdaten_einlesen(Nutzer7);
-        Datenbank.Userdaten_einlesen(Nutzer8);
-        Datenbank.Userdaten_aendern(0,Nutzer7);
-        assertNotEquals(Datenbank.UserListe.get(0),Nutzer8);
+        UserDaten User7 = new UserDaten("Siegfried Septi",70,180.5,"männlich","abnehmen","normal",80.5);
+        UserDaten User8 = new UserDaten("Olga Okta",50,160.5,"weiblich","muskelaufbau","vegetarisch",50.5);
+        Datenbank.Userdaten_einlesen(User7);
+        Datenbank.Userdaten_aendern(0,User7);
+        assertNotEquals(Datenbank.UserListe.get(0),User8);
         assertNotEquals(UserDaten.counter,5);
     }
     @Test
@@ -122,27 +120,27 @@ public class DatenbankTest {
     @Test
     @Order(13)
     void UserListespeicheroperationen_positiv()throws Exception{
-        UserDaten Nutzera = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzerb = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        Datenbank.Userdaten_einlesen(Nutzera);
-        Datenbank.Userdaten_einlesen(Nutzerb);
+        UserDaten User9 = new UserDaten("Wiedla Wadl",70,180.5,"männlich","abnehmen","normal",80.5);
+        UserDaten User10 = new UserDaten("Waldo Kein",50,160.5,"männlich","muskelaufbau","vegetarisch",50.5);
+        Datenbank.Userdaten_einlesen(User9);
+        Datenbank.Userdaten_einlesen(User10);
         Datenbank.saveUserListe(Datenbank.UserListe);
         Datenbank.loadUserListe();
-        assertEquals(Datenbank.UserListe.get(Nutzera.getUserID()).getName(),Nutzera.getName());
-        assertEquals(Datenbank.UserListe.get(Nutzera.getUserID()).getUserID(),0);
+        assertEquals(Datenbank.UserListe.get(User9.getUserID()).getName(),User9.getName());
+        assertEquals(Datenbank.UserListe.get(User9.getUserID()).getUserID(),User9.getUserID());
 
     }
     @Test
     @Order(14)
     void UserListespeicheroperationen_negativ()throws Exception{
-        UserDaten Nutzerc = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        UserDaten Nutzerd = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
-        Datenbank.Userdaten_einlesen(Nutzerc);
-        Datenbank.Userdaten_einlesen(Nutzerd);
+        UserDaten User11 = new UserDaten("Quaternion",70,180.5,"männlich","abnehmen","normal",80.5);
+        UserDaten User12 = new UserDaten("Unendlickeit",50,160.5,"männlich","muskelaufbau","vegetarisch",50.5);
+        Datenbank.Userdaten_einlesen(User11);
+        Datenbank.Userdaten_einlesen(User12);
         Datenbank.saveUserListe(Datenbank.UserListe);
         Datenbank.loadUserListe();
-        assertNotEquals(Datenbank.UserListe.get(Nutzerc.getUserID()).getName(),"Wolfgang");
-        assertNotEquals(Datenbank.UserListe.get(Nutzerd.getUserID()).getUserID(),1);
+        assertNotEquals(Datenbank.UserListe.get(User11.getUserID()).getName(),"Wolfgang");
+        assertNotEquals(Datenbank.UserListe.get(User12.getUserID()).getUserID(),1);
 
     }
 }

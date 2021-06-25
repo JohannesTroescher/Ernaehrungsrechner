@@ -233,7 +233,7 @@ public class UserDaten implements Serializable {
     public void setUserID(int UserID)throws Exception{
         if(UserID>=0) {
             this.UserID = UserID;
-            counter -= 1;
+            counter =counter- 1;
         }else
             throw new Exception("Negative UserID nicht gestattet!");
     }
