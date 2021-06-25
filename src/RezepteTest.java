@@ -11,6 +11,10 @@ class RezepteTest {
         Rezepte test = new Rezepte();
         test.setArt("vegetarisch");
         assertEquals(test.getArt(),"vegetarisch");
+        test.setArt("normal");
+        assertEquals(test.getArt(),"normal");
+        test.setArt("vegan");
+        assertEquals(test.getArt(),"vegan");
     }
     @Order(2)
     @Test
@@ -18,6 +22,7 @@ class RezepteTest {
         assertThrows(Exception.class,()->{
             Rezepte test = new Rezepte();
             test.setArt("brot");
+            test.setArt("vegn");
         });
 
     }
@@ -27,6 +32,8 @@ class RezepteTest {
         Rezepte test = new Rezepte();
         test.setKalorien(10000);
         assertEquals(test.getKalorien(),10000);
+        test.setKalorien(1);
+        assertEquals(test.getKalorien(),1);
     }
     @Order(4)
     @Test
@@ -34,6 +41,7 @@ class RezepteTest {
         assertThrows(Exception.class,()->{
             Rezepte test = new Rezepte();
             test.setKalorien(-10);
+            test.setKalorien(0.9);
         });
     }
     @Order(6)
@@ -50,14 +58,12 @@ class RezepteTest {
     @Test
     void Proteine_negativ() throws Exception {
         Rezepte test3 = new Rezepte();
-        Rezepte test4 = new Rezepte();
-        test3.setProteine("proteinhaltig");
-        test4.setProteine("proteinarm");
-        assertNotEquals(test4.getProteine(), "proteinhaltig");
-        assertNotEquals(test3.getProteine(), "proteinarm");
         assertThrows(Exception.class, () -> {
+            test3.setProteine("proteinhatig");
             Rezepte test5 = new Rezepte();
             test5.setKalorien(-10);
+            test5.setKalorien(-0);
+            test5.setKalorien(0.1);
         });
     }
     @Order(8)

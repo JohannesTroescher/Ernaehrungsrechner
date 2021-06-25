@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -6,46 +7,50 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class InterfaceTest {
+    @Ignore("Nicht mehr vorhanden")
     @Test
     @Order(1)
     void Rezeptvorschläge_positiv() {
-        Interface test = new Interface(800,"Test-Rezept");
-        assertEquals(test.getRezeptvorschläge(),"Test-Rezept");
-        test.setRezeptvorschläge("Rezept");
-        assertEquals(test.getRezeptvorschläge(),"Rezept");
+        //Interface test = new Interface(800,"Test-Rezept");
+        //assertEquals(test.getRezeptvorschläge(),"Test-Rezept");
+        //test.setRezeptvorschläge("Rezept");
+        //assertEquals(test.getRezeptvorschläge(),"Rezept");
     }
+    @Ignore("Nicht mehr vorhanden")
     @Order(2)
     @Test
     void Rezeptvorschläge_negativ() {
-        Interface test = new Interface(500,"Test-Rezept");
-        assertNotEquals(test.getRezeptvorschläge(),"Rezept");
-        test.setRezeptvorschläge("Rezept");
-        assertNotEquals(test.getRezeptvorschläge(),"Test");
+        //Interface test = new Interface(500,"Test-Rezept");
+        //assertNotEquals(test.getRezeptvorschläge(),"Rezept");
+        //test.setRezeptvorschläge("Rezept");
+        //assertNotEquals(test.getRezeptvorschläge(),"Test");
     }
+    @Ignore("Nicht mehr vorhanden")
     @Test
     @Order(3)
     void Kaloriensollwert_positiv(){
-        Interface test = new Interface(800,"Test-Rezept");
-        assertEquals(test.getKalorien_sollwert(),800);
-        test.setKalorien_sollwert(500);
-        assertEquals(test.getKalorien_sollwert(),500);
+        //Interface test = new Interface(800,"Test-Rezept");
+        //assertEquals(test.getKalorien_sollwert(),800);
+        //test.setKalorien_sollwert(500);
+        //assertEquals(test.getKalorien_sollwert(),500);
     }
+    @Ignore("Nicht mehr vorhanden")
     @Test
     @Order(4)
     void Kaloriensollwert_negativ(){
-        Interface test = new Interface(500,"Test-Rezept");
-        assertNotEquals(test.getKalorien_sollwert(),800);
-        test.setKalorien_sollwert(800);
-        assertNotEquals(test.getKalorien_sollwert(),900);
+        //Interface test = new Interface(500,"Test-Rezept");
+        //assertNotEquals(test.getKalorien_sollwert(),800);
+        //test.setKalorien_sollwert(800);
+        //assertNotEquals(test.getKalorien_sollwert(),900);
     }
     @Order(5)
     @Test
     void UserErstellen_positiv()throws Exception{
-        Interface test = new Interface(800,"Test-Rezept");
-        test.User_erstellen("Günther", 30, 180, "männlich", "abnehmen", "normal", 60.6);test.User_erstellen("Frieder",80,180,"männlich","abnehmen","normal",60.6);
+        Interface test = new Interface();
+        test.User_erstellen("Günther", 1, 0.1, "männlich", "abnehmen", "normal", 0.1);
+        test.User_erstellen("Frieder",80,180,"männlich","abnehmen","normal",60.6);
         test.User_erstellen("Rüdiger",34,180,"männlich","abnehmen","normal",60.6);
         test.User_erstellen("Heinz",50,180,"männlich","abnehmen","normal",60.6);
-
         test.User_erstellen("Walter",30,180,"männlich","abnehmen","normal",60.6);
         test.User_erstellen("Waltraud",30,180,"weiblich","abnehmen","normal",60.6);
         assertEquals(Datenbank.UserListe.get(4).getName(),"Walter");
@@ -61,7 +66,7 @@ public class InterfaceTest {
     @Test
     @Order(6)
     void UserErstellen_negativ()throws Exception{
-        Interface test2 = new Interface(800,"Test-Rezept");
+        Interface test2 = new Interface();
         test2.User_erstellen("Walter",30,180,"weiblich","abnehmen","normal",60.6);
         test2.User_erstellen("Marianne",30,180,"weiblich","abnehmen","normal",60.6);
         assertNotEquals(Datenbank.UserListe.get(Datenbank.UserListe.get(0).getUserID()).getName(),"Richter");
@@ -74,19 +79,19 @@ public class InterfaceTest {
         assertNotEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1447.5);
         assertNotEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1447.5);
         assertThrows(Exception.class, () -> {
-            Interface test3= new Interface(500,"Test");
-            test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", 60.6);
-            test3.User_erstellen("Walter", 30, -180, "weiblich", "abnehmen", "normal", 60.6);
+            Interface test3= new Interface();
+            test3.User_erstellen("Walter", -1, 0, "weiblich", "abnehmen", "normal", 60);
+            test3.User_erstellen("Walter", 30, -0.1, "weiblich", "abnehmen", "normal", 60.6);
             test3.User_erstellen("Walter", 30, 180, "Fliese", "abnehmen", "normal", 60.6);
             test3.User_erstellen("Walter", 30, 180, "weiblich", "PUMPEN", "normal", 60.6);
             test3.User_erstellen("Walter", 30, 180, "weiblich", "abnehmen", "steine", 60.6);
-            test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", -60.6);
+            test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", -0.1);
         });
     }
     @Test
     @Order(7)
     void User_aenderung_positiv() throws Exception {
-        Interface test4= new Interface(4,"Bla");
+        Interface test4= new Interface();
         UserDaten Nutzerx = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
         UserDaten Nutzery = new UserDaten("Ulf",25,140.1,"männlich","Muskelaufbau","normal",45.2);
         Datenbank.Userdaten_einlesen(Nutzerx);
@@ -103,7 +108,7 @@ public class InterfaceTest {
     @Test
     @Order(8)
     void User_aufruf_positiv() throws Exception {
-        Interface testat = new Interface(500,"Test-Rezept");
+        Interface testat = new Interface();
         UserDaten neu=new UserDaten();
         UserDaten neu2=new UserDaten();
         UserDaten neu3=new UserDaten();

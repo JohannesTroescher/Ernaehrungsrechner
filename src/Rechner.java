@@ -8,7 +8,7 @@ public class Rechner
     /**
      *Klassenattribute der Klasse Rechner
      */
-    private double Gesamtkalorien;
+
     private double Kalorienverbrauch;
     static ArrayList<Rezepte> RezepteNormalProteinhaltig=new ArrayList<Rezepte>();
     static ArrayList<Rezepte> RezepteNormalProteinarm=new ArrayList<Rezepte>();
@@ -24,16 +24,14 @@ public class Rechner
      */
     public Rechner()
     {
-        Gesamtkalorien =0;
         Kalorienverbrauch=0;
 
     }
     /**
      * Konstruktor
      */
-    public Rechner(double Kalorienbedarf, double Kalorienverbrauch) throws Exception
+    public Rechner(double Kalorienverbrauch) throws Exception
     {
-        this.setKalorienbedarf(Kalorienbedarf);
         this.setKalorienverbrauch(Kalorienverbrauch);
 
     }
@@ -43,7 +41,7 @@ public class Rechner
      * @param neuKalorienverbrauch                      Setzt das Attribut Kalorienverbrauch auf den eingegebenen Wert
      */
     public void setKalorienverbrauch(double neuKalorienverbrauch) throws Exception{
-        if(neuKalorienverbrauch>0)
+        if(neuKalorienverbrauch>=0)
             Kalorienverbrauch = neuKalorienverbrauch;
         else throw new Exception("Bitte geben Sie einen gültigen Kalorienverbrauch an!");
     }
@@ -57,25 +55,6 @@ public class Rechner
         return Kalorienverbrauch;
     }
 
-
-    /**
-     *                                                  Set Methode fÃ¼r den Kalorienbedarf
-     * @param neuKalorienbedarf                         Setzt das Attribut Kalorienbedarf auf den eingegebenen Wert
-     */
-    public void setKalorienbedarf(double neuKalorienbedarf) throws Exception{
-        if(neuKalorienbedarf>=0)
-            Gesamtkalorien = neuKalorienbedarf;
-        else throw new Exception("Bitte geben Sie einen gültigen Kalorienbedarf an!");
-    }
-
-    /**
-     *                                                  Get Methode fÃ¼r den Kalorienbedarf
-     * @return Gesamtkalorien                           Gibt den Gesamtkalorien zurÃ¼ck
-     */
-    public double getKalorienbedarf()
-    {
-        return Gesamtkalorien;
-    }
 
 
     /**                     Rechenoperation für Kalorien

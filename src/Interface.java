@@ -1,61 +1,10 @@
 public class Interface {
-    /**
-     * Klassenattribute der Klasse Interface
-     */
-    private double Kalorien_sollwert;
-    private String Rezeptvorschläge;
 
-    /**
-     * Konstruktor der Klasse Interface
-     *
-     * @param kalorien_sollwert Sollwert der Kalorien
-     * @param rezeptvorschläge  Rezeptvorschläge aus externer Datei
-     */
-    public Interface(double kalorien_sollwert, String rezeptvorschläge) {
-        this.Kalorien_sollwert = kalorien_sollwert;
-        this.Rezeptvorschläge = rezeptvorschläge;
-    }
 
     /**
      * Standardkonstruktor der Klasse Interface
      */
     public Interface() {
-    }
-
-    /**
-     * Get Methode für die Rezeptvorschläge
-     *
-     * @return Rezeptvorschläge                   gibt die passenden Rezeptvorschläge zurück
-     */
-    public String getRezeptvorschläge() {
-        return Rezeptvorschläge;
-    }
-
-    /**
-     * Set Methode für die Rezeptvorschläge
-     *
-     * @param rezeptvorschläge setzt Rezeptvorschläge auf eienen bestimmten Wert
-     */
-    public void setRezeptvorschläge(String rezeptvorschläge) {
-        Rezeptvorschläge = rezeptvorschläge;
-    }
-
-    /**
-     * Get Methode für den Kalorien_sollwert
-     *
-     * @return Kalorien_sollwert  gibt den Kaloriensollwert zurück
-     */
-    public double getKalorien_sollwert() {
-        return Kalorien_sollwert;
-    }
-
-    /**
-     * Set Methode für den Kaloriensollwert
-     *
-     * @param kalorien_sollwert Setzt den Kaloriensollwert auf einen bestimmten Wert
-     */
-    public void setKalorien_sollwert(double kalorien_sollwert) {
-        Kalorien_sollwert = kalorien_sollwert;
     }
 
     /**
@@ -69,13 +18,8 @@ public class Interface {
      * @return User
      */
     public void User_erstellen(String name, int alter, double groesse, String geschlecht, String training, String nahrung, double gewicht) throws Exception {
-        //try {
             UserDaten User = new UserDaten(name, alter, groesse, geschlecht, training, nahrung, gewicht);
             Datenbank.Userdaten_einlesen(User);
-        //} catch (Exception e) {
-         //   e.printStackTrace();
-
-        //}
     }
 
     /**

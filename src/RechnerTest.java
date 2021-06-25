@@ -1,3 +1,4 @@
+import org.junit.Ignore;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ class RechnerTest {
         Rechner test = new Rechner();
         test.setKalorienverbrauch(1000);
         assertEquals(test.getKalorienverbrauch(),1000);
+        test.setKalorienverbrauch(0);
+        assertEquals(test.getKalorienverbrauch(),0);
     }
 
    @Test
@@ -22,41 +25,44 @@ class RechnerTest {
         assertThrows(Exception.class,()->{
             Rechner test = new Rechner();
             test.setKalorienverbrauch(-10);
+            test.setKalorienverbrauch(-0.1);
         });
     }
-
+    @Ignore("Attribut existiert nicht mehr")
     @Test
     @Order(3)
     void Kalorienbedarf_positiv() throws Exception{
-        Rechner test = new Rechner();
-        test.setKalorienbedarf(500);
-        assertEquals(test.getKalorienbedarf(),500);
+        //Rechner test = new Rechner();
+        //test.setKalorienbedarf(500);
+        //assertEquals(test.getKalorienbedarf(),500);
+        //test.setKalorienbedarf(0.1);
+        //assertEquals(test.getKalorienbedarf(),0.1);
     }
-
+    @Ignore("Attribut existiert nicht mehr")
     @Test
     @Order(4)
     void Kalorienbedarf_negativ() throws Exception{
-        assertThrows(Exception.class,()->{
-            Rechner test = new Rechner();
-            test.setKalorienbedarf(-10);
-        });
+        //assertThrows(Exception.class,()->{
+        //Rechner test = new Rechner();
+        //test.setKalorienbedarf(-10);
+        //test.setKalorienbedarf(0.9);
+        //});
     }
     @Test
     @Order(5)
     void Konstruktor_positiv() throws Exception{
-        Rechner test = new Rechner();
-        Rechner test2= new Rechner(200,400);
-        assertEquals(test.getKalorienbedarf(),0);
+        Rechner test = new Rechner(0);
+        Rechner test2= new Rechner(200);
         assertEquals(test.getKalorienverbrauch(),0);
-        assertEquals(test2.getKalorienbedarf(),200);
-        assertEquals(test2.getKalorienverbrauch(),400);
+        assertEquals(test2.getKalorienverbrauch(),200);
     }
 
     @Test
     @Order(6)
     void Konstruktor_negativ() throws Exception{
         assertThrows(Exception.class,()->{
-            Rechner test3 = new Rechner(-2,-500);
+            Rechner test3 = new Rechner(-2);
+            Rechner test4 = new Rechner(-0.1);
         });
     }
 
@@ -65,7 +71,6 @@ class RechnerTest {
     void rechneroperation_positiv() throws Exception {
         UserDaten testuser=new UserDaten();
         testuser.setGrundbedarf(500);
-        //ArrayList<UserDaten> UserListe = new ArrayList<UserDaten>();
         Datenbank.Userdaten_einlesen(testuser);
         Rechner testRechner=new Rechner();
         testRechner.setKalorienverbrauch(200);
@@ -81,6 +86,9 @@ class RechnerTest {
         Rechner testRechner=new Rechner();
         testRechner.setKalorienverbrauch(200);
         assertNotEquals(testRechner.Rechneroperation(testuser1.getUserID()),500);
+        assertThrows(Exception.class,()->{
+            testRechner.Rechneroperation(99);
+        });
     }
 
     @Test
@@ -98,7 +106,7 @@ class RechnerTest {
         Datenbank.Userdaten_einlesen(testU4);
         Datenbank.Userdaten_einlesen(testU5);
         Datenbank.Userdaten_einlesen(testU6);
-        Rechner test= new Rechner(800,800);
+        Rechner test= new Rechner(800);
         test.Rezeptsortierung();
         test.RezeptsortierungVegetarisch();
         test.RezeptsortierungVegan();
