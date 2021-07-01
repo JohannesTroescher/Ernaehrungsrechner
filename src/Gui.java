@@ -30,6 +30,9 @@ public class Gui {
     private JLabel kalorienverbrauch;
 
     public Gui() {
+        String box1[] = {"Weiblich","Männlich","Divers"};
+        String box2[] = {"Normal","Vegetarisch","Vegan"};
+        String box3[] = {"Abnehmen","Muskelaufbau"};
         bestätigenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
