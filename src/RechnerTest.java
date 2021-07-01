@@ -107,7 +107,7 @@ class RechnerTest {
         Datenbank.Userdaten_einlesen(testU5);
         Datenbank.Userdaten_einlesen(testU6);
         Rechner test= new Rechner(800);
-        test.Rezeptsortierung();
+        test.RezeptsortierungNormal();
         test.RezeptsortierungVegetarisch();
         test.RezeptsortierungVegan();
         assertEquals(Rechner.RezepteNormalProteinhaltig.get(0).getBeschreibung()," Kuchen");
