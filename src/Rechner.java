@@ -74,7 +74,7 @@ public class Rechner
      /*@param                 Trainingsziel (Proteinhaltig/Proteinarm)
      *@return                 Liste mit Rezepten
      */
-    public void Rezeptsortierung() throws Exception {
+    public void RezeptsortierungNormal() throws Exception {
         Scanner s = null;
         try {
             s = new Scanner(new File("src/RezepteNormal.txt"));
