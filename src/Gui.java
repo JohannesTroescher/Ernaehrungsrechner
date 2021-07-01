@@ -12,6 +12,15 @@ public class Gui {
     private JComboBox comboBox2;
     private JComboBox comboBox3;
     private JButton bestätigenButton;
+    private JLabel uberschrift;
+    private JLabel name;
+    private JLabel alter;
+    private JLabel gewicht;
+    private JLabel grosse;
+    private JLabel geschlecht;
+    private JLabel ernaehrungsart;
+    private JLabel trainingsziel;
+    private JLabel userbereitsvorhanden;
 
     public Gui() {
         bestätigenButton.addActionListener(new ActionListener() {
