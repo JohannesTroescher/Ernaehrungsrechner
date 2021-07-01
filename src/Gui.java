@@ -21,13 +21,17 @@ public class Gui {
     private JLabel uberschrift;
     private JLabel name;
     private JLabel alter;
-    private JLabel gewicht;
     private JLabel grosse;
+    private JLabel gewicht;
     private JLabel geschlecht;
     private JLabel ernaehrungsart;
     private JLabel trainingsziel;
     private JLabel userbereitsvorhanden;
     private JLabel kalorienverbrauch;
+    private JButton bestaetigenButton2;
+    private JTextField textField7;
+    private JTextField textField8;
+    private JTextField textField9;
 
     public Gui() {
 
@@ -59,10 +63,16 @@ public class Gui {
                 //    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht)throws Exception{
             }
         });
+        bestaetigenButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Gui");
+        JFrame frame = new JFrame("Ernährungsrechner");
         Gui demo = new Gui();
         frame.setContentPane(demo.Ernaehrungsrechner);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
