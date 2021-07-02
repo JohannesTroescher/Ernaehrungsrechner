@@ -1,9 +1,9 @@
+
 import org.junit.Ignore;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class InterfaceTest {
@@ -47,13 +47,13 @@ public class InterfaceTest {
     @Test
     void UserErstellen_positiv()throws Exception{
         Interface test = new Interface();
-        test.User_erstellen("Günther", 1, 0.1, "männlich", "abnehmen", "normal", 0.1);
-        test.User_erstellen("Frieder",80,180,"männlich","abnehmen","normal",60.6);
-        test.User_erstellen("Rüdiger",34,180,"männlich","abnehmen","normal",60.6);
-        test.User_erstellen("Heinz",50,180,"männlich","abnehmen","normal",60.6);
-        test.User_erstellen("Walter",30,180,"männlich","abnehmen","normal",60.6);
-        test.User_erstellen("Waltraud",30,180,"weiblich","abnehmen","normal",60.6);
-        assertEquals(Datenbank.UserListe.get(4).getName(),"Walter");
+        test.User_erstellen("Heinz Erst", 70, 180.5, "männlich", "abnehmen", "normal", 80.5);
+        test.User_erstellen("Hannelore Zweit",50,160.5,"weiblich","muskelaufbau","vegetarisch",50.5);
+        test.User_erstellen("Dietmar Dritt",25,190.5,"männlich","abnehmen","normal",60.6);
+        test.User_erstellen("Willi Quadro",65,180,"männlich","abnehmen","normal",60.6);
+        test.User_erstellen("Heinz Penta",30,180,"männlich","abnehmen","normal",60.6);
+        test.User_erstellen("Hannelore Hexa",30,180,"weiblich","abnehmen","normal",60.6);
+        assertEquals(Datenbank.UserListe.get(4).getName(),"Heinz Penta");
         assertEquals(Datenbank.UserListe.get(4).getAlter(),30);
         assertEquals(Datenbank.UserListe.get(4).getKoerpergroesse(),180);
         assertEquals(Datenbank.UserListe.get(4).getGeschlecht(),"männlich");
@@ -67,8 +67,8 @@ public class InterfaceTest {
     @Order(6)
     void UserErstellen_negativ()throws Exception{
         Interface test2 = new Interface();
-        test2.User_erstellen("Walter",30,180,"weiblich","abnehmen","normal",60.6);
-        test2.User_erstellen("Marianne",30,180,"weiblich","abnehmen","normal",60.6);
+        test2.User_erstellen("Heinz Erst",30,180,"weiblich","abnehmen","normal",60.6);
+        test2.User_erstellen("Hannelore Zweit",30,180,"weiblich","abnehmen","normal",60.6);
         assertNotEquals(Datenbank.UserListe.get(Datenbank.UserListe.get(0).getUserID()).getName(),"Richter");
         assertNotEquals(Datenbank.UserListe.get(0).getAlter(),45);
         assertNotEquals(Datenbank.UserListe.get(0).getKoerpergroesse(),18);
@@ -80,12 +80,12 @@ public class InterfaceTest {
         assertNotEquals(Datenbank.UserListe.get(0).getGrundbedarf(),1447.5);
         assertThrows(Exception.class, () -> {
             Interface test3= new Interface();
-            test3.User_erstellen("Walter", -1, 0, "weiblich", "abnehmen", "normal", 60);
-            test3.User_erstellen("Walter", 30, -0.1, "weiblich", "abnehmen", "normal", 60.6);
-            test3.User_erstellen("Walter", 30, 180, "Fliese", "abnehmen", "normal", 60.6);
-            test3.User_erstellen("Walter", 30, 180, "weiblich", "PUMPEN", "normal", 60.6);
-            test3.User_erstellen("Walter", 30, 180, "weiblich", "abnehmen", "steine", 60.6);
-            test3.User_erstellen("Walter", -30, 180, "weiblich", "abnehmen", "normal", -0.1);
+            test3.User_erstellen("Heinz Erst", -1, 0, "weiblich", "abnehmen", "normal", 60);
+            test3.User_erstellen("Heinz Erst", 30, -0.1, "weiblich", "abnehmen", "normal", 60.6);
+            test3.User_erstellen("Heinz Erst", 30, 180, "Fliese", "abnehmen", "normal", 60.6);
+            test3.User_erstellen("Heinz Erst", 30, 180, "weiblich", "PUMPEN", "normal", 60.6);
+            test3.User_erstellen("Heinz Erst", 30, 180, "weiblich", "abnehmen", "steine", 60.6);
+            test3.User_erstellen("Heinz Erst", -30, 180, "weiblich", "abnehmen", "normal", -0.1);
         });
     }
     @Test

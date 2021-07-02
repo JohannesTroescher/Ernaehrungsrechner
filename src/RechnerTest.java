@@ -3,7 +3,9 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
 import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -94,12 +96,12 @@ class RechnerTest {
     @Test
     @Order(9)
     void rezept_sortieren_positiv() throws Exception {
-        UserDaten testU1 = new UserDaten("Manfred Müller",45,185,"männlich","Muskelaufbau","normal",85);
-        UserDaten testU2= new UserDaten("Sybille Fred",45,185,"weiblich","Muskelaufbau","vegetarisch",85);
-        UserDaten testU3 = new UserDaten("Manfred Te",45,185,"männlich","Muskelaufbau","vegan",85);
-        UserDaten testU4 = new UserDaten("Manfred Müller",45,185,"männlich","Abnehmen","Normal",85);
-        UserDaten testU5= new UserDaten("Sybille Fred",45,185,"weiblich","Abnehmen","Vegetarisch",85);
-        UserDaten testU6 = new UserDaten("Manfred Te",45,185,"männlich","Abnehmen","Vegan",85);
+        UserDaten testU1 = new UserDaten("Heinz Erst",45,185,"männlich","Muskelaufbau","normal",85);
+        UserDaten testU2= new UserDaten("hannelore Zweit",45,185,"weiblich","Muskelaufbau","vegetarisch",85);
+        UserDaten testU3 = new UserDaten("Dietmar Dritt",45,185,"männlich","Muskelaufbau","vegan",85);
+        UserDaten testU4 = new UserDaten("Willi Quadro",45,185,"männlich","Abnehmen","Normal",85);
+        UserDaten testU5= new UserDaten("Heinz Penta",45,185,"weiblich","Abnehmen","Vegetarisch",85);
+        UserDaten testU6 = new UserDaten("Hannelore Hexa",45,185,"männlich","Abnehmen","Vegan",85);
         Datenbank.Userdaten_einlesen(testU1);
         Datenbank.Userdaten_einlesen(testU2);
         Datenbank.Userdaten_einlesen(testU3);
