@@ -16,6 +16,8 @@ import java.io.IOException;
 public class Datenbank implements Serializable {
 
     /**
+     * @author  Johannes Tröscher und Luc-Silvan Uhlig
+     * @version 1.3
      * ArrayList "UserListe" wird erstellt um sie später mit UserDaten zu füllen
      * ArrayList "RezepteNormalListe" wird erstellt um sie später mit Rezepten aus RezepteNormal-Datei zu befüllen
      * ArrayList "RezepteVegetarischListe" wird erstellt um sie später mit Rezepten aus RezepteVegetarisch-Datei zu befüllen
