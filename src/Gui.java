@@ -3,7 +3,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Gui {
-
+    /**
+     * Klassenattribute der Klasse Gui
+     * @author  J. Kusmat, F.Hahn
+     * @version 2.0
+     */
     private Datenbank db;
     private Rechner rechner;
 
@@ -50,7 +54,7 @@ public class Gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    System.out.println((String) comboBox3.getSelectedItem());
+                    //System.out.println((String) comboBox3.getSelectedItem());
                     UserDaten userDaten = new UserDaten(textField1.getText(),
                             Integer.parseInt(textField2.getText()), Double.parseDouble(textField4.getText()),
                             (String) comboBox1.getSelectedItem(), (String) comboBox3.getSelectedItem(),
@@ -60,13 +64,29 @@ public class Gui {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
-                //    public UserDaten(String name,int alter,double groesse,String geschlecht, String training,String nahrung,double gewicht)throws Exception{
+                UserDaten id = new UserDaten();
+                //System.out.println(id.getUserID());
+                textField7.setText("Deine UserID lautet: "+id.getUserID());
+
+                   try{
+                     Rechner kal = new Rechner(Double.parseDouble(textField6.getText()));
+                      // Rechner.setKalorienverbrauch(kal);
+
+                   } catch (Exception exception) {
+                       exception.printStackTrace();
+                }
             }
         });
+
         bestaetigenButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try {
+                    System.out.println(textField5.getText());
 
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
         });
     }
