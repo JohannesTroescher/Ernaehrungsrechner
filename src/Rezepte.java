@@ -38,7 +38,7 @@ public class Rezepte {
      */
     @Override
     public String toString(){
-        return ":"+this.art + ": " + this.getProteine() + " " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung;
+        return ":"+this.art + ": " + this.getProteine() + " " + "Kalorien: " + this.kalorien + " " + "Rezeptbeschreibung: " + this.Beschreibung+"\n";
 }
 
     /**             Get-Methode für Art des Rezepts

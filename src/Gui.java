@@ -57,7 +57,6 @@ public class Gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    //System.out.println((String) comboBox3.getSelectedItem());
                     activeUser = new UserDaten(textField1.getText(),
                             Integer.parseInt(textField2.getText()), Double.parseDouble(textField4.getText()),
                             (String) comboBox1.getSelectedItem(), (String) comboBox3.getSelectedItem(),
@@ -70,6 +69,7 @@ public class Gui {
                 Datenbank.saveUserListe(Datenbank.UserListe);
                 textField7.setText("Deine UserID lautet: " + Datenbank.UserListe.indexOf(activeUser));
 
+                rezepte();
             }
         });
 
@@ -83,11 +83,57 @@ public class Gui {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+                rezepte();
+            }
+        });
+
+        berechnebutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    rechner.setKalorienverbrauch(Double.parseDouble(textField6.getText()));
+                    gesamtkalorien.setText(rechner.Rechneroperation(Datenbank.UserListe.indexOf(activeUser)) + " kcal");
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
         });
     }
 
-    public static void main(String[] args) {
+    public void rezepte() {
+        String nahrung = activeUser.getNahrungspraeferenz();
+        if (activeUser.getTrainingsziel().equalsIgnoreCase("Muskelaufbau")) {
+            switch (nahrung) {
+                case "Normal":
+                    tollerezepte.setText(Rechner.RezepteNormalProteinhaltig.toString());
+                    break;
+                case "Vegetarisch":
+                    tollerezepte.setText(Rechner.RezepteVegetarischProteinhaltig.toString());
+                    break;
+                case "Vegan":
+                    tollerezepte.setText(Rechner.RezepteVeganProteinhaltig.toString());
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (nahrung) {
+                case "Normal":
+                    tollerezepte.setText(Rechner.RezepteNormalProteinarm.toString());
+                    break;
+                case "Vegetarisch":
+                    tollerezepte.setText(Rechner.RezepteVegetarischProteinarm.toString());
+                    break;
+                case "Vegan":
+                    tollerezepte.setText(Rechner.RezepteVeganProteinarm.toString());
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
         JFrame frame = new JFrame("Ernährungsrechner");
         Gui demo = new Gui();
         frame.setContentPane(demo.Ernaehrungsrechner);
@@ -95,5 +141,9 @@ public class Gui {
         frame.pack();
         frame.setVisible(true);
         Datenbank.loadUserListe();
+        demo.rechner = new Rechner();
+        demo.rechner.RezeptsortierungNormal();
+        demo.rechner.RezeptsortierungVegan();
+        demo.rechner.RezeptsortierungVegetarisch();
     }
 }
