@@ -2,13 +2,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Klassenattribute der Klasse Gui
+ *
+ * @author J. Kusmat, F.Hahn
+ * @version 2.0
+ */
 public class Gui {
-    /**
-     * Klassenattribute der Klasse Gui
-     * @author  J. Kusmat, F.Hahn
-     * @version 2.0
-     */
-    private Datenbank db;
+
+    private UserDaten activeUser;
     private Rechner rechner;
 
     private JPanel Ernaehrungsrechner;
@@ -18,9 +20,9 @@ public class Gui {
     private JTextField textField4;
     private JTextField textField5;
     private JTextField textField6;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
+    private JComboBox<String> comboBox1;
+    private JComboBox<String> comboBox2;
+    private JComboBox<String> comboBox3;
     private JButton bestaetigenButton;
     private JLabel uberschrift;
     private JLabel name;
@@ -33,9 +35,10 @@ public class Gui {
     private JLabel userbereitsvorhanden;
     private JLabel kalorienverbrauch;
     private JButton bestaetigenButton2;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField9;
+    private JLabel textField7;
+    private JLabel gesamtkalorien;
+    private JTextArea tollerezepte;
+    private JButton berechnebutton;
 
     public Gui() {
 
@@ -55,26 +58,18 @@ public class Gui {
             public void actionPerformed(ActionEvent e) {
                 try {
                     //System.out.println((String) comboBox3.getSelectedItem());
-                    UserDaten userDaten = new UserDaten(textField1.getText(),
+                    activeUser = new UserDaten(textField1.getText(),
                             Integer.parseInt(textField2.getText()), Double.parseDouble(textField4.getText()),
                             (String) comboBox1.getSelectedItem(), (String) comboBox3.getSelectedItem(),
                             (String) comboBox2.getSelectedItem(), Double.parseDouble(textField3.getText()));
-                    db.Userdaten_einlesen(userDaten);
-                    System.out.println(Datenbank.UserListe.get(0));
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
-                UserDaten id = new UserDaten();
-                //System.out.println(id.getUserID());
-                textField7.setText("Deine UserID lautet: "+id.getUserID());
 
-                   try{
-                     Rechner kal = new Rechner(Double.parseDouble(textField6.getText()));
-                      // Rechner.setKalorienverbrauch(kal);
+                Datenbank.Userdaten_einlesen(activeUser);
+                Datenbank.saveUserListe(Datenbank.UserListe);
+                textField7.setText("Deine UserID lautet: " + Datenbank.UserListe.indexOf(activeUser));
 
-                   } catch (Exception exception) {
-                       exception.printStackTrace();
-                }
             }
         });
 
@@ -83,7 +78,8 @@ public class Gui {
             public void actionPerformed(ActionEvent e) {
                 try {
                     System.out.println(textField5.getText());
-
+                    activeUser = Datenbank.UserListe.get(Integer.parseInt(textField5.getText()));
+                    System.out.println(activeUser);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -98,12 +94,6 @@ public class Gui {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        demo.setup();
+        Datenbank.loadUserListe();
     }
-
-    public void setup() {
-        db = new Datenbank();
-        rechner = new Rechner();
-    }
-
 }
