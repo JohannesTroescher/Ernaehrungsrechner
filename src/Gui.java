@@ -3,7 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Klassenattribute der Klasse Gui
+ * Klasse Gui
+ * Die grafische Benutzeroberfläche zum erstellen von Usern, Ändern von Usern, Aufrufen der Benutzerdaten, anzeigen der Rezepte und des Gesamtkalorienverbrauchs
  *
  * @author J. Kusmat, F.Hahn
  * @version 2.0
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 public class Gui {
 
     private UserDaten activeUser;
+    private UserDaten gaendertUser;
     private Rechner rechner;
 
     private JPanel Ernaehrungsrechner;
@@ -23,7 +25,7 @@ public class Gui {
     private JComboBox<String> comboBox1;
     private JComboBox<String> comboBox2;
     private JComboBox<String> comboBox3;
-    private JButton bestaetigenButton;
+    private JButton bestaetigenButtondaten;
     private JLabel uberschrift;
     private JLabel name;
     private JLabel alter;
@@ -34,17 +36,23 @@ public class Gui {
     private JLabel trainingsziel;
     private JLabel userbereitsvorhanden;
     private JLabel kalorienverbrauch;
-    private JButton bestaetigenButton2;
+    private JButton bestaetigenButtonID;
     private JLabel textField7;
     private JLabel gesamtkalorien;
     private JTextArea tollerezepte;
     private JButton berechnebutton;
+    private JLabel useraendern;
+    private JButton useraendernbutton;
+    private JLabel useraufruf;
 
+    /**
+     * Konstruktor
+     * enthält die Actionlistener
+     */
     public Gui() {
 
         comboBox1.addItem("Weiblich");
         comboBox1.addItem("Männlich");
-        comboBox1.addItem("Divers");
 
         comboBox2.addItem("Normal");
         comboBox2.addItem("Vegetarisch");
@@ -52,8 +60,7 @@ public class Gui {
 
         comboBox3.addItem("Abnehmen");
         comboBox3.addItem("Muskelaufbau");
-
-        bestaetigenButton.addActionListener(new ActionListener() {
+        bestaetigenButtondaten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -73,13 +80,14 @@ public class Gui {
             }
         });
 
-        bestaetigenButton2.addActionListener(new ActionListener() {
+        bestaetigenButtonID.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     System.out.println(textField5.getText());
                     activeUser = Datenbank.UserListe.get(Integer.parseInt(textField5.getText()));
                     System.out.println(activeUser);
+                    useraufruf.setText("Deine aktuellen Werte: " + activeUser);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -93,6 +101,22 @@ public class Gui {
                 try {
                     rechner.setKalorienverbrauch(Double.parseDouble(textField6.getText()));
                     gesamtkalorien.setText(rechner.Rechneroperation(Datenbank.UserListe.indexOf(activeUser)) + " kcal");
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+        });
+        useraendernbutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    gaendertUser = new UserDaten(textField1.getText(),
+                            Integer.parseInt(textField2.getText()), Double.parseDouble(textField4.getText()),
+                            (String) comboBox1.getSelectedItem(), (String) comboBox3.getSelectedItem(),
+                            (String) comboBox2.getSelectedItem(), Double.parseDouble(textField3.getText()));
+                    System.out.println(gaendertUser);
+                    Datenbank.Userdaten_aendern(Integer.parseInt(textField5.getText()), gaendertUser);
+                    Datenbank.saveUserListe(Datenbank.UserListe);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -133,6 +157,12 @@ public class Gui {
         }
     }
 
+    /**
+     * Mainmethode
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         JFrame frame = new JFrame("Ernährungsrechner");
         Gui demo = new Gui();
